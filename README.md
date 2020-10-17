@@ -10,6 +10,10 @@ I plan to run this poller on a Raspberry Pi and send the data to Home Assistant.
 
 The Must, and in my case specifically the VH1800, uses a different protocol to the Axpert / Voltronic and hence the purpose.
 
+## Scratch
+
+Looks like the the inverter uses the ModBus protocol: https://www.codeproject.com/Articles/20929/Simple-Modbus-Protocol-in-C-NET-2-0
+
 
 ## Reference:
 
