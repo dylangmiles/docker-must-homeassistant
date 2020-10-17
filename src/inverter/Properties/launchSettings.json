@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "inverter": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

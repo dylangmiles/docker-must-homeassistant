@@ -11,7 +11,10 @@ I plan to run this poller on a Raspberry Pi and send the data to Home Assistant.
 The Must, and in my case specifically the VH1800, uses a different protocol to the Axpert / Voltronic and hence the purpose.
 
 
-Reference:
+## Reference:
 
 https://github.com/ned-kelly/docker-voltronic-homeassistant
 https://powerforum.co.za/topic/5120-must-power-ph1800-inverter-odditiesquestions/?tab=comments#comment-84383
+
+## cli
+https://medium.com/swlh/build-a-command-line-interface-cli-program-with-net-core-428c4c85221
