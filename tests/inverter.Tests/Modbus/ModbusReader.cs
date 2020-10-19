@@ -45,16 +45,29 @@ namespace inverter.Tests.Modbus
             var response = new byte[3 + 2 + 2 * count];
             var read = _serialPort.Read(response, 0, response.Length);
 
+            //TODO: Check read length
+            if (read != response.Length)
+            {
+                throw new InvalidDataException("Invalid length of data read.");
+            }
+
 
             var values = new List<ushort>();
             using (var stream = new MemoryStream(response))
             using (var reader = new BigEndianBinaryReader(stream))
             {
                 var returnDeviceId = reader.ReadByte();
-                var returnFunctionCode = reader.ReadByte();
-                var returnByteCount = reader.ReadByte() / 2;
+                if (returnDeviceId != deviceId) throw new InvalidDataException("Invalid Device Id.");
 
-                for (var i = 0; i < returnByteCount; i++)
+                var returnFunctionCode = reader.ReadByte();
+                if (returnFunctionCode != 0x03) throw new InvalidDataException("Invalid Function Code.");
+
+                var returnByteCount = reader.ReadByte();
+                if (returnByteCount != 2 * count) throw new InvalidDataException("Invalid Byte Count.");
+
+                var returnSensorCount = returnByteCount / 2;
+
+                for (var i = 0; i < returnSensorCount; i++)
                 {
                     var value = reader.ReadUInt6();
                     values.Add(value);
@@ -65,7 +78,7 @@ namespace inverter.Tests.Modbus
 
                 if (returnCrc != calcCrc)
                 {
-                    throw new InvalidDataException("CRC of message read does not match.");
+                    throw new InvalidDataException("Invalid CRC.");
                 }
             }
 
