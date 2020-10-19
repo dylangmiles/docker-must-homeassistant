@@ -1,15 +1,22 @@
+using inverter.Tests.Modbus;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.IO;
 
-namespace inverter.Tests
+namespace inverter.Tests.Modbus
 {
     [TestClass]
     public class ModbusReaderTest
     {
+        //TODO: Checksums / CRC
+        //TODO: Timeouts
+        //TODO: Other errors?
+        //TODO: Port closed?
+        //TODO: Write or set values
+
         [TestMethod]
-        public void Read_Success()
+        public void Read_FiveValues_Success()
         {
 
             //Windows   - Little Endian 0x01 0x00

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace inverter.Tests
+namespace inverter.Tests.Modbus
 {
-    internal class ModbusReader
+    public class ModbusReader
     {
         private ISerialPort _serialPort;
 
         public ModbusReader(ISerialPort serialPort)
         {
-            this._serialPort = serialPort;
+            _serialPort = serialPort;
         }
 
         internal ushort[] Read(byte deviceId, ushort address, ushort count)
@@ -18,14 +18,14 @@ namespace inverter.Tests
             //Make the request
             var request = new byte[8];
             using (var stream = new MemoryStream(request))
-            using( var writer = new BigEndianBinaryWriter(stream))
+            using (var writer = new BigEndianBinaryWriter(stream))
             {
                 writer.Write(deviceId);
-                writer.Write((byte)0x03);
+                writer.Write(0x03);
                 writer.Write(address);
                 writer.Write(count);
-                writer.Write((byte)0xCC);
-                writer.Write((byte)0xDD);
+                writer.Write(0xCC);
+                writer.Write(0xDD);
             }
 
             _serialPort.Write(request, 0, request.Length);
@@ -46,17 +46,17 @@ namespace inverter.Tests
                 var returnDeviceId = reader.ReadByte();
                 var returnFunctionCode = reader.ReadByte();
                 var returnByteCount = reader.ReadByte() / 2;
-            
-                for(var i = 0; i < returnByteCount; i++)
+
+                for (var i = 0; i < returnByteCount; i++)
                 {
                     var value = reader.ReadUInt6();
                     values.Add(value);
                 }
             }
-                                    
-            
+
+
             return values.ToArray();
-            
+
         }
     }
 }
