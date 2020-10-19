@@ -1,10 +1,10 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 ARG  MACHINE_ARCH
-
 FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim${MACHINE_ARCH} AS base
 WORKDIR /app
 
+ARG  MACHINE_ARCH
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster${MACHINE_ARCH} AS build
 WORKDIR /src
 COPY ["src/inverter/inverter.csproj", "src/inverter/"]
