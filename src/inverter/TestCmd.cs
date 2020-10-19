@@ -45,14 +45,13 @@ namespace inverter
                     )
                 )
                 {
-
                     port.Handshake = Handshake.None;
                     port.DtrEnable = false;
                     port.RtsEnable = false;
                     port.ReadTimeout = 1500;
 
 
-                    _console.WriteLine($"Opeing port {port}");
+                    _console.WriteLine($"Opening port {port}");
                     port.Open();
 
                     var wrapper = new SerialPortWrapper(port);
@@ -62,19 +61,19 @@ namespace inverter
 
 
                     // Pc1800
-                    values = ReadValues(reader, 4, 2000, 7);
+                    values = ReadValues(reader, 4, 20000, 7);
                     values = ReadValues(reader, 4, 10001, 8);
-                    values = ReadValues(reader, 4, 10103,10);
-                    values = ReadValues(reader, 4, 15201,21);
+                    values = ReadValues(reader, 4, 10103, 10);
+                    values = ReadValues(reader, 4, 15201, 21);
 
                     // Ph1800
-                    values = reader.Read(4, 20000,17);
-                    values = reader.Read(4, 20101,43);
-                    values = reader.Read(4, 25201,79);
+                    values = reader.Read(4, 20000, 17);
+                    values = reader.Read(4, 20101, 43);
+                    values = reader.Read(4, 25201, 79);
 
                     //Changing in a loop
-                    values = reader.Read(4, 15201,21);
-                    values = reader.Read(4, 25201,79);
+                    values = reader.Read(4, 15201, 21);
+                    values = reader.Read(4, 25201, 79);
                     
                     port.Close();
 

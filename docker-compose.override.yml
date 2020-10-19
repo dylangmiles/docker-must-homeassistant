@@ -1,3 +1,8 @@
 version: '3.4'
 
 
+services:
+    inverter:
+        build:
+            args:
+                - MACHINE_ARCH=

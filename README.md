@@ -1,20 +1,40 @@
 # docker-must-homeassistant
 
-This project is to be able to communicate with a Must Solar Inverter which are manufactured by Must: https://www.mustsolar.com/
+This project is to be able to communicate with a Must Solar Inverter which are manufactured by Must: 
+
+https://www.mustsolar.com/
 
 Must have developed a tool called SolarPowerMonitor.exe which does allow comunication through a USB to Serial port on the inverter but it only runs on Windows.
 
-I want to develop a light weight command line poller to receive data and send command to the inverter roughtly based on similar work for the Axpert / Voltronic developed by Ned Kelly here: voltronic
+I want to develop a light weight command line poller to receive data and send command to the inverter roughtly based on similar work for the Axpert / Voltronic developed by Ned Kelly here:
+
+https://github.com/ned-kelly/docker-voltronic-homeassistant
 
 I plan to run this poller on a Raspberry Pi and send the data to Home Assistant.
 
 The Must, and in my case specifically the VH1800, uses a different protocol to the Axpert / Voltronic and hence the purpose.
 
 
-## Getting started
-1. Instlal Docker and Docker Compose
-2. Clone this repository
-3. Run `docker-compose run --rm inverter test`
+## Setting up
+
+I am setting up on a Raspberry Pi running Raspberry OS
+
+1. Install Docker and Docker Compose.
+
+2. Clone respository and run communication tests.
+    ```
+
+    # Clone the source code
+    
+    sudo git clone https://github.com/dylangmiles/docker-must-homeassistant.git /opt/must-inverter-mqtt-agent
+    cd /opt/must-inverter-mqtt-agent
+
+    # Run the communication tests. This will build the project and run some diagnostics
+    docker-compose run --rm inverter test
+
+
+    ```
+
 
 This queries the /dev/ttyUSB0 port for the Vc1800 and Vh1800 values. This is a test to check for communication with the inverter.
 

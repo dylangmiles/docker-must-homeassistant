@@ -1,8 +1,20 @@
 version: '3.4'
 
 services:
-  inverter:
-    image: ${DOCKER_REGISTRY-}inverter
-    build:
-      context: .
-      dockerfile: src/inverter/Dockerfile
+    inverter:
+        image: ${DOCKER_REGISTRY-}inverter
+        build:
+            context: .
+            dockerfile: src/inverter/Dockerfile
+            args:
+                - MACHINE_ARCH=-arm32v7
+
+        # Override entry point for debugging
+        #entrypoint: ["/bin/bash"]
+
+        privileged: true
+
+        devices:
+          - /dev/ttyUSB0:/dev/ttyUSB0:rwm
+    
+    
