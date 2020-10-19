@@ -10,17 +10,15 @@ namespace inverter.Tests.Modbus
     public class ModbusReaderTest
     {
         //TODO: Timeouts
-        //TODO: Other errors?
         //TODO: Port closed?
-        //TODO: Write or set values
+
+        //Windows   - Little Endian 0x01 0x00
+        //Linux     - Big Endian    0x00 0x01
+        //Modbus    - Big Endian    0x00 0x01
 
         [TestMethod]
         public void Read_FiveValues_Success()
         {
-
-            //Windows   - Little Endian 0x01 0x00
-            //Linux     - Big Endian    0x00 0x01
-            //Modbus    - Big Endian    0x00 0x01
 
             var port = new Mock<ISerialPort>();
             byte[] request = null;
@@ -28,8 +26,6 @@ namespace inverter.Tests.Modbus
 
             byte[] response = null;
             port.Setup(foo => foo.Read(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[], int, int>((b,o,c) => {
-
-                
 
                 using (var stream = new MemoryStream(b))
                 using( var writer = new BigEndianBinaryWriter(stream))
@@ -73,9 +69,6 @@ namespace inverter.Tests.Modbus
         public void Read_Invalid_Crc_InvalidDataExcaption()
         {
 
-            //Windows   - Little Endian 0x01 0x00
-            //Linux     - Big Endian    0x00 0x01
-            //Modbus    - Big Endian    0x00 0x01
 
             var port = new Mock<ISerialPort>();
             byte[] request = null;
@@ -122,10 +115,7 @@ namespace inverter.Tests.Modbus
         public void Read_Invalid_DeviceId_InvalidDataException()
         {
 
-            //Windows   - Little Endian 0x01 0x00
-            //Linux     - Big Endian    0x00 0x01
-            //Modbus    - Big Endian    0x00 0x01
-
+     
             var port = new Mock<ISerialPort>();
             byte[] request = null;
             port.Setup(foo => foo.Write(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[],int,int>((b,o,c) => request = b);
@@ -218,7 +208,7 @@ namespace inverter.Tests.Modbus
         }
 
         [TestMethod]
-        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid length of data read")]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid length of data read.")]
         public void Read_Invalid_Length_of_Data_InvalidDataException()
         {
 
