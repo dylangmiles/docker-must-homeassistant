@@ -15,22 +15,33 @@ namespace inverter.Tests.Modbus
 
         internal ushort[] Read(byte deviceId, ushort address, ushort count)
         {
-            //Make the request
+            //Construct the request
             var request = new byte[8];
             using (var stream = new MemoryStream(request))
             using (var writer = new BigEndianBinaryWriter(stream))
             {
-                writer.Write(deviceId);
-                writer.Write(0x03);
-                writer.Write(address);
-                writer.Write(count);
-                writer.Write(0xCC);
-                writer.Write(0xDD);
+                writer.Write(deviceId);     // DeviceId
+                writer.Write(0x03);         // Query
+                writer.Write(address);      // Start address
+                writer.Write(count);        // Number of values requested
+                writer.Write(0x00);         // CRC
+                writer.Write(0x00);         // CRC
             }
 
+            //Calculate and write the CRC
+            var crc = Utils.CalculateCrc(request);
+
+            using (var stream = new MemoryStream(request, 6, 2))
+            using (var writer = new BigEndianBinaryWriter(stream))
+            {
+                writer.Write(crc);
+            }
+            
+            //Send the message over the wire
             _serialPort.Write(request, 0, request.Length);
 
 
+            //Read the response
             var response = new byte[3 + 2 + 2 * count];
             var read = _serialPort.Read(response, 0, response.Length); //TODO: Handle timeouts here and failed CRCs
 
