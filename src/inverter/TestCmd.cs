@@ -61,19 +61,19 @@ namespace inverter
 
 
                     // Pc1800
-                    values = ReadValues(reader, 4, 20000, 7);
-                    values = ReadValues(reader, 4, 10001, 8);
-                    values = ReadValues(reader, 4, 10103, 10);
-                    values = ReadValues(reader, 4, 15201, 21);
+                    values = ReadValues(reader, port, 4, 20000, 7);
+                    values = ReadValues(reader, port, 4, 10001, 8);
+                    values = ReadValues(reader, port, 4, 10103, 10);
+                    values = ReadValues(reader, port, 4, 15201, 21);
 
                     // Ph1800
-                    values = reader.Read(4, 20000, 17);
-                    values = reader.Read(4, 20101, 43);
-                    values = reader.Read(4, 25201, 79);
+                    values = ReadValues(reader, port, 4, 20000, 17);
+                    values = ReadValues(reader, port, 4, 20101, 43);
+                    values = ReadValues(reader, port, 4, 25201, 79);
 
                     //Changing in a loop
-                    values = reader.Read(4, 15201, 21);
-                    values = reader.Read(4, 25201, 79);
+                    values = ReadValues(reader, port, 4, 15201, 21);
+                    values = ReadValues(reader, port, 4, 25201, 79);
                     
                     port.Close();
 
@@ -93,11 +93,23 @@ namespace inverter
             }
         }
 
-        private ushort[] ReadValues(ModbusReader reader, byte deviceId, ushort address, ushort count)
+        private ushort[] ReadValues(ModbusReader reader, SerialPort port, byte deviceId, ushort address, ushort count)
         {
+            //Sleep between commands1
+            System.Threading.Thread.Sleep(500);
+
             _console.Write($"Reading {deviceId}:{address}:{count} ... ");
-            var values = reader.Read(4, 10001, 8);
-            _console.WriteLine($"got {values.Length} values.");
+
+            ushort[] values = null;
+
+            try {
+                values = reader.Read(deviceId, address, count);
+                _console.WriteLine($"got {values.Length} values.");
+            } 
+            catch (TimeoutException ex)
+            {
+                _console.WriteLine($"Timeout Exception. {port.BytesToRead} Bytes are available to read.");
+            }
 
             return values;
         }

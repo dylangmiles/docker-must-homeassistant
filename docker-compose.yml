@@ -6,8 +6,6 @@ services:
         build:
             context: .
             dockerfile: src/inverter/Dockerfile
-            args:
-                - MACHINE_ARCH=-arm32v7
 
         # Override entry point for debugging
         #entrypoint: ["/bin/bash"]

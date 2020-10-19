@@ -29,7 +29,10 @@ I am setting up on a Raspberry Pi running Raspberry OS
     sudo git clone https://github.com/dylangmiles/docker-must-homeassistant.git /opt/must-inverter-mqtt-agent
     cd /opt/must-inverter-mqtt-agent
 
-    # Run the communication tests. This will build the project and run some diagnostics
+    #Build the Docker images
+    docker-compose build --build-arg MACHINE_ARCH="-arm32v7"
+
+    # Run the communication tests.
     docker-compose run --rm inverter test
 
 
