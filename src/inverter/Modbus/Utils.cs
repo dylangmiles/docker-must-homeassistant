@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace inverter.Tests.Modbus
+namespace inverter.Modbus
 {
     public class Utils
     {
@@ -14,24 +14,24 @@ namespace inverter.Tests.Modbus
             ushort crcFull = 0xFFFF;
             byte crcHigh = 0xFF, crcLow = 0xFF;
             char crcLsb;
- 
+
             for (int i = 0; i < count; i++)
             {
                 crcFull = (ushort)(crcFull ^ message[offset + i]);
- 
+
                 for (int j = 0; j < 8; j++)
                 {
                     crcLsb = (char)(crcFull & 0x0001);
-                    crcFull = (ushort)((crcFull >> 1) & 0x7FFF);
- 
+                    crcFull = (ushort)(crcFull >> 1 & 0x7FFF);
+
                     if (crcLsb == 1)
                         crcFull = (ushort)(crcFull ^ 0xA001);
                 }
             }
-            crcHigh = (byte)((crcFull >> 8) & 0xFF);
+            crcHigh = (byte)(crcFull >> 8 & 0xFF);
             crcLow = (byte)(crcFull & 0xFF);
 
-            return (ushort) ((uint) crcLow | (uint) crcHigh << 8);
+            return (ushort)(crcLow | (uint)crcHigh << 8);
         }
     }
 }

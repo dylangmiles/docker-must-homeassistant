@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace inverter.Tests.Modbus
+namespace inverter.Modbus
 {
     /// <summary>
     /// Read from a serial port using the Modbus protocol.
@@ -16,7 +16,7 @@ namespace inverter.Tests.Modbus
             _serialPort = serialPort;
         }
 
-        internal ushort[] Read(byte deviceId, ushort address, ushort count)
+        public ushort[] Read(byte deviceId, ushort address, ushort count)
         {
             //Construct the request
             var request = new byte[8];
@@ -39,7 +39,7 @@ namespace inverter.Tests.Modbus
             {
                 writer.Write(crc);
             }
-            
+
             //Send the message over the wire
             _serialPort.Write(request, 0, request.Length);
 
@@ -84,7 +84,6 @@ namespace inverter.Tests.Modbus
                     throw new InvalidDataException("Invalid CRC.");
                 }
             }
-
 
             return values.ToArray();
 

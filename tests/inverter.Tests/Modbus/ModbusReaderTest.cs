@@ -1,3 +1,4 @@
+using inverter.Modbus;
 using inverter.Tests.Modbus;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

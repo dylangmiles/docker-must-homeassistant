@@ -1,4 +1,4 @@
-﻿namespace inverter.Tests
+﻿namespace inverter.Modbus
 {
     public interface ISerialPort
     {

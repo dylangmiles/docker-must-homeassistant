@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-namespace inverter.Tests
+namespace inverter.Modbus
 {
-    internal class BigEndianBinaryReader : IDisposable
+    public class BigEndianBinaryReader : IDisposable
     {
         private Stream _stream;
         private bool _disposed = false;
@@ -18,7 +18,7 @@ namespace inverter.Tests
         public virtual short ReadInt16()
         {
             _stream.Read(_buffer, 0, 2);
-            return (short) ((int) _buffer[1] | (int) _buffer[0] << 8);
+            return (short)(_buffer[1] | _buffer[0] << 8);
         }
 
         public virtual ushort ReadUInt6()
@@ -26,30 +26,30 @@ namespace inverter.Tests
             var read = _stream.Read(_buffer, 0, 2);
             if (read < 2) throw new EndOfStreamException();
 
-            return (ushort) ((uint) _buffer[1] | (uint) _buffer[0] << 8);
+            return (ushort)(_buffer[1] | (uint)_buffer[0] << 8);
         }
 
         public virtual byte ReadByte()
         {
             var value = _stream.ReadByte();
-            if (value == -1 ) throw new EndOfStreamException();
+            if (value == -1) throw new EndOfStreamException();
 
             return (byte)value;
         }
 
         public virtual void Close()
         {
-            this.Dispose(true);
+            Dispose(true);
         }
 
-       
+
 
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed) return;
 
             if (!disposing) return;
-          
+
             _stream.Close();
 
             _disposed = true;
@@ -57,10 +57,10 @@ namespace inverter.Tests
 
         public void Dispose()
         {
-           // Dispose of unmanaged resources.
-           Dispose(true);
-           // Suppress finalization.
-           GC.SuppressFinalize(this);
+            // Dispose of unmanaged resources.
+            Dispose(true);
+            // Suppress finalization.
+            GC.SuppressFinalize(this);
         }
 
     }
