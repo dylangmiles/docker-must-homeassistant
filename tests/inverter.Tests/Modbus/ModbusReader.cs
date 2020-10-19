@@ -4,6 +4,9 @@ using System.IO;
 
 namespace inverter.Tests.Modbus
 {
+    /// <summary>
+    /// Read from a serial port using the Modbus protocol.
+    /// </summary>
     public class ModbusReader
     {
         private ISerialPort _serialPort;
