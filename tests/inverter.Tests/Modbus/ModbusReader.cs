@@ -29,7 +29,7 @@ namespace inverter.Tests.Modbus
             }
 
             //Calculate and write the CRC
-            var crc = Utils.CalculateCrc(request);
+            var crc = Utils.CalculateCrc(request, 0, 6);
 
             using (var stream = new MemoryStream(request, 6, 2))
             using (var writer = new BigEndianBinaryWriter(stream))
@@ -43,17 +43,13 @@ namespace inverter.Tests.Modbus
 
             //Read the response
             var response = new byte[3 + 2 + 2 * count];
-            var read = _serialPort.Read(response, 0, response.Length); //TODO: Handle timeouts here and failed CRCs
+            var read = _serialPort.Read(response, 0, response.Length);
 
 
             var values = new List<ushort>();
             using (var stream = new MemoryStream(response))
             using (var reader = new BigEndianBinaryReader(stream))
             {
-                //response[0] == deviceId
-                //response[1] == (byte)0x3
-                //response[2] == count
-
                 var returnDeviceId = reader.ReadByte();
                 var returnFunctionCode = reader.ReadByte();
                 var returnByteCount = reader.ReadByte() / 2;
@@ -62,6 +58,14 @@ namespace inverter.Tests.Modbus
                 {
                     var value = reader.ReadUInt6();
                     values.Add(value);
+                }
+
+                var returnCrc = reader.ReadUInt6();
+                var calcCrc = Utils.CalculateCrc(response, 0, response.Length - 2);
+
+                if (returnCrc != calcCrc)
+                {
+                    throw new InvalidDataException("CRC of message read does not match.");
                 }
             }
 

@@ -9,15 +9,15 @@ namespace inverter.Tests.Modbus
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static ushort CalculateCrc(byte[] message)
+        public static ushort CalculateCrc(byte[] message, int offset, int count)
         {
             ushort crcFull = 0xFFFF;
             byte crcHigh = 0xFF, crcLow = 0xFF;
             char crcLsb;
  
-            for (int i = 0; i < (message.Length) - 2; i++)
+            for (int i = 0; i < count; i++)
             {
-                crcFull = (ushort)(crcFull ^ message[i]);
+                crcFull = (ushort)(crcFull ^ message[offset + i]);
  
                 for (int j = 0; j < 8; j++)
                 {

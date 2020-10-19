@@ -18,15 +18,16 @@ namespace inverter.Tests.Modbus
                 0x03,           // Query
                 0x07,           // Most significant byte of 2000
                 0xD0,           // Least signification byte of 2000
-                0x02,            // Count of values requested
+                0x00,           // Most significant byte of values requested
+                0x02,           // Least significant byte of values requested.
                 0x00,
                 0x00
             };
 
             //When
-            ushort crc = Utils.CalculateCrc(data);
+            ushort crc = Utils.CalculateCrc(data, 0, 5);
 
-            Assert.AreEqual((ushort)17524, crc);
+            Assert.AreEqual((ushort)34293, crc);
             
         }
     }
