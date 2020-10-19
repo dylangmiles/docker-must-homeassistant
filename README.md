@@ -10,6 +10,15 @@ I plan to run this poller on a Raspberry Pi and send the data to Home Assistant.
 
 The Must, and in my case specifically the VH1800, uses a different protocol to the Axpert / Voltronic and hence the purpose.
 
+
+## Getting started
+1. Instlal Docker and Docker Compose
+2. Clone this repository
+3. Run `docker-compose run --rm inverter test`
+
+This queryies the /dev/ttyUSB0 port for the Vc1800 and Vh1800 values. This is a test to check for communication with the inverter.
+
+
 ## Scratch
 
 Looks like the the inverter uses the ModBus protocol: https://www.codeproject.com/Articles/20929/Simple-Modbus-Protocol-in-C-NET-2-0
