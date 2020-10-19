@@ -16,7 +16,7 @@ The Must, and in my case specifically the VH1800, uses a different protocol to t
 2. Clone this repository
 3. Run `docker-compose run --rm inverter test`
 
-This queryies the /dev/ttyUSB0 port for the Vc1800 and Vh1800 values. This is a test to check for communication with the inverter.
+This queries the /dev/ttyUSB0 port for the Vc1800 and Vh1800 values. This is a test to check for communication with the inverter.
 
 
 ## Scratch
