@@ -41,8 +41,8 @@ namespace inverter.Tests.Modbus
                     writer.Write((ushort)13);
                     writer.Write((ushort)14);   // Value 5
 
-                    writer.Write((byte)0xD0);   //Check sum
                     writer.Write((byte)0xE0);   //Check sum
+                    writer.Write((byte)0xD0);   //Check sum
                 }
 
                 response = b;
@@ -58,8 +58,8 @@ namespace inverter.Tests.Modbus
             ushort[] data = reader.Read( deviceId, address, count );
 
             Assert.AreEqual(5, data.Length);
-            CollectionAssert.AreEqual(new byte[] { 0x01, 0x03, 0x07, 0xD0, 0x00, 0x05, 0x44, 0x85 }, request);
-            CollectionAssert.AreEqual(new byte[] { 0x01, 0x03, 0x0A, 0x00, 0xA, 0x00, 0x0B, 0x00, 0x0C, 0x00,0x0D,0x00,0x0E,0xD0,0xE0 }, response);
+            CollectionAssert.AreEqual(new byte[] { 0x01, 0x03, 0x07, 0xD0, 0x00, 0x05, 0x85, 0x44 }, request);
+            CollectionAssert.AreEqual(new byte[] { 0x01, 0x03, 0x0A, 0x00, 0xA, 0x00, 0x0B, 0x00, 0x0C, 0x00,0x0D,0x00,0x0E,0xE0,0xD0 }, response);
 
             Assert.AreEqual(11, data[1]);
         }
@@ -91,8 +91,8 @@ namespace inverter.Tests.Modbus
                     writer.Write((ushort)13);
                     writer.Write((ushort)14);   // Value 5
 
-                    writer.Write((byte)0xD0);   //Check sum
-                    writer.Write((byte)0xE1);   //Check sum fails
+                    writer.Write((byte)0xE1);   //Check sum
+                    writer.Write((byte)0xD0);   //Check sum fails
                 }
 
                 response = b;

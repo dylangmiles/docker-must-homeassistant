@@ -31,7 +31,7 @@ namespace inverter.Modbus
             crcHigh = (byte)(crcFull >> 8 & 0xFF);
             crcLow = (byte)(crcFull & 0xFF);
 
-            return (ushort)(crcLow | (uint)crcHigh << 8);
+            return (ushort)(crcHigh | (uint)crcLow << 8);
         }
     }
 }
