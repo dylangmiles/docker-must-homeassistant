@@ -66,7 +66,7 @@ namespace inverter.Tests.Modbus
 
                     
         [TestMethod]
-        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid CRC.")]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid CRC. Expected 57552 and got 57808.")]
         public void Read_Invalid_Crc_InvalidDataExcaption()
         {
 
@@ -112,7 +112,7 @@ namespace inverter.Tests.Modbus
         }
 
         [TestMethod]
-        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid Device Id.")]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid Device Id. Expected 1 and got 2")]
         public void Read_Invalid_DeviceId_InvalidDataException()
         {
 
@@ -159,7 +159,7 @@ namespace inverter.Tests.Modbus
         }
 
         [TestMethod]
-        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid Function Code.")]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid Function Code. Expected 03 and got 4.")]
         public void Read_Invalid_Function_Code_InvalidDataException()
         {
 
@@ -209,7 +209,7 @@ namespace inverter.Tests.Modbus
         }
 
         [TestMethod]
-        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid length of data read.")]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid length of data read. Expected 15 bytes and got 13 bytes.")]
         public void Read_Invalid_Length_of_Data_InvalidDataException()
         {
 
