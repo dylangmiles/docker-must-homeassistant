@@ -60,13 +60,13 @@ namespace inverter.Modbus
             using (var reader = new BigEndianBinaryReader(stream))
             {
                 var returnDeviceId = reader.ReadByte();
-                if (returnDeviceId != deviceId) throw new InvalidDataException("Invalid Device Id.");
+                if (returnDeviceId != deviceId) throw new InvalidDataException($"Invalid Device Id. Expected {deviceId} and got {returnDeviceId}");
 
                 var returnFunctionCode = reader.ReadByte();
-                if (returnFunctionCode != 0x03) throw new InvalidDataException("Invalid Function Code.");
+                if (returnFunctionCode != 0x03) throw new InvalidDataException($"Invalid Function Code. Expected 03 and got {returnFunctionCode}.");
 
                 var returnByteCount = reader.ReadByte();
-                if (returnByteCount != 2 * count) throw new InvalidDataException("Invalid Byte Count.");
+                if (returnByteCount != 2 * count) throw new InvalidDataException($"Invalid byte count. Expected {2 * count} bytes and read {returnByteCount} bytes.");
 
                 var returnSensorCount = returnByteCount / 2;
 
@@ -81,7 +81,7 @@ namespace inverter.Modbus
 
                 if (returnCrc != calcCrc)
                 {
-                    throw new InvalidDataException("Invalid CRC.");
+                    throw new InvalidDataException($"Invalid CRC. Expected {calcCrc} and got {returnCrc}.");
                 }
             }
 

@@ -100,7 +100,10 @@ namespace inverter
             System.Threading.Thread.Sleep(500);
 
             //Set read timeout based on baud rate and count of items
-            port.ReadTimeout = (1000 / port.BaudRate) * count;
+            var timeout = (int)((1000f / port.BaudRate) * 10000f *  count);
+            timeout = timeout < 2000?2000:timeout;
+
+            port.ReadTimeout = timeout;
 
             _console.Write($"Reading {deviceId}:{address}:{count} ... wait for { port.ReadTimeout }ms .... ");
 
