@@ -66,7 +66,7 @@ namespace inverter.Modbus
                 if (returnFunctionCode != 0x03) throw new InvalidDataException($"Invalid Function Code. Expected 03 and got {returnFunctionCode}.");
 
                 var returnByteCount = reader.ReadByte();
-                if (returnByteCount != 2 * count) throw new InvalidDataException($"Invalid byte count. Expected {2 * count} bytes and read {returnByteCount} bytes.");
+                if (returnByteCount != 2 * count) throw new InvalidDataException($"Invalid Byte Count. Expected {2 * count} bytes and read {returnByteCount} bytes.");
 
                 var returnSensorCount = returnByteCount / 2;
 

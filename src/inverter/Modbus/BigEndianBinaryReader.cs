@@ -31,17 +31,16 @@ namespace inverter.Modbus
 
         public virtual byte ReadByte()
         {
-            var value = _stream.ReadByte();
-            if (value == -1) throw new EndOfStreamException();
+            var read = _stream.Read(_buffer, 0, 1);
+            if (read < 1) throw new EndOfStreamException();
 
-            return (byte)value;
+            return (byte)_buffer[0];
         }
 
         public virtual void Close()
         {
             Dispose(true);
         }
-
 
 
         protected virtual void Dispose(bool disposing)
