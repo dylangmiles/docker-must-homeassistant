@@ -51,7 +51,7 @@ namespace inverter.Modbus
             //TODO: Check read length
             if (read != response.Length)
             {
-                throw new InvalidDataException("Invalid length of data read.");
+                throw new InvalidDataException($"Invalid length of data read. Expected {response.Length} bytes and got {read} bytes.");
             }
 
 
@@ -88,5 +88,6 @@ namespace inverter.Modbus
             return values.ToArray();
 
         }
+
     }
 }

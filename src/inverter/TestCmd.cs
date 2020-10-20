@@ -3,6 +3,7 @@ using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Ports;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,17 +99,25 @@ namespace inverter
             //Sleep between commands1
             System.Threading.Thread.Sleep(500);
 
-            _console.Write($"Reading {deviceId}:{address}:{count} ... ");
+            //Set read timeout based on baud rate and count of items
+            port.ReadTimeout = (1000 / port.BaudRate) * count;
 
-            ushort[] values = null;
+            _console.Write($"Reading {deviceId}:{address}:{count} ... wait for { port.ReadTimeout }ms .... ");
+
+            ushort[] values = new ushort[] { };
 
             try {
+                
                 values = reader.Read(deviceId, address, count);
                 _console.WriteLine($"got {values.Length} values.");
             } 
             catch (TimeoutException ex)
             {
-                _console.WriteLine($"Timeout Exception. {port.BytesToRead} Bytes are available to read.");
+                _console.WriteLine($"Timeout Exception: {port.BytesToRead} bytes are available to read.");
+            }
+            catch (InvalidDataException ex)
+            {
+                _console.WriteLine($"Invalid Data Exception:  {ex.Message}");
             }
 
             return values;
