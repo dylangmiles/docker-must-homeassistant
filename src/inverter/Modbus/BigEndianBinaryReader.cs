@@ -15,18 +15,30 @@ namespace inverter.Modbus
         }
 
 
-        public virtual short ReadInt16()
-        {
-            _stream.Read(_buffer, 0, 2);
-            return (short)(_buffer[1] | _buffer[0] << 8);
-        }
+        //public virtual short ReadInt16()
+        //{
+        //    _stream.Read(_buffer, 0, 2);
+
+            
+        //    return (short)(_buffer[1] | _buffer[0] << 8);
+        //}
 
         public virtual ushort ReadUInt6()
         {
             var read = _stream.Read(_buffer, 0, 2);
             if (read < 2) throw new EndOfStreamException();
 
-            return (ushort)(_buffer[1] | (uint)_buffer[0] << 8);
+            ushort result = 0;
+            if (BitConverter.IsLittleEndian == true)
+            {
+                result = (ushort)(_buffer[1] | (uint)_buffer[0] << 8);
+            }
+            else
+            {
+                result = (ushort)(_buffer[0] | (uint)_buffer[1] << 8);
+            }
+
+            return result;
         }
 
         public virtual byte ReadByte()

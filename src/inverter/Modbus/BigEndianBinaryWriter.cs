@@ -26,17 +26,27 @@ namespace inverter.Modbus
 
         public virtual void Write(ushort value)
         {
-            _buffer[0] = (byte)((uint)value >> 8);
-            _buffer[1] = (byte)value;
+            //If is Little Endian then ushort should have its least significant byte stored first
+            //There fore to write it BigEndian we should write the second byte first
+            if (BitConverter.IsLittleEndian == true) {
+                _buffer[1] = (byte)((uint)value >> 8);  //Least significant byte on Little Endian machine is written to least significant byte
+                _buffer[0] = (byte)value;
+            }
+            else
+            {
+                _buffer[0] = (byte)((uint)value >> 8);  //Most significant byte on Big Endian machine is written to most significant byte
+                _buffer[1] = (byte)value;
+            }
+
             _stream.Write(_buffer, 0, 2);
         }
 
-        public virtual void Write(short value)
-        {
-            _buffer[0] = (byte)((uint)value >> 8);
-            _buffer[1] = (byte)value;
-            _stream.Write(_buffer, 0, 2);
-        }
+        //public virtual void Write(short value)
+        //{
+        //    _buffer[0] = (byte)((uint)value >> 8);
+        //    _buffer[1] = (byte)value;
+        //    _stream.Write(_buffer, 0, 2);
+        //}
 
         public virtual void Close()
         {
