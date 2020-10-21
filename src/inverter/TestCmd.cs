@@ -106,8 +106,7 @@ namespace inverter
         private ushort[] ReadValues(ModbusReader reader, SerialPort port, byte deviceId, ushort address, ushort count)
         {
             //Sleep between reads
-            System.Threading.Thread.Sleep(500);
-
+            System.Threading.Thread.Sleep(200);
 
             port.DiscardInBuffer();
             port.DiscardOutBuffer();
