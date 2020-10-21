@@ -113,7 +113,6 @@ namespace inverter
 
             //Set read timeout based on baud rate and count of items
             double timeout = 1.0f / (double) port.BaudRate * 1000.0 * 12.0 * (double) count * 2.0 + (double) (count * 2) + 5.0 + 1000.0;
-            timeout = Math.Round((timeout > 2000.00 ? timeout : 2000.00) / 100.00);
 
             port.ReadTimeout = (int)timeout;
             
