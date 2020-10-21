@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Buffers.Binary;
 using System.IO;
+using System.Net;
 
 namespace inverter.Modbus
 {
@@ -8,6 +10,7 @@ namespace inverter.Modbus
         private Stream _stream;
         private bool _disposed = false;
         private byte[] _buffer = new byte[16];
+       
 
         public BigEndianBinaryReader(Stream stream)
         {
@@ -15,30 +18,14 @@ namespace inverter.Modbus
         }
 
 
-        //public virtual short ReadInt16()
-        //{
-        //    _stream.Read(_buffer, 0, 2);
-
-            
-        //    return (short)(_buffer[1] | _buffer[0] << 8);
-        //}
-
         public virtual ushort ReadUInt6()
         {
+
             var read = _stream.Read(_buffer, 0, 2);
             if (read < 2) throw new EndOfStreamException();
 
-            ushort result = 0;
-            if (BitConverter.IsLittleEndian == true)
-            {
-                result = (ushort)(_buffer[1] | (uint)_buffer[0] << 8);
-            }
-            else
-            {
-                result = (ushort)(_buffer[0] | (uint)_buffer[1] << 8);
-            }
-
-            return result;
+            ReadOnlySpan<byte> span = _buffer;
+            return BinaryPrimitives.ReadUInt16BigEndian(span.Slice(0, 2));
         }
 
         public virtual byte ReadByte()

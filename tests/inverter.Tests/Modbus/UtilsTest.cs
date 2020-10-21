@@ -39,12 +39,12 @@ namespace inverter.Tests.Modbus
             var data = new byte[] {
                 0x04,           // Device Id
                 0x03,           // Query
-                0x4e,           // Most significant byte of 2000
-                0x20,           // Least signification byte of 2000
+                0x4e,           // Most significant byte of 20000
+                0x20,           // Least signification byte of 20000
                 0x00,           // Most significant byte of values requested
                 0x07,           // Least significant byte of values requested.
-                0x00,
-                0x00
+                0x12,
+                0xbf
             };
 
             //When

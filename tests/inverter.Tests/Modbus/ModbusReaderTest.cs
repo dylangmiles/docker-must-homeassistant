@@ -66,7 +66,7 @@ namespace inverter.Tests.Modbus
 
                     
         [TestMethod]
-        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid CRC. Expected 17189 and got 57808.")]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid CRC. Expected 57552 and got 57808.")]
         public void Read_Invalid_Crc_InvalidDataExcaption()
         {
 
