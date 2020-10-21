@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,7 +56,15 @@ namespace inverter
                     _console.WriteLine($"Opening port {port}");
                     port.Open();
 
-                    var wrapper = new SerialPortWrapper(port);
+                    var wrapper = new SerialPortWrapper(port, d => { 
+                        var renderedBytes = String.Join(" ", d.Select(s => $"{s:X2}"));
+                        _console.WriteLine($"< {renderedBytes}");
+
+                    }, 
+                    d => { 
+                        var renderedBytes = String.Join(" ", d.Select(s => $"{s:X2}"));
+                        _console.WriteLine($"< {renderedBytes}");
+                    });
                     var reader = new ModbusReader(wrapper);
 
                     ushort[] values = null;

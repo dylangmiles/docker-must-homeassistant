@@ -6,3 +6,5 @@ services:
         build:
             args:
                 - MACHINE_ARCH=
+        command: ["test"]
+            
