@@ -63,7 +63,7 @@ namespace inverter
                     }, 
                     d => { 
                         var renderedBytes = String.Join(" ", d.Select(s => $"{s:X2}"));
-                        _console.WriteLine($"< {renderedBytes}");
+                        _console.WriteLine($"> {renderedBytes}");
                     });
                     var reader = new ModbusReader(wrapper);
 
@@ -114,7 +114,7 @@ namespace inverter
 
             port.ReadTimeout = timeout;
 
-            _console.Write($"Reading {deviceId}:{address}:{count} ... wait for { port.ReadTimeout }ms .... ");
+            _console.WriteLine($"Reading {deviceId}:{address}:{count} ... wait for { port.ReadTimeout }ms .... ");
 
             ushort[] values = new ushort[] { };
 
@@ -131,6 +131,8 @@ namespace inverter
             {
                 _console.WriteLine($"Invalid Data Exception:  {ex.Message}");
             }
+
+            _console.WriteLine("");
 
             return values;
         }

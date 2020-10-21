@@ -20,9 +20,9 @@ namespace inverter.Modbus
 
         public int Read(byte[] buffer, int offset, int count)
         {
-            _dataInFunc(buffer);
-
             return _serialPort.Read(buffer, offset, count);
+            
+            _dataInFunc(buffer);
         }
 
         public void Write(byte[] buffer, int offset, int count)
