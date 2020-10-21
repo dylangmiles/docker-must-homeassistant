@@ -108,6 +108,10 @@ namespace inverter
             //Sleep between commands1
             System.Threading.Thread.Sleep(500);
 
+
+            port.DiscardInBuffer();
+            port.DiscardOutBuffer();
+
             //Set read timeout based on baud rate and count of items
             var timeout = (int)((1000f / port.BaudRate) * 10000f *  count);
             timeout = timeout < 2000?2000:timeout;
