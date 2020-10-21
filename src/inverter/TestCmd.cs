@@ -122,8 +122,13 @@ namespace inverter
 
             try {
                 
+                var start = Environment.TickCount;
+
                 values = reader.Read(deviceId, address, count);
-                _console.WriteLine($"got {values.Length} values.");
+
+                var end = Environment.TickCount;
+
+                _console.WriteLine($"got {values.Length} values in {end - start} ms");
             } 
             catch (TimeoutException ex)
             {

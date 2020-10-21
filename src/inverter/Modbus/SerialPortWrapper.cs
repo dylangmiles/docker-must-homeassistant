@@ -32,7 +32,7 @@ namespace inverter.Modbus
 
                 total += read;
 
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(10);
 
                 current = System.Environment.TickCount;
             }
