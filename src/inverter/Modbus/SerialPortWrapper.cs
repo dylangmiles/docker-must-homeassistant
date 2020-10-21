@@ -20,11 +20,26 @@ namespace inverter.Modbus
 
         public int Read(byte[] buffer, int offset, int count)
         {
-            var read = _serialPort.Read(buffer, offset, count);
+            var start = System.Environment.TickCount;
+            var current = System.Environment.TickCount;
+            var total = 0;
+            var chunk = new byte[32];
+            while (total < count && (current - start < _serialPort.ReadTimeout || _serialPort.ReadTimeout == -1))
+            {
+                var read = _serialPort.Read(chunk, 0, chunk.Length);
+
+                Buffer.BlockCopy(chunk, 0, buffer, offset + total, read);                
+
+                total += read;
+
+                System.Threading.Thread.Sleep(100);
+
+                current = System.Environment.TickCount;
+            }
             
             _dataInFunc(buffer);
 
-            return read;
+            return total;
         }
 
         public void Write(byte[] buffer, int offset, int count)

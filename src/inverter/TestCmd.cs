@@ -105,7 +105,7 @@ namespace inverter
 
         private ushort[] ReadValues(ModbusReader reader, SerialPort port, byte deviceId, ushort address, ushort count)
         {
-            //Sleep between commands1
+            //Sleep between reads
             System.Threading.Thread.Sleep(500);
 
 
@@ -117,7 +117,7 @@ namespace inverter
             timeout = timeout < 2000?2000:timeout;
 
             port.ReadTimeout = timeout;
-
+            
             _console.WriteLine($"Reading {deviceId}:{address}:{count} ... wait for { port.ReadTimeout }ms .... ");
 
             ushort[] values = new ushort[] { };
