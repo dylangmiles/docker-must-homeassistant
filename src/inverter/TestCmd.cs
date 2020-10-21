@@ -113,10 +113,10 @@ namespace inverter
             port.DiscardOutBuffer();
 
             //Set read timeout based on baud rate and count of items
-            var timeout = (int)((1000f / port.BaudRate) * 10000f *  count);
-            timeout = timeout < 2000?2000:timeout;
+            double timeout = 1.0f / (double) port.BaudRate * 1000.0 * 12.0 * (double) count * 2.0 + (double) (count * 2) + 5.0 + 1000.0;
+            timeout = Math.Round((timeout > 2000.00 ? timeout : 2000.00) / 100.00);
 
-            port.ReadTimeout = timeout;
+            port.ReadTimeout = (int)timeout;
             
             _console.WriteLine($"Reading {deviceId}:{address}:{count} ... wait for { port.ReadTimeout }ms .... ");
 

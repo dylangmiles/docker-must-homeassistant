@@ -46,9 +46,18 @@ This queries the /dev/ttyUSB0 port for the Vc1800 and Vh1800 values. This is a t
 
 Looks like the the inverter uses the ModBus protocol: https://www.codeproject.com/Articles/20929/Simple-Modbus-Protocol-in-C-NET-2-0
 
+19200 573 char time
+
+19200 baud rate with say 11 bits per byte = 19200 / 11 = 1745 bytes per second
+
+Each char is approx imately 573 us to send.
+
+count * (1000 / 19200 / 11) 
+
 
 ## Reference:
 
+https://minimalmodbus.readthedocs.io/en/stable/modbusdetails.html
 https://github.com/ned-kelly/docker-voltronic-homeassistant
 https://powerforum.co.za/topic/5120-must-power-ph1800-inverter-odditiesquestions/?tab=comments#comment-84383
 
