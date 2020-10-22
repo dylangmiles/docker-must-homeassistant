@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace inverter.Tests
+namespace inverter
 {
     public class ModbusToModelMapper
     {
-        internal static void Map<T>(short startAddress, short[] values, T model)
+        public static void Map<T>(short startAddress, ushort[] values, T model)
         {
             //Generate a lookup from sensor id to class property.
             var dictionary = GetSensorPropertyInfos<T>();
 
             var index = startAddress;
-            foreach(var value in values)
+            foreach (var value in values)
             {
                 //Get the property we are interested in
                 var property = dictionary[index];
@@ -22,8 +22,9 @@ namespace inverter.Tests
                 //Get the sensor attributes
                 var attribute = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(ModbusSensorAttribute)).First() as ModbusSensorAttribute;
 
-                if (property.PropertyType == typeof(double?)) {
-                    property.SetValue(model, (double)(value * attribute.Coefficient));
+                if (property.PropertyType == typeof(double?))
+                {
+                    property.SetValue(model, value * attribute.Coefficient);
                 }
 
                 if (property.PropertyType == typeof(short?))
@@ -32,7 +33,7 @@ namespace inverter.Tests
                 }
 
 
-                index ++;
+                index++;
             }
 
         }

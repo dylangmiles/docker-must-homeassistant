@@ -13,7 +13,7 @@ namespace inverter.Tests
         {
             //Given 
             var startAddress = (short)20000;
-            var values = new short[] {1};
+            var values = new ushort[] {1};
             var model = new MockModel();
 
             ModbusToModelMapper.Map(startAddress, values, model);
@@ -28,7 +28,7 @@ namespace inverter.Tests
         {
             //Given 
             var startAddress = (short)20000;
-            var values = new short[] {1, 2, 3};
+            var values = new ushort[] {1, 2, 3};
             var model = new MockModel();
 
             ModbusToModelMapper.Map(startAddress, values, model);
@@ -44,7 +44,7 @@ namespace inverter.Tests
         {
             //Given 
             var startAddress = (short)15001;
-            var values = new short[] {14};
+            var values = new ushort[] {14};
             var model = new MockModel();
 
             ModbusToModelMapper.Map(startAddress, values, model);

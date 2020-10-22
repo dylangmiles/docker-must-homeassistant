@@ -7,6 +7,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace inverter
@@ -59,35 +60,46 @@ namespace inverter
                     port.Open();
 
                     var wrapper = new SerialPortWrapper(port, d => { 
-                        var renderedBytes = String.Join(" ", d.Select(s => $"{s:X2}"));
-                        _console.WriteLine($"< {renderedBytes}");
-
                     }, 
                     d => { 
-                        var renderedBytes = String.Join(" ", d.Select(s => $"{s:X2}"));
-                        _console.WriteLine($"> {renderedBytes}");
                     });
                     var reader = new ModbusReader(wrapper);
 
                     ushort[] values = null;
+                    var modelPc = new Models.Pc1800();
+
+
+                    //Detection
+                    //values = ReadValues(reader, port, 4, 20000, 7);
 
 
                     // Pc1800
-                    values = ReadValues(reader, port, 4, 20000, 7);
                     values = ReadValues(reader, port, 4, 10001, 8);
+                    ModbusToModelMapper.Map(10001, values, modelPc);
+                    
                     values = ReadValues(reader, port, 4, 10103, 10);
+                    ModbusToModelMapper.Map(10103, values, modelPc);
+
                     values = ReadValues(reader, port, 4, 15201, 21);
+                    ModbusToModelMapper.Map(15201, values, modelPc);
 
                     // Ph1800
-                    values = ReadValues(reader, port, 4, 20000, 17);
-                    values = ReadValues(reader, port, 4, 20101, 43);
-                    values = ReadValues(reader, port, 4, 25201, 79);
+                    //values = ReadValues(reader, port, 4, 20000, 17);
+                    //values = ReadValues(reader, port, 4, 20101, 43);
+                    //values = ReadValues(reader, port, 4, 25201, 79);
 
                     //Changing in a loop
-                    values = ReadValues(reader, port, 4, 15201, 21);
-                    values = ReadValues(reader, port, 4, 25201, 79);
+                    //values = ReadValues(reader, port, 4, 15201, 21);
+                    //values = ReadValues(reader, port, 4, 25201, 79);
                     
                     port.Close();
+
+                    var json = JsonSerializer.Serialize<Models.Pc1800>(modelPc, new JsonSerializerOptions() { 
+                        IgnoreNullValues = true,
+                        WriteIndented = true
+                    });
+
+                    _console.WriteLine(json);
 
                 }
 
@@ -117,31 +129,10 @@ namespace inverter
             double timeout = 1.0f / (double) port.BaudRate * 1000.0 * 12.0 * (double) count * 2.0 + (double) (count * 2) + 5.0 + 1000.0;
 
             port.ReadTimeout = (int)timeout;
-            
-            _console.WriteLine($"Reading {deviceId}:{address}:{count} ... wait for { port.ReadTimeout }ms .... ");
 
             ushort[] values = new ushort[] { };
 
-            try {
-                
-                var start = Environment.TickCount;
-
-                values = reader.Read(deviceId, address, count);
-
-                var end = Environment.TickCount;
-
-                _console.WriteLine($"got {values.Length} values in {end - start} ms");
-            } 
-            catch (TimeoutException ex)
-            {
-                _console.WriteLine($"Timeout Exception: {port.BytesToRead} bytes are available to read.");
-            }
-            catch (InvalidDataException ex)
-            {
-                _console.WriteLine($"Invalid Data Exception:  {ex.Message}");
-            }
-
-            _console.WriteLine("");
+            values = reader.Read(deviceId, address, count);
 
             return values;
         }
