@@ -33,10 +33,24 @@ namespace inverter.Tests
 
             ModbusToModelMapper.Map(startAddress, values, model);
 
-            Assert.AreEqual(model.Sensor1, (short)1);
-            Assert.AreEqual(model.Sensor2, (short)2);
-            Assert.AreEqual(model.Sensor3, (short)3);
+            Assert.AreEqual((short)1, model.Sensor1);
+            Assert.AreEqual((short)2, model.Sensor2);
+            Assert.AreEqual((short)3, model.Sensor3);
 
+        }
+
+        [TestMethod]
+        public void Map_Double_Success()
+        {
+            //Given 
+            var startAddress = (short)15001;
+            var values = new short[] {14};
+            var model = new MockModel();
+
+            ModbusToModelMapper.Map(startAddress, values, model);
+
+            Assert.AreEqual((double)1.4, model.Sensor15001.Value, 0.01d);
+            Assert.AreEqual(null, model.Sensor15002);
         }
     }
 }

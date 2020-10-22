@@ -10,13 +10,27 @@ namespace inverter.Tests
     {
         internal static void Map<T>(short startAddress, short[] values, T model)
         {
+            //Generate a lookup from sensor id to class property.
             var dictionary = GetSensorPropertyInfos<T>();
 
             var index = startAddress;
             foreach(var value in values)
             {
-                var propertyInfo = dictionary[index];
-                propertyInfo.SetValue(model, value);
+                //Get the property we are interested in
+                var property = dictionary[index];
+
+                //Get the sensor attributes
+                var attribute = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(ModbusSensorAttribute)).First() as ModbusSensorAttribute;
+
+                if (property.PropertyType == typeof(double?)) {
+                    property.SetValue(model, (double)(value * attribute.Coefficient));
+                }
+
+                if (property.PropertyType == typeof(short?))
+                {
+                    property.SetValue(model, (short)(value * attribute.Coefficient));
+                }
+
 
                 index ++;
             }
