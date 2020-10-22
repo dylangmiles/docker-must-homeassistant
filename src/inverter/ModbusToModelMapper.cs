@@ -16,6 +16,14 @@ namespace inverter
             var index = startAddress;
             foreach (var value in values)
             {
+
+                //If the property does not exist, continue
+                if (dictionary.ContainsKey(index) == false)
+                {
+                    index++;
+                    continue;
+                }
+
                 //Get the property we are interested in
                 var property = dictionary[index];
 

@@ -52,5 +52,20 @@ namespace inverter.Tests
             Assert.AreEqual((double)1.4, model.Sensor15001.Value, 0.01d);
             Assert.AreEqual(null, model.Sensor15002);
         }
+
+        [TestMethod]
+        public void Map_SensorNotInModel()
+        {
+            //Given 
+            var startAddress = (short)10106;
+            var values = new ushort[] {1};
+            var model = new MockModel();
+
+            ModbusToModelMapper.Map(startAddress, values, model);
+
+
+            //Noting should happen. No exception and no value set.
+            
+        }
     }
 }
