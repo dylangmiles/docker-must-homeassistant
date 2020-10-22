@@ -11,8 +11,8 @@ namespace inverter
 
     [Command(Name = "inverter", /*ThrowOnUnexpectedArgument = false,*/ OptionsComparison = System.StringComparison.InvariantCultureIgnoreCase)]
     [VersionOptionFromMember("--version", MemberName = nameof(GetVersion))]
-    [Subcommand(
-        typeof(TestCmd))]
+    [Subcommand(typeof(TestCmd))]
+    [Subcommand(typeof(PollCmd))]
     class InverterCmd
     {
         protected ILogger _logger;  
