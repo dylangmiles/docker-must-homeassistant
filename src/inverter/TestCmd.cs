@@ -70,8 +70,10 @@ namespace inverter
                     ushort[] values = null;
 
 
-                    // Pc1800
+                    //Detection
                     values = ReadValues(reader, port, 4, 20000, 7);
+
+                    // Pc1800
                     values = ReadValues(reader, port, 4, 10001, 8);
                     values = ReadValues(reader, port, 4, 10103, 10);
                     values = ReadValues(reader, port, 4, 15201, 21);

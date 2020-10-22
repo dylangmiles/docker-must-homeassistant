@@ -4,7 +4,10 @@ using System.Text;
 
 namespace inverter.Models
 {
-    public class Vc1800
+    /// <summary>
+    /// Values from the PH1800 series charger module
+    /// </summary>
+    public class Pc1800
     {
         [ModbusSensor(10000, "machineTypeHigh", 1.0, true)]
         public short? MachineTypeHigh { get; set; }

@@ -10,7 +10,7 @@ namespace inverter.Models
         
         public string Name {get;}
 
-        public int Address { get; }
+        public short Address { get; }
 
         public double Coefficient { get; }
 
@@ -18,7 +18,7 @@ namespace inverter.Models
 
         public string Uom { get; }
 
-        public ModbusSensorAttribute(int address, string name, double coefficient, bool isSigned = true, string uom = "")
+        public ModbusSensorAttribute(short address, string name, double coefficient, bool isSigned = true, string uom = "")
         {
             this.Address = address;
             this.Coefficient = coefficient;
