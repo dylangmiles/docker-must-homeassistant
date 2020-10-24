@@ -225,7 +225,7 @@ namespace inverter.Models
         [ModbusSensor(25249, 1.0, true)]
         public short? AccumulatedBuyPowerH { get; set; }
 
-        [ModbusSensor(25259, 1.0, true)]
+        [ModbusSensor(25250, 1.0, true)]
         public short? AccumulatedBuyPowerL { get; set; }
 
         [ModbusSensor(25251, 1.0, true)]
