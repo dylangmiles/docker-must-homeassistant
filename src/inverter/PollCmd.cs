@@ -66,27 +66,35 @@ namespace inverter
                     var reader = new ModbusReader(wrapper);
 
                     ushort[] values = null;
-                    var modelPc = new Models.Pc1800();
+                    var modelPc = new Models.Pc1800Module();
+                    var modelPh = new Models.Ph1800Module();
 
-
-                    //Detection
+                    //Detection of inverter type
                     //values = ReadValues(reader, port, 4, 20000, 7);
 
 
                     // Pc1800
                     values = ReadValues(reader, port, 4, 10001, 8);
                     ModbusToModelMapper.Map(10001, values, modelPc);
+                    ModbusToModelMapper.Map(10001, values, modelPh);
                     
                     values = ReadValues(reader, port, 4, 10103, 10);
                     ModbusToModelMapper.Map(10103, values, modelPc);
+                    ModbusToModelMapper.Map(10103, values, modelPh);
 
                     values = ReadValues(reader, port, 4, 15201, 21);
                     ModbusToModelMapper.Map(15201, values, modelPc);
+                    ModbusToModelMapper.Map(15201, values, modelPh);
 
                     // Ph1800
-                    //values = ReadValues(reader, port, 4, 20000, 17);
-                    //values = ReadValues(reader, port, 4, 20101, 43);
-                    //values = ReadValues(reader, port, 4, 25201, 79);
+                    values = ReadValues(reader, port, 4, 20000, 17);
+                    ModbusToModelMapper.Map(20000, values, modelPh);
+
+                    values = ReadValues(reader, port, 4, 20101, 43);
+                    ModbusToModelMapper.Map(20101, values, modelPh);
+
+                    values = ReadValues(reader, port, 4, 25201, 79);
+                    ModbusToModelMapper.Map(25201, values, modelPh);
 
                     //Changing in a loop
                     //values = ReadValues(reader, port, 4, 15201, 21);
@@ -94,9 +102,16 @@ namespace inverter
                     
                     port.Close();
 
-                    var json = JsonSerializer.Serialize<Models.Pc1800>(modelPc, new JsonSerializerOptions() { 
+                    var model = new Models.Pv1800()
+                    {
+                        Charger = modelPc,
+                        Inverter = modelPh
+                    };
+
+                    var json = JsonSerializer.Serialize<Models.Pv1800>(model, new JsonSerializerOptions() { 
                         IgnoreNullValues = true,
-                        WriteIndented = true
+                        WriteIndented = true,
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                     });
 
                     _console.WriteLine(json);

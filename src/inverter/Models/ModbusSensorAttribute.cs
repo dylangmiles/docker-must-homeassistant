@@ -7,9 +7,6 @@ namespace inverter.Models
     [AttributeUsage(AttributeTargets.Property)]
     public class ModbusSensorAttribute : Attribute
     {
-        
-        public string Name {get;}
-
         public short Address { get; }
 
         public double Coefficient { get; }
@@ -18,12 +15,12 @@ namespace inverter.Models
 
         public string Uom { get; }
 
-        public ModbusSensorAttribute(short address, string name, double coefficient, bool isSigned = true, string uom = "")
+        public ModbusSensorAttribute(short address, double coefficient, bool isSigned = true, string uom = null)
         {
             this.Address = address;
             this.Coefficient = coefficient;
             this.IsSigned = isSigned;
-            this.Name = name;
+            this.Uom = uom;
         }
 
     }
