@@ -18,8 +18,11 @@ namespace inverter
         protected ILogger _logger;
         protected IConsole _console;
 
-        [Option(CommandOptionType.SingleValue, ShortName = "c", LongName = "count", Description = "The number of times to poll. -1 means continuous.", ValueName = "count", ShowInHelpText = true)]
-        public int Count { get; set; }
+        [Option(CommandOptionType.SingleValue, ShortName = "c", LongName = "count", Description = "The number of times to poll. Default is 1.", ValueName = "count", ShowInHelpText = true)]
+        public int Count { get; set; } = 1;
+
+        [Option(CommandOptionType.SingleValue, ShortName = "a", LongName = "all", Description = "Returns all values sensor values if true. If false only returns a subset of values most likely to have changed.", ValueName = "all", ShowInHelpText = true)]
+        public bool All { get; set; } = true;
 
 
         public PollCmd(ILogger<PollCmd> logger, IConsole console)
@@ -72,27 +75,35 @@ namespace inverter
 
 
                     // Ph1800
-                    values = ReadValues(reader, port, 4, 10001, 8);
-                    ModbusToModelMapper.Map(10001, values, modelPh);
+                    if (this.All) {
+                        values = ReadValues(reader, port, 4, 10001, 8);
+                        ModbusToModelMapper.Map(10001, values, modelPh);
                     
-                    values = ReadValues(reader, port, 4, 10103, 10);
-                    ModbusToModelMapper.Map(10103, values, modelPh);
+                        values = ReadValues(reader, port, 4, 10103, 10);
+                        ModbusToModelMapper.Map(10103, values, modelPh);
 
-                    values = ReadValues(reader, port, 4, 15201, 21);
-                    ModbusToModelMapper.Map(15201, values, modelPh);
+                        values = ReadValues(reader, port, 4, 15201, 21);
+                        ModbusToModelMapper.Map(15201, values, modelPh);
                     
-                    values = ReadValues(reader, port, 4, 20000, 17);
-                    ModbusToModelMapper.Map(20000, values, modelPh);
+                        values = ReadValues(reader, port, 4, 20000, 17);
+                        ModbusToModelMapper.Map(20000, values, modelPh);
 
-                    values = ReadValues(reader, port, 4, 20101, 43);
-                    ModbusToModelMapper.Map(20101, values, modelPh);
+                        values = ReadValues(reader, port, 4, 20101, 43);
+                        ModbusToModelMapper.Map(20101, values, modelPh);
 
-                    values = ReadValues(reader, port, 4, 25201, 79);
-                    ModbusToModelMapper.Map(25201, values, modelPh);
+                        values = ReadValues(reader, port, 4, 25201, 79);
+                        ModbusToModelMapper.Map(25201, values, modelPh);
+                    }
+                    else
+                    {
 
-                    //Changing in a loop
-                    //values = ReadValues(reader, port, 4, 15201, 21);
-                    //values = ReadValues(reader, port, 4, 25201, 79);
+                        //Sensor values most likely to have changed.
+                        values = ReadValues(reader, port, 4, 15201, 21);
+                        ModbusToModelMapper.Map(15201, values, modelPh);
+
+                        values = ReadValues(reader, port, 4, 25201, 79);
+                        ModbusToModelMapper.Map(25201, values, modelPh);
+                    }
                     
                     port.Close();
 
