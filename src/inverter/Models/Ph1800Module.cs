@@ -169,16 +169,16 @@ namespace inverter.Models
         public short? SGrid {get; set;}
 
         [ModbusSensor(25219, 1.0, true, "VA")]
-        public short? Sload {get; set;}
+        public short? SLoad {get; set;}
     
         [ModbusSensor(25221, 1.0, true, "Var")]
-        public short? Qinverter { get; set; }
+        public short? QInverter { get; set; }
 
         [ModbusSensor(25222, 1.0, true, "Var")]
-        public short? Qgrid {get; set;}
+        public short? QGrid {get; set;}
     
         [ModbusSensor(25223, 1.0, true, "Var")]
-        public short? Qload {get; set;}
+        public short? QLoad {get; set;}
     
         [ModbusSensor(25225, 0.01, true, "Hz")]
         public double? InverterFrequency {get; set;}

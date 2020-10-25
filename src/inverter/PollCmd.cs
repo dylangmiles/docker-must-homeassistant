@@ -21,7 +21,7 @@ namespace inverter
         [Option(CommandOptionType.SingleValue, ShortName = "c", LongName = "count", Description = "The number of times to poll. Default is 1.", ValueName = "count", ShowInHelpText = true)]
         public int Count { get; set; } = 1;
 
-        [Option(CommandOptionType.SingleValue, ShortName = "a", LongName = "all", Description = "Returns all values sensor values if true. If false only returns a subset of values most likely to have changed.", ValueName = "all", ShowInHelpText = true)]
+        [Option(CommandOptionType.SingleValue, ShortName = "a", LongName = "all", Description = "Returns all values sensor values if true. Default is true. If false only returns a subset of values most likely to have changed.", ValueName = "all", ShowInHelpText = true)]
         public bool All { get; set; } = true;
 
 
@@ -39,7 +39,7 @@ namespace inverter
 
                 var portName = "/dev/ttyUSB0";
 
-                _console.WriteLine($"Creating port {portName}");
+                //_console.WriteLine($"Creating port {portName}");
 
                 using (var port = new SerialPort(
                     portName,
@@ -58,7 +58,7 @@ namespace inverter
                     port.ReadTimeout = 1500;
 
 
-                    _console.WriteLine($"Opening port {port}");
+                    //_console.WriteLine($"Opening port {port}");
                     port.Open();
 
                     var wrapper = new SerialPortWrapper(port, d => { 
@@ -135,7 +135,7 @@ namespace inverter
         private ushort[] ReadValues(ModbusReader reader, SerialPort port, byte deviceId, ushort address, ushort count)
         {
             //Sleep between reads
-            System.Threading.Thread.Sleep(200);
+            //System.Threading.Thread.Sleep(200);
 
             port.DiscardInBuffer();
             port.DiscardOutBuffer();
