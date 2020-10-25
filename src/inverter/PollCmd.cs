@@ -29,9 +29,8 @@ namespace inverter
         }
         private InverterCmd Parent { get; set; }
 
-        protected async Task<int> OnExecute(CommandLineApplication app)
+        protected int OnExecute(CommandLineApplication app)
         {
-
             try
             {
 
@@ -66,27 +65,22 @@ namespace inverter
                     var reader = new ModbusReader(wrapper);
 
                     ushort[] values = null;
-                    var modelPc = new Models.Pc1800Module();
                     var modelPh = new Models.Ph1800Module();
 
-                    //Detection of inverter type
+                    //Detection of inverter type. Initially only handling Ph1800 series.
                     //values = ReadValues(reader, port, 4, 20000, 7);
 
 
-                    // Pc1800
+                    // Ph1800
                     values = ReadValues(reader, port, 4, 10001, 8);
-                    ModbusToModelMapper.Map(10001, values, modelPc);
                     ModbusToModelMapper.Map(10001, values, modelPh);
                     
                     values = ReadValues(reader, port, 4, 10103, 10);
-                    ModbusToModelMapper.Map(10103, values, modelPc);
                     ModbusToModelMapper.Map(10103, values, modelPh);
 
                     values = ReadValues(reader, port, 4, 15201, 21);
-                    ModbusToModelMapper.Map(15201, values, modelPc);
                     ModbusToModelMapper.Map(15201, values, modelPh);
-
-                    // Ph1800
+                    
                     values = ReadValues(reader, port, 4, 20000, 17);
                     ModbusToModelMapper.Map(20000, values, modelPh);
 
@@ -102,13 +96,8 @@ namespace inverter
                     
                     port.Close();
 
-                    var model = new Models.Pv1800()
-                    {
-                        Charger = modelPc,
-                        Inverter = modelPh
-                    };
 
-                    var json = JsonSerializer.Serialize<Models.Pv1800>(model, new JsonSerializerOptions() { 
+                    var json = JsonSerializer.Serialize<Models.Ph1800Module>(modelPh, new JsonSerializerOptions() { 
                         IgnoreNullValues = true,
                         WriteIndented = true,
                         PropertyNamingPolicy = JsonNamingPolicy.CamelCase

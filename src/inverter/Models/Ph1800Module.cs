@@ -4,6 +4,9 @@ using System.Text;
 
 namespace inverter.Models
 {
+    /// <summary>
+    /// The sensor definitions of the PH1800 series of inverters manufactured by Must Solar.
+    /// </summary>
     public class Ph1800Module
     {
         [ModbusSensor(20000, 1.0, true)]
@@ -67,6 +70,15 @@ namespace inverter.Models
         public short? InverterDischargerToGridEnable { get; set; }
 
         [ModbusSensor(20109, 1.0, true)]
+        [SensorLookup(new string[]
+            {
+              "",
+              "SBU",
+              "SUB",
+              "UTI",
+              "SOL"
+            }
+        )]
         public short? EnergyUseMode { get; set; }
 
         [ModbusSensor(20111, 1.0, true)]
