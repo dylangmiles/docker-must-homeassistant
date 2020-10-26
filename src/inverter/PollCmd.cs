@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace inverter
 {
-    [Command(Name = "poll", Description = "Poll the inverter for all data.")]
+    [Command(Name = "poll", Description = "Poll the inverter for current sensor values.")]
     class PollCmd
     {
         protected ILogger _logger;
         protected IConsole _console;
 
-        [Option(CommandOptionType.SingleValue, ShortName = "c", LongName = "count", Description = "The number of times to poll. Default is 1.", ValueName = "count", ShowInHelpText = true)]
-        public int Count { get; set; } = 1;
+        //[Option(CommandOptionType.SingleValue, ShortName = "c", LongName = "count", Description = "The number of times to poll. Default is 1.", ValueName = "count", ShowInHelpText = true)]
+        //public int Count { get; set; } = 1;
 
         [Option(CommandOptionType.SingleValue, ShortName = "a", LongName = "all", Description = "Returns all values sensor values if true. Default is true. If false only returns a subset of values most likely to have changed.", ValueName = "all", ShowInHelpText = true)]
         public bool All { get; set; } = true;
