@@ -7,7 +7,7 @@ namespace inverter.Models
     /// <summary>
     /// The sensor definitions of the PH1800 series of inverters manufactured by Must Solar.
     /// </summary>
-    public class Ph1800Module
+    public class Ph1800
     {
         [ModbusSensor(20000, 1.0, true)]
         public short? MachineTypeH { get; set; }
@@ -79,6 +79,7 @@ namespace inverter.Models
               "SOL"
             }
         )]
+        [SensorRemarks("SOL prioritises solar, then when battery falls below x.")]
         public short? EnergyUseMode { get; set; }
 
         [ModbusSensor(20111, 1.0, true)]

@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace inverter.Tests
@@ -15,37 +14,21 @@ namespace inverter.Tests
             //Given
             var modelType = typeof(MockModel);
 
-            var result = SensorMetaDataQuery.Get(modelType);
+            var result = SensorDefinitionQuery.Get<MockModel>().ToList();
 
-            Assert.AreEqual((short)2000, result.Address);
-            Assert.AreEqual("X", result.Uom);
-            Assert.AreEqual(0.1, result.Coefficient);
-            Assert.AreEqual(typeof(double), result.DataType);
+            Assert.AreEqual((short)20000, result[0].Address);
+            Assert.AreEqual("X", result[0].Uom);
+            Assert.AreEqual(1.0, result[0].Coefficient);
+            Assert.AreEqual(typeof(short), result[0].DataType);
+            Assert.AreEqual(true, result[0].IsSigned);
             
-            Assert.AreEqual("", result.Lookup[0]);
-            Assert.AreEqual("First", result.Lookup[1]);
-            Assert.AreEqual("Second", result.Lookup[1]);
+            Assert.AreEqual("", result[0].Lookup[0]);
+            Assert.AreEqual("First", result[0].Lookup[1]);
+            Assert.AreEqual("Second", result[0].Lookup[2]);
 
-
+            Assert.AreEqual("Some notes and remarks", result[0].Remarks);
         }
 
 
-    }
-
-    public class SensorMetaDataQuery
-    {
-        public static SensorMetaData Get(Type modelType)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class SensorMetaData
-    {
-        public short Address { get; internal set; }
-        public string Uom { get; internal set; }
-        public double Coefficient { get; internal set; }
-        public Type DataType { get; internal set; }
-        public string[] Lookup { get; internal set; }
     }
 }

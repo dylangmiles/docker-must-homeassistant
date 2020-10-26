@@ -8,7 +8,14 @@ namespace inverter.Tests
         {
         }
 
-        [ModbusSensor(20000, 1.0)]
+        [ModbusSensor(20000, 1.0, true, "X")]
+        [SensorLookup(new string[]
+        {
+            "",
+            "First",
+            "Second"
+        })]
+        [SensorRemarks("Some notes and remarks")]
         public short? Sensor1 { get; internal set; }
 
         [ModbusSensor(20001, 1.0)]

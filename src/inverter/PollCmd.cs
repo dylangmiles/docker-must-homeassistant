@@ -68,7 +68,7 @@ namespace inverter
                     var reader = new ModbusReader(wrapper);
 
                     ushort[] values = null;
-                    var modelPh = new Models.Ph1800Module();
+                    var modelPh = new Models.Ph1800();
 
                     //Detection of inverter type. Initially only handling Ph1800 series.
                     //values = ReadValues(reader, port, 4, 20000, 7);
@@ -108,7 +108,7 @@ namespace inverter
                     port.Close();
 
 
-                    var json = JsonSerializer.Serialize<Models.Ph1800Module>(modelPh, new JsonSerializerOptions() { 
+                    var json = JsonSerializer.Serialize<Models.Ph1800>(modelPh, new JsonSerializerOptions() { 
                         IgnoreNullValues = true,
                         WriteIndented = true,
                         PropertyNamingPolicy = JsonNamingPolicy.CamelCase
