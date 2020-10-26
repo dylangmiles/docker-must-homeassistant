@@ -13,6 +13,7 @@ namespace inverter
     [VersionOptionFromMember("--version", MemberName = nameof(GetVersion))]
     [Subcommand(typeof(TestCmd))]
     [Subcommand(typeof(PollCmd))]
+    [Subcommand(typeof(DefinitionCmd))]
     class InverterCmd
     {
         protected ILogger _logger;  

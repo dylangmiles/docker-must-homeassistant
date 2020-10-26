@@ -30,7 +30,8 @@ namespace inverter
                     Uom = modbus.Uom,
                     Remarks = remarks == null ? null : remarks.Remarks,
                     Lookup = sensorLookup == null ? new string[] { } : sensorLookup.Lookup,
-                    DataType = Nullable.GetUnderlyingType(property.PropertyType)
+                    DataType = Nullable.GetUnderlyingType(property.PropertyType).ToString(),
+                    Name = property.Name
                 };
 
                 results.Add(definition);

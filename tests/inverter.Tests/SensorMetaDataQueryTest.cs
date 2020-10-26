@@ -19,7 +19,8 @@ namespace inverter.Tests
             Assert.AreEqual((short)20000, result[0].Address);
             Assert.AreEqual("X", result[0].Uom);
             Assert.AreEqual(1.0, result[0].Coefficient);
-            Assert.AreEqual(typeof(short), result[0].DataType);
+            Assert.AreEqual("Sensor1", result[0].Name);
+            Assert.AreEqual("System.Int16", result[0].DataType);
             Assert.AreEqual(true, result[0].IsSigned);
             
             Assert.AreEqual("", result[0].Lookup[0]);

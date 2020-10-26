@@ -5,6 +5,9 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>e26ed6fb-6d68-41e3-b3cf-7bae37309a4f</ProjectGuid>
   </PropertyGroup>
+  <PropertyGroup>
+    <DockerServiceName>inverter</DockerServiceName>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
