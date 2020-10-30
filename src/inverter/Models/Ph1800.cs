@@ -151,6 +151,23 @@ charge the battery at the same time.
         public short? GridProtectStandard { get; set; }
 
         [ModbusSensor(20112, 1.0, true)]
+        [SensorLookup(new string[2]
+            {
+              "LBU",
+              "BLU"
+            }
+        ]
+        [SensorRemarks(
+@"
+LBU
+Solar energy provides power to
+the loads as first priority
+
+BLU
+Solar energy provides power to
+charge battery as first priority
+"            
+        )]
         public short? SolarUseAim { get; set; }
 
         [ModbusSensor(20113, 0.1, true)]
@@ -181,6 +198,47 @@ charge the battery at the same time.
         public short? ChargerSourcePriority { get; set; }
 
         [ModbusSensor(25201, 1.0, true)]
+        [SensorLookup(new string[7]
+            {
+              "PowerOn",
+              "SelfTest",
+              "OffGrid",
+              "Grid-Tie",
+              "ByPass",
+              "Stop",
+              "Grid charging"
+            }        
+        )]
+        [SensorRemarks(
+@"
+PowerOn
+The inverter is powering on.
+
+SelfTest
+The inverter is performing a self test.
+
+OffGrid
+The inverter will provide output power from battery and PV power.
+Inverter power loads from PV energy.
+Inverter power loads from battery and PV energy.
+Inverter power loads from battery only.
+
+Grid-Tie
+PV energy is charger PV is on into the battery and utility provide power to the AC load.
+PV is on
+PV is off
+
+ByPass
+Error are caused by inside circuit error or external reasons such as over temperature, output short circuited and so on.
+
+Stop
+The inverter stop working if you turn off the inverter by the soft key or error has occurred in the condition of no grid.
+
+Grid charging
+PV energy and grid can charge batteries.
+"
+        )]
+
         public short? WorkStateNo { get; set; }
 
         [ModbusSensor(25202, 1.0, true, "V")]
