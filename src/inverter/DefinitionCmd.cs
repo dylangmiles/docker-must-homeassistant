@@ -18,11 +18,11 @@ namespace inverter
         protected ILogger _logger;
         protected IConsole _console;
 
-        //[Option(CommandOptionType.SingleValue, ShortName = "c", LongName = "count", Description = "The number of times to poll. Default is 1.", ValueName = "count", ShowInHelpText = true)]
-        //public int Count { get; set; } = 1;
+        [Option(CommandOptionType.SingleValue, ShortName = "a", LongName = "address", Description = "The address of the sensor. If not specified all sensor defitionas are returned.", ValueName = "a", ShowInHelpText = true)]
+        public short? Address { get; set; } = null;
 
-        //[Option(CommandOptionType.SingleValue, ShortName = "a", LongName = "all", Description = "Returns all values sensor values if true. Default is true. If false only returns a subset of values most likely to have changed.", ValueName = "all", ShowInHelpText = true)]
-        //public bool All { get; set; } = true;
+        [Option(CommandOptionType.SingleValue, ShortName = "n", LongName = "name", Description = "The name of the sensor. If not specified all sensor defintions are returned. The match is case insensitive and will return all sensor definitions whose names contain the specified name.", ValueName = "name", ShowInHelpText = true)]
+        public string Name { get; set; } = null;
 
 
         public DefinitionCmd(ILogger<DefinitionCmd> logger, IConsole console)
@@ -38,6 +38,18 @@ namespace inverter
             {
 
                var definitions = SensorDefinitionQuery.Get<Models.Ph1800>();
+
+                if (this.Address != null)
+                {
+                    definitions = definitions.Where(w => w.Address == this.Address.Value);
+                }
+
+                if (this.Name != null)
+                {
+                    definitions = definitions.Where(w => w.Name.ToLower().Contains(this.Name.ToLower()));
+                }
+
+                
 
                 var json = JsonSerializer.Serialize<IEnumerable<Models.SensorDefinition>>(definitions, new JsonSerializerOptions() { 
                     IgnoreNullValues = true,
