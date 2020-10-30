@@ -79,7 +79,72 @@ namespace inverter.Models
               "SOL"
             }
         )]
-        [SensorRemarks("SOL prioritises solar, then when battery falls below x.")]
+        [SensorRemarks(
+@"
+SBU
+Solar energy provides power to the
+loads as first priority, If solar energy is
+not sufficient to power all connected
+loads, battery energy will supply power
+to the loads at the same time. Utility
+provides power to the loads only when
+battery voltage drops to either low-level
+warning voltage or the setting point in
+program 20 or solar and battery is not
+sufficient. The battery energy will supply
+power to the load in the condition of the
+utility is unavailable or the battery
+voltage is higher than the setting point
+in program 21 (when BLU is selected) or
+program 20 (when LBU is selected). If
+the solar is available, but the voltage is
+lower than the setting point in program
+20, the utility will charge the battery
+until the battery voltage reaches the
+setting point in program 20 to protect
+the battery from damage.
+
+SUB
+Solar energy provides power to the
+loads as first priority, If solar energy is
+not sufficient to power all connected
+loads, Utility energy will supply power
+to the loads at the same time. The
+battery energy will supply power to the
+load only in the condition of the utility is
+unavailable. If the solar is unavailable,
+the utility will charge the battery until
+the battery voltage reaches the setting
+point in program 21.If the solar is
+available, but the voltage is lower than
+the setting point in program 20, the
+utility will charge the battery until the
+battery voltage reaches the setting
+point in program 20 to protect the
+battery from damage.
+
+UTI
+Utility will provide power to the loads
+as first priority. Solar and battery energy
+will provide power to the loads only
+when utility power is not available.
+
+SOL
+Solar energy provides power to the
+loads as first priority.
+If battery voltage has been higher than
+the setting point in program 21 for 5
+minutes, and the solar energy has been
+available for 5 minutes too, the inverter
+will turn to battery mode, solar and
+battery will provide power to the loads
+at the same time.
+When the battery voltage drops to the
+setting point in program 20, the inverter
+will turn to bypass mode, utility provides
+power to the load only, and the solar will
+charge the battery at the same time.
+           ")]
         public short? EnergyUseMode { get; set; }
 
         [ModbusSensor(20111, 1.0, true)]
