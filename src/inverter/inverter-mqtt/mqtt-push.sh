@@ -75,7 +75,7 @@ pLoad=`echo $INVERTER_DATA | jq '.pLoad' -r`
 [ ! -z "$pLoad" ] && pushMQTTData "pLoad" "$pLoad"
 
 loadPercent=`echo $INVERTER_DATA | jq '.loadPercent' -r`
-[ ! -z "$loadPercent" ] && pushMQTTData "pLoad" "$loadPercent"
+[ ! -z "$loadPercent" ] && pushMQTTData "loadPercent" "$loadPercent"
 
 sInverter=`echo $INVERTER_DATA | jq '.sInverter' -r`
 [ ! -z "$sInverter" ] && pushMQTTData "sInverter" "$sInverter"
@@ -210,7 +210,7 @@ battVoltageGrade=`echo $INVERTER_DATA | jq '.battVoltageGrade' -r`
 [ ! -z "$battVoltageGrade" ] && pushMQTTData "battVoltageGrade" "$battVoltageGrade"
 
 ratedPowerW=`echo $INVERTER_DATA | jq '.ratedPowerW' -r`
-[ ! -z "$ratedPowerW" ] && pushMQTTData "ratedPowerW" "ratedPowerW"
+[ ! -z "$ratedPowerW" ] && pushMQTTData "ratedPowerW" "$ratedPowerW"
 
 communicationProtocalEdition=`echo $INVERTER_DATA | jq '.communicationProtocalEdition' -r`
 [ ! -z "$communicationProtocalEdition" ] && pushMQTTData "communicationProtocalEdition" "$communicationProtocalEdition"
