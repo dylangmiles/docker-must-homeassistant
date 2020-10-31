@@ -12,6 +12,9 @@ services:
 
         privileged: true
 
+        volumes:
+           - ./src/inverter/mqtt.json:/app/mqtt.json
+
         devices:
           - /dev/ttyUSB0:/dev/ttyUSB0:rwm
     

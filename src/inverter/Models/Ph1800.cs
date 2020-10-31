@@ -144,7 +144,8 @@ setting point in program 20, the inverter
 will turn to bypass mode, utility provides
 power to the load only, and the solar will
 charge the battery at the same time.
-           ")]
+"
+        )]
         public short? EnergyUseMode { get; set; }
 
         [ModbusSensor(20111, 1.0, true)]
@@ -156,7 +157,7 @@ charge the battery at the same time.
               "LBU",
               "BLU"
             }
-        ]
+        )]
         [SensorRemarks(
 @"
 LBU

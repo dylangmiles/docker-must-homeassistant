@@ -4,6 +4,10 @@ ARG  MACHINE_ARCH
 FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim${MACHINE_ARCH} AS base
 WORKDIR /app
 
+RUN apt update && apt install -y \
+        jq \
+        mosquitto-clients
+
 ARG  MACHINE_ARCH
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster${MACHINE_ARCH} AS build
 WORKDIR /src
