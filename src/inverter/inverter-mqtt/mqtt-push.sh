@@ -2,12 +2,12 @@
 
 pushMQTTData () {
 
-    MQTT_SERVER=`cat /etc/inverter/mqtt.json | jq '.server' -r`
-    MQTT_PORT=`cat /etc/inverter/mqtt.json | jq '.port' -r`
-    MQTT_TOPIC=`cat /etc/inverter/mqtt.json | jq '.topic' -r`
-    MQTT_DEVICENAME=`cat /etc/inverter/mqtt.json | jq '.devicename' -r`
-    MQTT_USERNAME=`cat /etc/inverter/mqtt.json | jq '.username' -r`
-    MQTT_PASSWORD=`cat /etc/inverter/mqtt.json | jq '.password' -r`
+    MQTT_SERVER=`cat /app/mqtt.json | jq '.server' -r`
+    MQTT_PORT=`cat /app/mqtt.json | jq '.port' -r`
+    MQTT_TOPIC=`cat /app/mqtt.json | jq '.topic' -r`
+    MQTT_DEVICENAME=`cat /app/mqtt.json | jq '.devicename' -r`
+    MQTT_USERNAME=`cat /app/mqtt.json | jq '.username' -r`
+    MQTT_PASSWORD=`cat /app/mqtt.json | jq '.password' -r`
 
     mosquitto_pub \
         -h $MQTT_SERVER \
