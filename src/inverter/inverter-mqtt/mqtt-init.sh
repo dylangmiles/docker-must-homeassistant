@@ -43,7 +43,7 @@ registerTopic "ratedPower"                      "VA"    "lightbulb-outline"
 registerTopic "batteryVoltage"                  "V"     "battery-60"
 registerTopic "inverterVoltage"                 "V"     "cog-transfer-outline"
 registerTopic "gridVoltage"                     "V"     "grid"
-registerTopic "busVoltage"                      "V"     "reorder-horizontal",
+registerTopic "busVoltage"                      "V"     "reorder-horizontal"
 registerTopic "controlCurrent"                  "A"     "current-dc"
 registerTopic "inverterCurrent"                 "A"     "current-dc"
 registerTopic "gridCurrent"                     "A"     "current-ac"
