@@ -5,6 +5,7 @@ FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim${MACHINE_ARCH} AS bas
 WORKDIR /app
 
 RUN apt update && apt install -y \
+        procps \
         jq \
         mosquitto-clients
 
