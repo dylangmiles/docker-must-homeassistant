@@ -320,13 +320,13 @@ PV energy and grid can charge batteries.
         [ModbusSensor(25231, 1.0, true)]
         public short? InverterNumber {get; set;}
     
-        [ModbusSensor(25233, 1.0, true, "℃")]
+        [ModbusSensor(25233, 1.0, true, "°C")]
         public short? AcRadiatorTemp {get; set;}
     
-        [ModbusSensor(25234, 1.0, true, "℃")]
+        [ModbusSensor(25234, 1.0, true, "°C")]
         public short? TransformerTemp {get; set;}
     
-        [ModbusSensor(25235, 1.0, true, "℃")]
+        [ModbusSensor(25235, 1.0, true, "°C")]
         public short? DcRadiatorTemp {get; set;}
     
         [ModbusSensor(25237, 1.0, true)]
@@ -482,7 +482,7 @@ PV energy and grid can charge batteries.
         [ModbusSensor(15205, 0.1, true, "V")]
         public double? PvVoltage {get; set;}
 
-        [ModbusSensor(15206, 0.1, true)]
+        [ModbusSensor(15206, 0.1, true, "V")]
         public double? ChrBatteryVoltage {get; set;}
     
         [ModbusSensor(15207, 0.1, true, "A")]
@@ -491,10 +491,10 @@ PV energy and grid can charge batteries.
         [ModbusSensor(15208, 1.0, true, "W")]
         public short? ChargerPower {get; set;}
     
-        [ModbusSensor(15209, 1.0, true, "0℃")]
+        [ModbusSensor(15209, 1.0, true, "°C")]
         public short? RadiatorTemp {get; set;}
     
-        [ModbusSensor(15210, 1.0, true, "0℃" )]
+        [ModbusSensor(15210, 1.0, true, "°C" )]
         public short? ExternalTemp {get; set;}
 
         [ModbusSensor(15211, 1.0, true)]
