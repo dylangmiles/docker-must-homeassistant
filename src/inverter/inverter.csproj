@@ -9,8 +9,8 @@
 
   <ItemGroup>
     <None Remove="inverter-mqtt\entrypoint.sh" />
-    <None Remove="inverter-mqtt\mqtt-init.sh" />
-    <None Remove="inverter-mqtt\mqtt-push.sh" />
+    <None Remove="inverter-mqtt\mqtt-init.reference.sh" />
+    <None Remove="inverter-mqtt\mqtt-push.reference.sh" />
     <None Remove="inverter-mqtt\mqtt-subscriber.sh" />
     <None Remove="mqtt.json" />
   </ItemGroup>
@@ -19,10 +19,10 @@
     <Content Include="inverter-mqtt\entrypoint.sh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="inverter-mqtt\mqtt-init.sh">
+    <Content Include="inverter-mqtt\mqtt-init.reference.sh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="inverter-mqtt\mqtt-push.sh">
+    <Content Include="inverter-mqtt\mqtt-push.reference.sh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="inverter-mqtt\mqtt-subscriber.sh">
@@ -43,6 +43,22 @@
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
     <PackageReference Include="System.IO.Ports" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="inverter-mqtt\mqtt-init.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>mqtt-init.sh</LastGenOutput>
+    </None>
+    <None Update="inverter-mqtt\mqtt-init.sh">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>mqtt-init.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>

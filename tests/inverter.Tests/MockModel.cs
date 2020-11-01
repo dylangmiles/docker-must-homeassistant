@@ -8,7 +8,8 @@ namespace inverter.Tests
         {
         }
 
-        [ModbusSensor(20000, 1.0, true, "X")]
+        [ModbusSensor(20000, 1.0, true)]
+        [Sensorinterpretation("icon", "uom")]
         [SensorLookup(new string[]
         {
             "",

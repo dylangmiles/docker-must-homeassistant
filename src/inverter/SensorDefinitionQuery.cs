@@ -21,17 +21,19 @@ namespace inverter
                 var modbus = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(ModbusSensorAttribute)).First() as ModbusSensorAttribute;
                 var sensorLookup = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(SensorLookupAttribute)).FirstOrDefault() as SensorLookupAttribute;
                 var remarks = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(SensorRemarksAttribute)).FirstOrDefault() as SensorRemarksAttribute;
+                var interpretation = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(SensorinterpretationAttribute)).FirstOrDefault() as SensorinterpretationAttribute;
 
                 var definition = new SensorDefinition()
                 {
                     Address = modbus.Address,
                     Coefficient = modbus.Coefficient,
                     IsSigned = modbus.IsSigned,
-                    Uom = modbus.Uom,
                     Remarks = remarks == null ? null : remarks.Remarks,
                     Lookup = sensorLookup == null ? new string[] { } : sensorLookup.Lookup,
                     DataType = Nullable.GetUnderlyingType(property.PropertyType).ToString(),
-                    Name = property.Name
+                    Name = property.Name,
+                    Icon = interpretation == null ? null : interpretation.Icon,
+                    Uom = interpretation == null ? null: interpretation.Uom
                 };
 
                 results.Add(definition);

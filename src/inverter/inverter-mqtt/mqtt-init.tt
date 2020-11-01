@@ -1,3 +1,9 @@
+<#@ template debug="false" hostspecific="false" language="shell" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".sh" #>
 #!/bin/bash
 #
 # Simple script to register the MQTT topics when the container starts for the first time...

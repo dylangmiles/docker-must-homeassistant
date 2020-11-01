@@ -13,14 +13,11 @@ namespace inverter.Models
 
         public bool IsSigned { get; }
 
-        public string Uom { get; }
-
-        public ModbusSensorAttribute(short address, double coefficient, bool isSigned = true, string uom = null)
+        public ModbusSensorAttribute(short address, double coefficient, bool isSigned = true)
         {
             this.Address = address;
             this.Coefficient = coefficient;
             this.IsSigned = isSigned;
-            this.Uom = uom;
         }
 
     }

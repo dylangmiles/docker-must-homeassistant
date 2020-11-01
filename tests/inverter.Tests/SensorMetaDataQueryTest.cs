@@ -17,7 +17,8 @@ namespace inverter.Tests
             var result = SensorDefinitionQuery.Get<MockModel>().ToList();
 
             Assert.AreEqual((short)20000, result[0].Address);
-            Assert.AreEqual("X", result[0].Uom);
+            Assert.AreEqual("uom", result[0].Uom);
+            Assert.AreEqual("icon", result[0].Icon);
             Assert.AreEqual(1.0, result[0].Coefficient);
             Assert.AreEqual("Sensor1", result[0].Name);
             Assert.AreEqual("System.Int16", result[0].DataType);
