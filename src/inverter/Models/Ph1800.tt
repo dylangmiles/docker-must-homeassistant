@@ -1,0 +1,70 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ assembly name="Newtonsoft.Json" #>
+<#@ import namespace="Newtonsoft.Json" #>
+<#@ import namespace="Newtonsoft.Json.Linq" #>
+<#@ output extension=".cs" #>
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace inverter.Models
+{
+    /// <summary>
+    /// The sensor definitions of the PH1800 series of inverters manufactured by Must Solar.
+    /// </summary>
+    public class Ph1800
+    {
+
+<#
+    string sensorsPath = this.Host.ResolvePath($"..\\Ph1800.json");
+    string sensorsJson = File.ReadAllText(sensorsPath);
+    var sensors = JArray.Parse(sensorsJson);
+
+    foreach(var sensor in sensors)
+    {
+        WriteLine($"        [ModbusSensor({sensor["Address"]}, {sensor.Value<double>("Coefficient"):0.00}d, {sensor.Value<bool>("IsSigned").ToString().ToLower()})]");
+
+
+        var uom = sensor.Value<string>("Uom");
+        var icon = sensor.Value<string>("Icon");
+        var publish = sensor.Value<bool>("Publish");
+
+        if (publish == true || uom != null || icon != null) {
+            var pUom = uom != null?$",\"{uom}\"":"";
+            var pPublish = publish == false?$",\"{false}\"":"";
+
+            WriteLine($"        [SensorInterpretation(\"{icon}\"{pUom}{pPublish})]");
+        }
+
+        var lookup = sensor["Lookup"] as JArray;
+        if (lookup != null && lookup.Count() > 0) {
+
+            WriteLine($"        [SensorLookup(new string[]");
+            WriteLine($"            {{");
+            foreach( var lv in lookup) {
+                WriteLine($"                \"{lv}\",");
+            }
+            WriteLine($"            }}");
+            WriteLine($"        )]");
+        }
+
+        var remarks = sensor.Value<string>("Remarks");
+        if (remarks != null) {
+            WriteLine($"        [SensorRemarks(");
+            WriteLine($"@\"");
+            WriteLine($"{remarks}");
+            WriteLine($"\"");
+            WriteLine($"        )]");
+        }
+
+        WriteLine($"        public {sensor["DataType"]}? {sensor["Name"]} {{ get; set; }}");
+        WriteLine($"");
+    }
+#>
+    }
+}

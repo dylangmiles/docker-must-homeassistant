@@ -12,7 +12,17 @@
     <None Remove="inverter-mqtt\mqtt-init.reference.sh" />
     <None Remove="inverter-mqtt\mqtt-push.reference.sh" />
     <None Remove="inverter-mqtt\mqtt-subscriber.sh" />
+    <None Remove="inverter-mqtt\mqtt-vh1800-push.sh" />
     <None Remove="mqtt.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="inverter-mqtt\mqtt-vh1800-init.sh">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>mqtt-vh1800-init.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -28,9 +38,23 @@
     <Content Include="inverter-mqtt\mqtt-subscriber.sh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="inverter-mqtt\mqtt-vh1800-push.sh">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>mqtt-vh1800-push.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="mqtt.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Models\Ph1800.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Ph1800.tt</DependentUpon>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -46,19 +70,40 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="inverter-mqtt\mqtt-init.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>mqtt-init.sh</LastGenOutput>
-    </None>
     <None Update="inverter-mqtt\mqtt-init.sh">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>mqtt-init.tt</DependentUpon>
     </None>
+    <None Update="inverter-mqtt\mqtt-vh1800-init.sh">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>mqtt-vh1800-init.tt</DependentUpon>
+    </None>
+    <None Update="inverter-mqtt\mqtt-vh1800-push.tt">
+      <LastGenOutput>mqtt-vh1800-push.sh</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="inverter-mqtt\mqtt-vh1800-init.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>mqtt-vh1800-init.sh</LastGenOutput>
+    </None>
+    <None Update="Models\Ph1800.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Ph1800.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Models\Ph1800.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Ph1800.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

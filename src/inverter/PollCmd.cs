@@ -77,32 +77,32 @@ namespace inverter
                     // Ph1800
                     if (this.All) {
                         values = ReadValues(reader, port, 4, 10001, 8);
-                        ModbusToModelMapper.Map(10001, values, modelPh);
+                        SensorToModelMapper.Map(10001, values, modelPh);
                     
                         values = ReadValues(reader, port, 4, 10103, 10);
-                        ModbusToModelMapper.Map(10103, values, modelPh);
+                        SensorToModelMapper.Map(10103, values, modelPh);
 
                         values = ReadValues(reader, port, 4, 15201, 21);
-                        ModbusToModelMapper.Map(15201, values, modelPh);
+                        SensorToModelMapper.Map(15201, values, modelPh);
                     
                         values = ReadValues(reader, port, 4, 20000, 17);
-                        ModbusToModelMapper.Map(20000, values, modelPh);
+                        SensorToModelMapper.Map(20000, values, modelPh);
 
                         values = ReadValues(reader, port, 4, 20101, 43);
-                        ModbusToModelMapper.Map(20101, values, modelPh);
+                        SensorToModelMapper.Map(20101, values, modelPh);
 
                         values = ReadValues(reader, port, 4, 25201, 79);
-                        ModbusToModelMapper.Map(25201, values, modelPh);
+                        SensorToModelMapper.Map(25201, values, modelPh);
                     }
                     else
                     {
 
                         //Sensor values most likely to have changed.
                         values = ReadValues(reader, port, 4, 15201, 21);
-                        ModbusToModelMapper.Map(15201, values, modelPh);
+                        SensorToModelMapper.Map(15201, values, modelPh);
 
                         values = ReadValues(reader, port, 4, 25201, 79);
-                        ModbusToModelMapper.Map(25201, values, modelPh);
+                        SensorToModelMapper.Map(25201, values, modelPh);
                     }
                     
                     port.Close();
@@ -111,7 +111,8 @@ namespace inverter
                     var json = JsonSerializer.Serialize<Models.Ph1800>(modelPh, new JsonSerializerOptions() { 
                         IgnoreNullValues = true,
                         WriteIndented = true,
-                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                        //Rather leave as PascalCase
+                        //PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                     });
 
                     _console.WriteLine(json);

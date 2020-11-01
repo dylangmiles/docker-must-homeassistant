@@ -1,0 +1,1314 @@
+[
+  {
+    "Address": 20000,
+    "Name": "MachineTypeH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20001,
+    "Name": "MachineTypeL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20002,
+    "Name": "SerialNumberH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20003,
+    "Name": "SerialNumberL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20004,
+    "Name": "HardwareNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20005,
+    "Name": "SoftwareNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20006,
+    "Name": "ProtocalEditionNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20009,
+    "Name": "BatteryVoltageC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20010,
+    "Name": "InverterVoltageC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20011,
+    "Name": "GridVoltageC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20012,
+    "Name": "BusVoltageC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20013,
+    "Name": "ControlCurrentC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20014,
+    "Name": "InverterCurrentC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20015,
+    "Name": "GridCurrentC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20016,
+    "Name": "LoadCurrentC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20101,
+    "Name": "InverterOffgridWorkEnable",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20102,
+    "Name": "InverterOutputVoltageSet",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20103,
+    "Name": "InverterOutputFrequencySet",
+    "Coefficient": 0.01,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20104,
+    "Name": "InverterSearchModeEnable",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20108,
+    "Name": "InverterDischargerToGridEnable",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20109,
+    "Name": "EnergyUseMode",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [
+      "",
+      "SBU",
+      "SUB",
+      "UTI",
+      "SOL"
+    ],
+    "Remarks": "\r\nSBU\r\nSolar energy provides power to the\r\nloads as first priority, If solar energy is\r\nnot sufficient to power all connected\r\nloads, battery energy will supply power\r\nto the loads at the same time. Utility\r\nprovides power to the loads only when\r\nbattery voltage drops to either low-level\r\nwarning voltage or the setting point in\r\nprogram 20 or solar and battery is not\r\nsufficient. The battery energy will supply\r\npower to the load in the condition of the\r\nutility is unavailable or the battery\r\nvoltage is higher than the setting point\r\nin program 21 (when BLU is selected) or\r\nprogram 20 (when LBU is selected). If\r\nthe solar is available, but the voltage is\r\nlower than the setting point in program\r\n20, the utility will charge the battery\r\nuntil the battery voltage reaches the\r\nsetting point in program 20 to protect\r\nthe battery from damage.\r\n\r\nSUB\r\nSolar energy provides power to the\r\nloads as first priority, If solar energy is\r\nnot sufficient to power all connected\r\nloads, Utility energy will supply power\r\nto the loads at the same time. The\r\nbattery energy will supply power to the\r\nload only in the condition of the utility is\r\nunavailable. If the solar is unavailable,\r\nthe utility will charge the battery until\r\nthe battery voltage reaches the setting\r\npoint in program 21.If the solar is\r\navailable, but the voltage is lower than\r\nthe setting point in program 20, the\r\nutility will charge the battery until the\r\nbattery voltage reaches the setting\r\npoint in program 20 to protect the\r\nbattery from damage.\r\n\r\nUTI\r\nUtility will provide power to the loads\r\nas first priority. Solar and battery energy\r\nwill provide power to the loads only\r\nwhen utility power is not available.\r\n\r\nSOL\r\nSolar energy provides power to the\r\nloads as first priority.\r\nIf battery voltage has been higher than\r\nthe setting point in program 21 for 5\r\nminutes, and the solar energy has been\r\navailable for 5 minutes too, the inverter\r\nwill turn to battery mode, solar and\r\nbattery will provide power to the loads\r\nat the same time.\r\nWhen the battery voltage drops to the\r\nsetting point in program 20, the inverter\r\nwill turn to bypass mode, utility provides\r\npower to the load only, and the solar will\r\ncharge the battery at the same time.\r\n",
+    "Publish": false
+  },
+  {
+    "Address": 20111,
+    "Name": "GridProtectStandard",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20112,
+    "Name": "SolarUseAim",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [
+      "LBU",
+      "BLU"
+    ],
+    "Remarks": "\r\nLBU\r\nSolar energy provides power to\r\nthe loads as first priority\r\n\r\nBLU\r\nSolar energy provides power to\r\ncharge battery as first priority\r\n",
+    "Publish": false
+  },
+  {
+    "Address": 20113,
+    "Name": "InverterMaxDischargerCurrent",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20118,
+    "Name": "BatteryStopDischargingVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20119,
+    "Name": "BatteryStopChargingVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20125,
+    "Name": "GridMaxChargerCurrentSet",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20127,
+    "Name": "BatteryLowVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20128,
+    "Name": "BatteryHighVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20132,
+    "Name": "MaxCombineChargerCurrent",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20142,
+    "Name": "SystemSetting",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.UInt16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 20143,
+    "Name": "ChargerSourcePriority",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 25201,
+    "Name": "WorkStateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "state-machine",
+    "Lookup": [
+      "PowerOn",
+      "SelfTest",
+      "OffGrid",
+      "Grid-Tie",
+      "ByPass",
+      "Stop",
+      "Grid charging"
+    ],
+    "Remarks": "\r\nPowerOn\r\nThe inverter is powering on.\r\n\r\nSelfTest\r\nThe inverter is performing a self test.\r\n\r\nOffGrid\r\nThe inverter will provide output power from battery and PV power.\r\nInverter power loads from PV energy.\r\nInverter power loads from battery and PV energy.\r\nInverter power loads from battery only.\r\n\r\nGrid-Tie\r\nPV energy is charger PV is on into the battery and utility provide power to the AC load.\r\nPV is on\r\nPV is off\r\n\r\nByPass\r\nError are caused by inside circuit error or external reasons such as over temperature, output short circuited and so on.\r\n\r\nStop\r\nThe inverter stop working if you turn off the inverter by the soft key or error has occurred in the condition of no grid.\r\n\r\nGrid charging\r\nPV energy and grid can charge batteries.\r\n",
+    "Publish": true
+  },
+  {
+    "Address": 25202,
+    "Name": "AcVoltageGrade",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "Vac",
+    "Icon": "current-ac",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25203,
+    "Name": "RatedPower",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "VA",
+    "Icon": "lightbulb-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25205,
+    "Name": "BatteryVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Vdc-batt",
+    "Icon": "current-dc",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25206,
+    "Name": "InverterVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Vac",
+    "Icon": "current-ac",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25207,
+    "Name": "GridVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Vac",
+    "Icon": "current-ac",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25208,
+    "Name": "BusVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Vdc/Vac",
+    "Icon": "cog-transfer-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25209,
+    "Name": "ControlCurrent",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Aac",
+    "Icon": "current-ac",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25210,
+    "Name": "InverterCurrent",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Aac",
+    "Icon": "current-ac",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25211,
+    "Name": "GridCurrent",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Aac",
+    "Icon": "current-ac",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25212,
+    "Name": "LoadCurrent",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Aac",
+    "Icon": "current-ac",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25213,
+    "Name": "PInverter",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W",
+    "Icon": "cog-transfer-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25214,
+    "Name": "PGrid",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W",
+    "Icon": "transmission-tower",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25215,
+    "Name": "PLoad",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W",
+    "Icon": "lightbulb-on-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25216,
+    "Name": "LoadPercent",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "%",
+    "Icon": "progress-download",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25217,
+    "Name": "SInverter",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "VA",
+    "Icon": "cog-transfer-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25218,
+    "Name": "SGrid",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "VA",
+    "Icon": "transmission-tower",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25219,
+    "Name": "SLoad",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "VA",
+    "Icon": "lightbulb-on-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25221,
+    "Name": "QInverter",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "Var",
+    "Icon": "cog-transfer-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25222,
+    "Name": "QGrid",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "Var",
+    "Icon": "transmission-tower",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25223,
+    "Name": "QLoad",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "Var",
+    "Icon": "lightbulb-on-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25225,
+    "Name": "InverterFrequency",
+    "Coefficient": 0.01,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Hz",
+    "Icon": "sine-wave",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25226,
+    "Name": "GridFrequency",
+    "Coefficient": 0.01,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Hz",
+    "Icon": "sine-wave",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25229,
+    "Name": "InverterMaxNumber",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "format-list-numbered",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25230,
+    "Name": "CombineType",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "format-list-bulleted-type",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25231,
+    "Name": "InverterNumber",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "format-list-numbered",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25233,
+    "Name": "AcRadiatorTemp",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "oC",
+    "Icon": "thermometer",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25234,
+    "Name": "TransformerTemp",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "oC",
+    "Icon": "thermometer",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25235,
+    "Name": "DcRadiatorTemp",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "oC",
+    "Icon": "thermometer",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25237,
+    "Name": "InverterRelayStateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25238,
+    "Name": "GridRelayStateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25239,
+    "Name": "LoadRelayStateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25240,
+    "Name": "NLineRelayStateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25241,
+    "Name": "DcRelayStateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25242,
+    "Name": "EarthRelayStateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25245,
+    "Name": "AccumulatedChargerPowerH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Higth",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25246,
+    "Name": "AccumulatedChargerPowerL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Low",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25247,
+    "Name": "AccumulatedDischargerPowerH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-High",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25248,
+    "Name": "AccumulatedDischargerPowerL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Low",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25249,
+    "Name": "AccumulatedBuyPowerH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-High",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25250,
+    "Name": "AccumulatedBuyPowerL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Low",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25251,
+    "Name": "AccumulatedSellPowerH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-High",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25252,
+    "Name": "AccumulatedSellPowerL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Low",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25253,
+    "Name": "AccumulatedLoadPowerH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-High",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25254,
+    "Name": "AccumulatedLoadPowerL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Low",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25255,
+    "Name": "AccumulatedSelfusePowerH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-High",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25256,
+    "Name": "AccumulatedSelfusePowerL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Low",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25257,
+    "Name": "AccumulatedPvsellPowerH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-High",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25258,
+    "Name": "AccumulatedPvsellPowerL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Low",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25259,
+    "Name": "AccumulatedGridChargerPowerH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-High",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25260,
+    "Name": "AccumulatedGridChargerPowerL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Low",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25261,
+    "Name": "Error1",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "alert-circle-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25262,
+    "Name": "Error2",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "alert-circle-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25263,
+    "Name": "Error3",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "alert-circle-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25265,
+    "Name": "Warning1",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "alert-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25266,
+    "Name": "Warning2",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "alert-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25273,
+    "Name": "BattPower",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W",
+    "Icon": "car-battery",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25274,
+    "Name": "BattCurrent",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "Adc-batt",
+    "Icon": "current-dc",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25275,
+    "Name": "BattVoltageGrade",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "Vdc-batt",
+    "Icon": "current-dc",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25277,
+    "Name": "RatedPowerW",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W",
+    "Icon": "certificate",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25278,
+    "Name": "CommunicationProtocalEdition",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "barcode",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 25279,
+    "Name": "ArrowFlag",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "state-machine",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 10001,
+    "Name": "ChrMachineType",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10002,
+    "Name": "ChrSerialNumberH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10003,
+    "Name": "ChrSerialNumberL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10004,
+    "Name": "ChrHardwareNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10005,
+    "Name": "ChrSoftwareNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10006,
+    "Name": "PvVoltageC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10007,
+    "Name": "ChrBatteryVoltageC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10008,
+    "Name": "ChargerCurrentC",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10103,
+    "Name": "FloatVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10104,
+    "Name": "AbsorptionVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10105,
+    "Name": "ChrBatteryLowVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10108,
+    "Name": "MaxChargerCurrent",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10110,
+    "Name": "BatteryType",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 10111,
+    "Name": "BatteryAh",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Lookup": [],
+    "Publish": false
+  },
+  {
+    "Address": 15201,
+    "Name": "ChrWorkstateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "state-machine",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15202,
+    "Name": "MpptStateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15203,
+    "Name": "ChargingStateNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15205,
+    "Name": "PvVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Vdc-pv",
+    "Icon": "current-dc",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15206,
+    "Name": "ChrBatteryVoltage",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Vdc-batt",
+    "Icon": "current-dc",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15207,
+    "Name": "ChargerCurrent",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Adc-charger",
+    "Icon": "current-dc",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15208,
+    "Name": "ChargerPower",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W",
+    "Icon": "car-turbopower",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15209,
+    "Name": "RadiatorTemp",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "oC",
+    "Icon": "thermometer",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15210,
+    "Name": "ExternalTemp",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "oC",
+    "Icon": "thermometer",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15211,
+    "Name": "BatteryRelayNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15212,
+    "Name": "PvRelayNo",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "electric-switch",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15213,
+    "Name": "ChrError1",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "alert-circle-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15214,
+    "Name": "ChrWarning1",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Icon": "alert-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15215,
+    "Name": "BattVolGrade",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "Vdc-batt",
+    "Icon": "current-dc",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15216,
+    "Name": "RatedCurrent",
+    "Coefficient": 0.1,
+    "IsSigned": true,
+    "DataType": "System.Double",
+    "Uom": "Adc-charger",
+    "Icon": "current-dc",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15217,
+    "Name": "AccumulatedPvPowerH",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-High",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15218,
+    "Name": "AccumulatedPvPowerL",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "W-Low",
+    "Icon": "chart-bell-curve-cumulative",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15219,
+    "Name": "AccumulatedDay",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "day",
+    "Icon": "calendar-day",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15220,
+    "Name": "AccumulatedHour",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "hour",
+    "Icon": "clock-outline",
+    "Lookup": [],
+    "Publish": true
+  },
+  {
+    "Address": 15221,
+    "Name": "AccumulatedMinute",
+    "Coefficient": 1,
+    "IsSigned": true,
+    "DataType": "System.Int16",
+    "Uom": "min",
+    "Icon": "timer-outline",
+    "Lookup": [],
+    "Publish": true
+  }
+]

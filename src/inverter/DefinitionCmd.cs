@@ -54,7 +54,8 @@ namespace inverter
                 var json = JsonSerializer.Serialize<IEnumerable<Models.SensorDefinition>>(definitions, new JsonSerializerOptions() { 
                     IgnoreNullValues = true,
                     WriteIndented = true,
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                    //Rather leave as PascalCase.
+                    //PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 });
 
                 _console.WriteLine(json);

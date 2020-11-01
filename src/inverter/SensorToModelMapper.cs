@@ -6,12 +6,12 @@ using System.Reflection;
 
 namespace inverter
 {
-    public class ModbusToModelMapper
+    public class SensorToModelMapper
     {
         public static void Map<T>(short startAddress, ushort[] values, T model)
         {
             //Generate a lookup from sensor id to class property.
-            var dictionary = GetSensorPropertyInfos<T>();
+            var dictionary = GetModbusSensorPropertyInfos<T>();
 
             var index = startAddress;
             foreach (var value in values)
@@ -47,7 +47,7 @@ namespace inverter
         }
 
 
-        private static Dictionary<short, PropertyInfo> GetSensorPropertyInfos<T>()
+        public static Dictionary<short, PropertyInfo> GetModbusSensorPropertyInfos<T>()
         {
             var dictionary = new Dictionary<short, PropertyInfo>();
 
@@ -60,6 +60,24 @@ namespace inverter
             {
                 var attribute = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(ModbusSensorAttribute)).First() as ModbusSensorAttribute;
                 dictionary.Add(attribute.Address, property);
+            }
+
+            return dictionary;
+        }
+
+        public static Dictionary<string, PropertyInfo> GetPublishedSensorPropertyInfos<T>()
+        {
+            var dictionary = new Dictionary<string, PropertyInfo>();
+
+            PropertyInfo[] properties = typeof(T).GetProperties();
+
+            var propertyInfos = properties
+                .Where(x => x.CustomAttributes.Any(y => y.AttributeType == typeof(SensorInterpretationAttribute)));
+
+            foreach (PropertyInfo property in propertyInfos)
+            {
+                var attribute = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(SensorInterpretationAttribute)).First() as SensorInterpretationAttribute;
+                dictionary.Add(property.Name, property);
             }
 
             return dictionary;

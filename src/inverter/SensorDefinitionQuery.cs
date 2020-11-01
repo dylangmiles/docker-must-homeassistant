@@ -21,7 +21,7 @@ namespace inverter
                 var modbus = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(ModbusSensorAttribute)).First() as ModbusSensorAttribute;
                 var sensorLookup = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(SensorLookupAttribute)).FirstOrDefault() as SensorLookupAttribute;
                 var remarks = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(SensorRemarksAttribute)).FirstOrDefault() as SensorRemarksAttribute;
-                var interpretation = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(SensorinterpretationAttribute)).FirstOrDefault() as SensorinterpretationAttribute;
+                var interpretation = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(SensorInterpretationAttribute)).FirstOrDefault() as SensorInterpretationAttribute;
 
                 var definition = new SensorDefinition()
                 {
@@ -33,7 +33,8 @@ namespace inverter
                     DataType = Nullable.GetUnderlyingType(property.PropertyType).ToString(),
                     Name = property.Name,
                     Icon = interpretation == null ? null : interpretation.Icon,
-                    Uom = interpretation == null ? null: interpretation.Uom
+                    Uom = interpretation == null ? null: interpretation.Uom,
+                    Publish = interpretation == null ? false : interpretation.Publish
                 };
 
                 results.Add(definition);

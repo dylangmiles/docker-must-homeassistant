@@ -6,7 +6,7 @@ using System.Text;
 namespace inverter.Tests
 {
     [TestClass]
-    public class ModbusToModelMapperTest
+    public class SensortToModelMapperTest
     {
         [TestMethod]
         public void Map_OneShort_Success()
@@ -16,7 +16,7 @@ namespace inverter.Tests
             var values = new ushort[] {1};
             var model = new MockModel();
 
-            ModbusToModelMapper.Map(startAddress, values, model);
+            SensorToModelMapper.Map(startAddress, values, model);
 
             Assert.AreEqual(model.Sensor1, (short)1);
             Assert.AreEqual(model.Sensor2, null);
@@ -31,7 +31,7 @@ namespace inverter.Tests
             var values = new ushort[] {1, 2, 3};
             var model = new MockModel();
 
-            ModbusToModelMapper.Map(startAddress, values, model);
+            SensorToModelMapper.Map(startAddress, values, model);
 
             Assert.AreEqual((short)1, model.Sensor1);
             Assert.AreEqual((short)2, model.Sensor2);
@@ -47,7 +47,7 @@ namespace inverter.Tests
             var values = new ushort[] {14};
             var model = new MockModel();
 
-            ModbusToModelMapper.Map(startAddress, values, model);
+            SensorToModelMapper.Map(startAddress, values, model);
 
             Assert.AreEqual((double)1.4, model.Sensor15001.Value, 0.01d);
             Assert.AreEqual(null, model.Sensor15002);
@@ -61,7 +61,7 @@ namespace inverter.Tests
             var values = new ushort[] {1};
             var model = new MockModel();
 
-            ModbusToModelMapper.Map(startAddress, values, model);
+            SensorToModelMapper.Map(startAddress, values, model);
 
 
             //Noting should happen. No exception and no value set.

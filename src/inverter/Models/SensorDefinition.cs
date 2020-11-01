@@ -13,6 +13,6 @@ namespace inverter.Models
         public string Icon { get; internal set; }
         public string[] Lookup { get; internal set; }
         public string Remarks { get; internal set; }
-        
+        public bool Publish { get; internal set; }
     }
 }
