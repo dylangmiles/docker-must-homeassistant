@@ -688,7 +688,7 @@
     "Coefficient": 1,
     "IsSigned": true,
     "DataType": "System.Int16",
-    "Uom": "W-Higth",
+    "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
     "Publish": true
@@ -925,7 +925,7 @@
     "Coefficient": 1,
     "IsSigned": true,
     "DataType": "System.Int16",
-    "Uom": "Adc-batt",
+    "Uom": "Adc",
     "Icon": "current-dc",
     "Lookup": [],
     "Publish": true
@@ -1156,7 +1156,7 @@
     "Coefficient": 0.1,
     "IsSigned": true,
     "DataType": "System.Double",
-    "Uom": "Adc-charger",
+    "Uom": "Adc",
     "Icon": "current-dc",
     "Lookup": [],
     "Publish": true
@@ -1251,7 +1251,7 @@
     "Coefficient": 0.1,
     "IsSigned": true,
     "DataType": "System.Double",
-    "Uom": "Adc-charger",
+    "Uom": "Adc",
     "Icon": "current-dc",
     "Lookup": [],
     "Publish": true
