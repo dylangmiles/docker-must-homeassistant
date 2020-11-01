@@ -42,7 +42,7 @@ INVERTER_DATA=`timeout 10 dotnet inverter.dll poll -a=false`
         if (sensor.Value<bool>("Publish") == false) continue;
 
         WriteLine($"{sensor["Name"]}=`echo $INVERTER_DATA | jq '.{sensor["Name"]}' -r`");
-        WriteLine($"[ ! -z \"${sensor["Name"]}\" ] && pushMQTTData \"${sensor["Name"]}\"");
+        WriteLine($"[ ! -z \"${sensor["Name"]}\" ] && pushMQTTData \"{sensor["Name"]}\" \"${sensor["Name"]}\"");
         WriteLine($"");
     }
 #>
