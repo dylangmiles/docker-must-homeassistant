@@ -10,7 +10,7 @@ namespace inverter.Models
         public double? AccumulatedChargerPower
         {   get
             {
-                return  (double?)this.AccumulatedChargerPowerH ?? 0d * 1000d + (double?)this.AccumulatedChargerPowerL ?? 0d * 0.1d;
+                return  (this.AccumulatedChargerPowerH ?? 0d) * 1000d + (this.AccumulatedChargerPowerL ?? 0d) * 0.1d;
             }
         }
 
@@ -18,7 +18,7 @@ namespace inverter.Models
         public double? AccumulatedDischargerPower
         {   get
             {
-                return (double?)this.AccumulatedDischargerPowerH ?? 0d * 1000d + (double?)this.AccumulatedDischargerPowerL ?? 0d * 0.1d;
+                return (this.AccumulatedDischargerPowerH ?? 0d) * 1000d + (this.AccumulatedDischargerPowerL ?? 0d) * 0.1d;
             }
         }
 
@@ -26,7 +26,7 @@ namespace inverter.Models
         public double? AccumulatedBuyPower
         {   get
             {
-                   return (double?)this.AccumulatedBuyPowerH ?? 0d * 1000d + (double?)this.AccumulatedBuyPowerL ?? 0d * 0.1d;
+                   return (this.AccumulatedBuyPowerH ?? 0d) * 1000d + (this.AccumulatedBuyPowerL ?? 0d) * 0.1d;
             }
         }
 
@@ -34,7 +34,7 @@ namespace inverter.Models
         public double? AccumulatedSellPower
         {   get
             {
-                return (double?)this.AccumulatedSellPowerH ?? 0d * 1000d + (double?)this.AccumulatedSellPowerL ?? 0d * 0.1d;
+                return (this.AccumulatedSellPowerH ?? 0d) * 1000d + (this.AccumulatedSellPowerL ?? 0d) * 0.1d;
             }
         }
 
@@ -42,7 +42,7 @@ namespace inverter.Models
         public double? AccumulatedLoadPower
         {   get
             {
-                return (double?)this.AccumulatedLoadPowerH ?? 0d * 1000d + (double?)this.AccumulatedLoadPowerL ?? 0d * 0.1d;
+                return (this.AccumulatedLoadPowerH ?? 0d) * 1000d + (this.AccumulatedLoadPowerL ?? 0d) * 0.1d;
             }
         }
 
@@ -50,7 +50,7 @@ namespace inverter.Models
         public double? AccumulatedSelfusePower
         {   get
             {
-                return (double?)this.AccumulatedSelfusePowerH ?? 0d * 1000d + (double?)this.AccumulatedSelfusePowerL ?? 0d * 0.1d;
+                return (this.AccumulatedSelfusePowerH ?? 0d) * 1000d + (this.AccumulatedSelfusePowerL ?? 0d) * 0.1d;
             }
         }
 
@@ -58,7 +58,7 @@ namespace inverter.Models
         public double? AccumulatedPvsellPower
         {   get
             {
-                return (double?)this.AccumulatedPvsellPowerH ?? 0d * 1000d + (double?)this.AccumulatedPvsellPowerL ?? 0d * 0.1d;
+                return (this.AccumulatedPvsellPowerH ?? 0d) * 1000d + (this.AccumulatedPvsellPowerL ?? 0d) * 0.1d;
             }
         }
 
@@ -66,7 +66,7 @@ namespace inverter.Models
         public double? AccumulatedGridChargerPower
         {   get
             {
-                return (double?)this.AccumulatedGridChargerPowerH ?? 0d * 1000d + (double?)this.AccumulatedGridChargerPowerL ?? 0d * 0.1d;
+                return (this.AccumulatedGridChargerPowerH ?? 0d) * 1000d + (this.AccumulatedGridChargerPowerL ?? 0d) * 0.1d;
             }
         }
 
@@ -74,7 +74,7 @@ namespace inverter.Models
         public double? AccumulatedPvPower
         {   get
             {
-                return (double?)this.AccumulatedPvPowerH ?? 0d * 1000d + (double?)this.AccumulatedPvPowerL ?? 0d * 0.1d;
+                return (this.AccumulatedPvPowerH ?? 0d) * 1000d + (this.AccumulatedPvPowerL ?? 0d) * 0.1d;
             }
         }
 
