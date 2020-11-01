@@ -50,14 +50,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Models\Ph1800.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Ph1800.tt</DependentUpon>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
     <PackageReference Include="McMaster.Extensions.Hosting.CommandLine" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.9" />
@@ -88,9 +80,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>mqtt-vh1800-init.sh</LastGenOutput>
     </None>
-    <None Update="Models\Ph1800.tt">
+    <None Update="Models\Ph1800.generated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Ph1800.cs</LastGenOutput>
+      <LastGenOutput>Ph1800.generated.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -99,10 +91,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Models\Ph1800.cs">
+    <Compile Update="Models\Ph1800.generated.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Ph1800.tt</DependentUpon>
+      <DependentUpon>Ph1800.generated.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

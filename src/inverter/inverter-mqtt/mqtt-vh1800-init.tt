@@ -60,3 +60,16 @@ registerInverterRawCMD () {
     }
 #>
 
+# Composite
+
+registerTopic "AccumulatedChargerPower"                    "KWH"     "chart-bell-curve-cumulative"
+registerTopic "AccumulatedDischargerPower"                 "KWH"     "chart-bell-curve-cumulative"
+registerTopic "AccumulatedBuyPower"                        "KWH"     "chart-bell-curve-cumulative"
+registerTopic "AccumulatedSellPower"                       "KWH"     "chart-bell-curve-cumulative"
+registerTopic "AccumulatedLoadPower"                       "KWH"     "chart-bell-curve-cumulative"
+registerTopic "AccumulatedSelfusePower"                    "KWH"     "chart-bell-curve-cumulative"
+registerTopic "AccumulatedPvsellPower"                     "KWH"     "chart-bell-curve-cumulative"
+registerTopic "AccumulatedGridChargerPower"                "KWH"     "chart-bell-curve-cumulative"
+registerTopic "AccumulatedPvPower"                         "KWH"     "chart-bell-curve-cumulative"
+
+

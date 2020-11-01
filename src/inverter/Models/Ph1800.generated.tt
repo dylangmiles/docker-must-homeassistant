@@ -17,8 +17,9 @@ namespace inverter.Models
     /// <summary>
     /// The sensor definitions of the PH1800 series of inverters manufactured by Must Solar.
     /// </summary>
-    public class Ph1800
+    public partial class Ph1800
     {
+
 
 <#
     string sensorsPath = this.Host.ResolvePath($"..\\Ph1800.json");
@@ -36,7 +37,7 @@ namespace inverter.Models
 
         if (publish == true || uom != null || icon != null) {
             var pUom = uom != null?$",\"{uom}\"":"";
-            var pPublish = publish == false?$",\"{false}\"":"";
+            var pPublish = publish == false?$", false":"";
 
             WriteLine($"        [SensorInterpretation(\"{icon}\"{pUom}{pPublish})]");
         }

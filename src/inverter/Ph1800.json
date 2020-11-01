@@ -269,7 +269,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
-    "Publish": false
+    "Publish": true
   },
   {
     "Address": 20132,
@@ -691,7 +691,7 @@
     "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25246,
@@ -702,7 +702,7 @@
     "Uom": "W-Low",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25247,
@@ -713,7 +713,7 @@
     "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25248,
@@ -724,7 +724,7 @@
     "Uom": "W-Low",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25249,
@@ -735,7 +735,7 @@
     "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25250,
@@ -746,7 +746,7 @@
     "Uom": "W-Low",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25251,
@@ -757,7 +757,7 @@
     "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25252,
@@ -768,7 +768,7 @@
     "Uom": "W-Low",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25253,
@@ -779,7 +779,7 @@
     "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25254,
@@ -790,7 +790,7 @@
     "Uom": "W-Low",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25255,
@@ -801,7 +801,7 @@
     "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25256,
@@ -812,7 +812,7 @@
     "Uom": "W-Low",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25257,
@@ -823,7 +823,7 @@
     "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25258,
@@ -834,7 +834,7 @@
     "Uom": "W-Low",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25259,
@@ -845,7 +845,7 @@
     "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25260,
@@ -856,7 +856,7 @@
     "Uom": "W-Low",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 25261,
@@ -1265,7 +1265,7 @@
     "Uom": "W-High",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 15218,
@@ -1276,7 +1276,7 @@
     "Uom": "W-Low",
     "Icon": "chart-bell-curve-cumulative",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 15219,

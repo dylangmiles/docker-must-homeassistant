@@ -47,3 +47,32 @@ INVERTER_DATA=`timeout 10 dotnet inverter.dll poll -a=false`
     }
 #>
 
+
+# Composite
+
+AccumulatedChargerPower=`echo $INVERTER_DATA | jq '.AccumulatedChargerPower' -r`
+[ ! -z "$AccumulatedChargerPower" ] && pushMQTTData "AccumulatedChargerPower" "$AccumulatedChargerPower"
+
+AccumulatedDischargerPower=`echo $INVERTER_DATA | jq '.AccumulatedDischargerPower' -r`
+[ ! -z "$AccumulatedDischargerPower" ] && pushMQTTData "AccumulatedDischargerPower" "$AccumulatedDischargerPower"
+
+AccumulatedBuyPower=`echo $INVERTER_DATA | jq '.AccumulatedBuyPower' -r`
+[ ! -z "$AccumulatedBuyPower" ] && pushMQTTData "AccumulatedBuyPower" "$AccumulatedBuyPower"
+
+AccumulatedSellPower=`echo $INVERTER_DATA | jq '.AccumulatedSellPower' -r`
+[ ! -z "$AccumulatedSellPower" ] && pushMQTTData "AccumulatedSellPower" "$AccumulatedSellPower"
+
+AccumulatedLoadPower=`echo $INVERTER_DATA | jq '.AccumulatedLoadPower' -r`
+[ ! -z "$AccumulatedLoadPower" ] && pushMQTTData "AccumulatedLoadPower" "$AccumulatedLoadPower"
+
+AccumulatedSelfusePower=`echo $INVERTER_DATA | jq '.AccumulatedSelfusePower' -r`
+[ ! -z "$AccumulatedSelfusePower" ] && pushMQTTData "AccumulatedSelfusePower" "$AccumulatedSelfusePower"
+
+AccumulatedPvsellPower=`echo $INVERTER_DATA | jq '.AccumulatedPvsellPower' -r`
+[ ! -z "$AccumulatedPvsellPower" ] && pushMQTTData "AccumulatedPvsellPower" "$AccumulatedPvsellPower"
+
+AccumulatedGridChargerPower=`echo $INVERTER_DATA | jq '.AccumulatedGridChargerPower' -r`
+[ ! -z "AccumulatedGridChargerPower" ] && pushMQTTData "AccumulatedGridChargerPower" "$AccumulatedGridChargerPower"
+
+AccumulatedPvPower=`echo $INVERTER_DATA | jq '.AccumulatedPvPower' -r`
+[ ! -z "AccumulatedPvPower" ] && pushMQTTData "AccumulatedPvPower" "$AccumulatedPvPower"
