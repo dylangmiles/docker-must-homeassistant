@@ -9,8 +9,6 @@
 
   <ItemGroup>
     <None Remove="inverter-mqtt\entrypoint.sh" />
-    <None Remove="inverter-mqtt\mqtt-init.reference.sh" />
-    <None Remove="inverter-mqtt\mqtt-push.reference.sh" />
     <None Remove="inverter-mqtt\mqtt-subscriber.sh" />
     <None Remove="inverter-mqtt\mqtt-vh1800-push.sh" />
     <None Remove="mqtt.json" />
@@ -27,12 +25,6 @@
 
   <ItemGroup>
     <Content Include="inverter-mqtt\entrypoint.sh">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="inverter-mqtt\mqtt-init.reference.sh">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="inverter-mqtt\mqtt-push.reference.sh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="inverter-mqtt\mqtt-subscriber.sh">
