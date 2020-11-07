@@ -53,31 +53,34 @@ namespace inverter.Modbus
             var read = _serialPort.Read(response, 0, response.Length);
 
             //Check read length
-            //if (read != response.Length)
-            //{
-            //    throw new InvalidDataException($"Invalid length of data read. Expected {response.Length} bytes and got {read} bytes.");
-            //}
+            if (read != response.Length)
+            {
+                throw new InvalidDataException($"Invalid length of data read. Expected {response.Length} bytes and got {read} bytes.");
+            }
 
 
             using (var stream = new MemoryStream(response))
             using (var reader = new BigEndianBinaryReader(stream))
             {
                 var returnDeviceId = reader.ReadByte();
-                //if (returnDeviceId != deviceId) throw new InvalidDataException($"Invalid Device Id. Expected {deviceId} and got {returnDeviceId}");
+                if (returnDeviceId != deviceId) throw new InvalidDataException($"Invalid Device Id. Expected {deviceId} and got {returnDeviceId}.");
 
                 var returnFunctionCode = reader.ReadByte();
-                //if (returnFunctionCode != 0x10) throw new InvalidDataException($"Invalid Function Code. Expected 0x10 and got {returnFunctionCode}.");
+                if (returnFunctionCode != 0x10) throw new InvalidDataException($"Invalid Function Code. Expected 0x10 (16) and got 0x{returnFunctionCode:X} ({returnFunctionCode}).");
+
+                var returnAddress = reader.ReadUInt6();
+                if (returnAddress != address) throw new InvalidDataException($"Invalid Address. Expected {address} bytes and received {returnAddress}.");
 
                 var returnSensorCount = reader.ReadUInt6();
-                //if (returnSensorCount != values.Length) throw new InvalidDataException($"Invalid Sensor Count. Expected {values.Length} bytes and received {returnSensorCount}.");
+                if (returnSensorCount != values.Length) throw new InvalidDataException($"Invalid Sensor Count. Expected {values.Length} bytes and received {returnSensorCount}.");
 
                 var returnCrc = reader.ReadUInt6();
                 var calcCrc = Utils.CalculateCrc(response, 0, response.Length - 2);
 
-                //if (returnCrc != calcCrc)
-                //{
-                //    throw new InvalidDataException($"Invalid CRC. Expected {calcCrc} and got {returnCrc}.");
-                //}
+                if (returnCrc != calcCrc)
+                {
+                    throw new InvalidDataException($"Invalid CRC. Expected {calcCrc} and got {returnCrc}.");
+                }
             }
 
         }

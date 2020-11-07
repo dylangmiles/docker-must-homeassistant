@@ -42,7 +42,7 @@ namespace inverter.Tests.Modbus
 
                 response = b;
 
-            }).Returns(7);
+            }).Returns(8);
 
 
              var writer = new ModbusWriter(port.Object);
@@ -82,6 +82,254 @@ namespace inverter.Tests.Modbus
             //869f                  crc
             CollectionAssert.AreEqual(new byte[] { 0x04, 0x10, 0x4e, 0x8d, 0x00, 0x01, 0x86, 0x9f }, response);
 
+        }
+
+
+        [TestMethod]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid CRC. Expected 34463 and got 34462.")]
+        public void Write_Invalid_Crc_InvalidDataExcaption()
+        {
+
+            var port = new Mock<ISerialPort>();
+            
+            byte[] request = null;
+            port.Setup(foo => foo.Write(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[],int,int>((b,o,c) => request = b);
+
+            byte[] response = null;
+            port.Setup(foo => foo.Read(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[], int, int>((b,o,c) => {
+
+                using (var stream = new MemoryStream(b))
+                using( var writer = new BigEndianBinaryWriter(stream))
+                {
+                    writer.Write((byte)0x04);   // Device Id
+                    writer.Write((byte)0x10);   // Function - 16 - write multiple registers
+                    writer.Write((byte)0x4e);   // Address 20109
+                    writer.Write((byte)0x8d);   // Address 20109
+                    writer.Write((byte)0x00);   // Number of registers written
+                    writer.Write((byte)0x01);   // Number of registers written
+                    
+                    writer.Write((byte)0x86);   //CRC
+                    writer.Write((byte)0x9e);   //CRC invalid
+                }
+
+                response = b;
+
+            }).Returns(8);
+
+
+             var writer = new ModbusWriter(port.Object);
+
+
+            byte deviceId = 4;
+            ushort address = 20109;
+            ushort[] values = {3};
+
+
+            writer.write(deviceId, address, values);
+
+        }
+
+        [TestMethod]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid Sensor Count. Expected 1 bytes and received 2.")]
+        public void Write_Invalid_Sensor_Count_InvalidDataExcaption()
+        {
+
+            var port = new Mock<ISerialPort>();
+            
+            byte[] request = null;
+            port.Setup(foo => foo.Write(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[],int,int>((b,o,c) => request = b);
+
+            byte[] response = null;
+            port.Setup(foo => foo.Read(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[], int, int>((b,o,c) => {
+
+                using (var stream = new MemoryStream(b))
+                using( var writer = new BigEndianBinaryWriter(stream))
+                {
+                    writer.Write((byte)0x04);   // Device Id
+                    writer.Write((byte)0x10);   // Function - 16 - write multiple registers
+                    writer.Write((byte)0x4e);   // Address 20109
+                    writer.Write((byte)0x8d);   // Address 20109
+                    writer.Write((byte)0x00);   // Number of registers written
+                    writer.Write((byte)0x02);   // Number of registers written
+                    
+                    writer.Write((byte)0x86);   //CRC
+                    writer.Write((byte)0x9e);   //CRC invalid
+                }
+
+                response = b;
+
+            }).Returns(8);
+
+
+             var writer = new ModbusWriter(port.Object);
+
+
+            byte deviceId = 4;
+            ushort address = 20109;
+            ushort[] values = {3};
+
+
+            writer.write(deviceId, address, values);
+        }
+
+        [TestMethod]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid Address. Expected 20109 bytes and received 20111.")]
+        public void Write_Invalid_Return_Address_InvalidDataExcaption()
+        {
+
+            var port = new Mock<ISerialPort>();
+            
+            byte[] request = null;
+            port.Setup(foo => foo.Write(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[],int,int>((b,o,c) => request = b);
+
+            byte[] response = null;
+            port.Setup(foo => foo.Read(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[], int, int>((b,o,c) => {
+
+                using (var stream = new MemoryStream(b))
+                using( var writer = new BigEndianBinaryWriter(stream))
+                {
+                    writer.Write((byte)0x04);   // Device Id
+                    writer.Write((byte)0x10);   // Function - 16 - write multiple registers
+                    writer.Write((byte)0x4e);   // Address 20109
+                    writer.Write((byte)0x8f);   // Address 20109
+                    writer.Write((byte)0x00);   // Number of registers written
+                    writer.Write((byte)0x01);   // Number of registers written
+                    
+                    writer.Write((byte)0x86);   //CRC
+                    writer.Write((byte)0x9e);   //CRC invalid
+                }
+
+                response = b;
+
+            }).Returns(8);
+
+
+             var writer = new ModbusWriter(port.Object);
+
+
+            byte deviceId = 4;
+            ushort address = 20109;
+            ushort[] values = {3};
+
+
+            writer.write(deviceId, address, values);
+        }
+
+        [TestMethod]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid Function Code. Expected 0x10 (16) and got 0x11 (17).")]
+        public void Write_Invalid_Function_Code_InvalidDataExcaption()
+        {
+            var port = new Mock<ISerialPort>();
+            
+            byte[] request = null;
+            port.Setup(foo => foo.Write(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[],int,int>((b,o,c) => request = b);
+
+            byte[] response = null;
+            port.Setup(foo => foo.Read(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[], int, int>((b,o,c) => {
+
+                using (var stream = new MemoryStream(b))
+                using( var writer = new BigEndianBinaryWriter(stream))
+                {
+                    writer.Write((byte)0x04);   // Device Id
+                    writer.Write((byte)0x11);   // Function - 16 - write multiple registers
+                    writer.Write((byte)0x4e);   // Address 20109
+                    writer.Write((byte)0x8d);   // Address 20109
+                    writer.Write((byte)0x00);   // Number of registers written
+                    writer.Write((byte)0x01);   // Number of registers written
+                    
+                    writer.Write((byte)0x86);   //CRC
+                    writer.Write((byte)0x9e);   //CRC invalid
+                }
+
+                response = b;
+
+            }).Returns(8);
+
+            var writer = new ModbusWriter(port.Object);
+
+            byte deviceId = 4;
+            ushort address = 20109;
+            ushort[] values = {3};
+
+            writer.write(deviceId, address, values);
+        }
+
+        [TestMethod]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid Device Id. Expected 4 and got 3.")]
+        public void Write_Invalid_Device_Id_InvalidDataExcaption()
+        {
+            var port = new Mock<ISerialPort>();
+            
+            byte[] request = null;
+            port.Setup(foo => foo.Write(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[],int,int>((b,o,c) => request = b);
+
+            byte[] response = null;
+            port.Setup(foo => foo.Read(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[], int, int>((b,o,c) => {
+
+                using (var stream = new MemoryStream(b))
+                using( var writer = new BigEndianBinaryWriter(stream))
+                {
+                    writer.Write((byte)0x03);   // Device Id
+                    writer.Write((byte)0x10);   // Function - 16 - write multiple registers
+                    writer.Write((byte)0x4e);   // Address 20109
+                    writer.Write((byte)0x8d);   // Address 20109
+                    writer.Write((byte)0x00);   // Number of registers written
+                    writer.Write((byte)0x01);   // Number of registers written
+                    
+                    writer.Write((byte)0x86);   //CRC
+                    writer.Write((byte)0x9e);   //CRC invalid
+                }
+
+                response = b;
+
+            }).Returns(8);
+
+            var writer = new ModbusWriter(port.Object);
+
+            byte deviceId = 4;
+            ushort address = 20109;
+            ushort[] values = {3};
+
+            writer.write(deviceId, address, values);
+        }
+
+        [TestMethod]
+        [Tests.ExpectedExceptionWithMessage(typeof(InvalidDataException), "Invalid length of data read. Expected 8 bytes and got 5 bytes.")]
+        public void Write_Invalid_Data_Length_InvalidDataException()
+        {
+            var port = new Mock<ISerialPort>();
+            
+            byte[] request = null;
+            port.Setup(foo => foo.Write(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[],int,int>((b,o,c) => request = b);
+
+            byte[] response = null;
+            port.Setup(foo => foo.Read(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>())).Callback<byte[], int, int>((b,o,c) => {
+
+                using (var stream = new MemoryStream(b))
+                using( var writer = new BigEndianBinaryWriter(stream))
+                {
+                    writer.Write((byte)0x04);   // Device Id
+                    writer.Write((byte)0x10);   // Function - 16 - write multiple registers
+                    writer.Write((byte)0x4e);   // Address 20109
+                    writer.Write((byte)0x8d);   // Address 20109
+                    writer.Write((byte)0x00);   // Number of registers written
+                    writer.Write((byte)0x01);   // Number of registers written
+                    
+                    writer.Write((byte)0x86);   //CRC
+                    writer.Write((byte)0x9e);   //CRC invalid
+                }
+
+                response = b;
+
+            }).Returns(5);
+
+            var writer = new ModbusWriter(port.Object);
+
+            byte deviceId = 4;
+            ushort address = 20109;
+            ushort[] values = {3};
+
+            writer.write(deviceId, address, values);
         }
     }
 }
