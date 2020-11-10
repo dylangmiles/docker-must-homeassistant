@@ -201,7 +201,12 @@
     "Coefficient": 1,
     "IsSigned": true,
     "DataType": "System.Int16",
-    "Lookup": [],
+    "Lookup": [
+      "VDE4105",
+      "UPS",
+      "Home",
+      "GEN"
+    ],
     "Publish": false
   },
   {
@@ -286,7 +291,24 @@
     "Coefficient": 1,
     "IsSigned": true,
     "DataType": "System.UInt16",
-    "Lookup": [],
+    "Lookup": [
+      "OverLoadRestartForbid",
+      "OverTempRestartForbid",
+      "OverLoadBypassForbid",
+      "AutoTurnPageFlagForbid",
+      "GridBuzzEnable(only use by PV1800)",
+      "BuzzForbide(only use by PV1800)",
+      "LcdLightEnable",
+      "RecordFaultForbid",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
     "Publish": false
   },
   {
@@ -295,7 +317,12 @@
     "Coefficient": 1,
     "IsSigned": true,
     "DataType": "System.Int16",
-    "Lookup": [],
+    "Lookup": [
+      "Solar first",
+      "",
+      "Solar and Utility (default)",
+      "Only Solar"
+    ],
     "Publish": false
   },
   {
@@ -865,7 +892,24 @@
     "IsSigned": true,
     "DataType": "System.Int16",
     "Icon": "alert-circle-outline",
-    "Lookup": [],
+    "Lookup": [
+      "Fan is locked when inverter is off",
+      "Inverter transformer over temperature",
+      "battery voltage is too high",
+      "battery voltage is too low",
+      "Output short circuited",
+      "Inverter output voltage is high",
+      "Overload time out",
+      "Inverter bus voltage is too high",
+      "Bus soft start failed",
+      "Main relay failed",
+      "Inverter output voltage sensor error",
+      "Inverter grid voltage sensor error",
+      "Inverter output current sensor error",
+      "Inverter grid current sensor error",
+      "Inverter load current sensor error",
+      "Inverter grid over current error"
+    ],
     "Publish": true
   },
   {
@@ -875,7 +919,24 @@
     "IsSigned": true,
     "DataType": "System.Int16",
     "Icon": "alert-circle-outline",
-    "Lookup": [],
+    "Lookup": [
+      "Inverter radiator over temperature",
+      "Solar charger battery voltage class error",
+      "Solar charger current sensor error",
+      "Solar charger current is uncontrollable",
+      "Inverter grid voltage is low",
+      "Inverter grid voltage is high",
+      "Inverter grid under frequency",
+      "Inverter grid over frequency",
+      "Inverter over current protection error",
+      "Inverter bus voltage is too low",
+      "Inverter soft start failed",
+      "Over DC voltage in AC output",
+      "Battery connection is open",
+      "Inverter control current sensor error",
+      "Inverter output voltage is too low",
+      ""
+    ],
     "Publish": true
   },
   {
@@ -895,7 +956,24 @@
     "IsSigned": true,
     "DataType": "System.Int16",
     "Icon": "alert-outline",
-    "Lookup": [],
+    "Lookup": [
+      "Fan is locked when inverter is on.",
+      "Fan2 is locked when inverter is on.",
+      "Battery is over-charged.",
+      "Low battery",
+      "Overload",
+      "Output power derating",
+      "Solar charger stops due to low battery.",
+      "Solar charger stops due to high PV voltage.",
+      "Solar charger stops due to over load.",
+      "Solar charger over temperature",
+      "PV charger communication error ",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
     "Publish": true
   },
   {
@@ -1086,7 +1164,15 @@
     "Coefficient": 1,
     "IsSigned": true,
     "DataType": "System.Int16",
-    "Lookup": [],
+    "Lookup": [
+      "",
+      "Use defined battery",
+      "Lithium battery ",
+      "SEALED_LEAD  battery",
+      "AGM  battery",
+      "GEL  battery",
+      "FLOODED  battery"
+    ],
     "Publish": false
   },
   {
@@ -1105,7 +1191,12 @@
     "IsSigned": true,
     "DataType": "System.Int16",
     "Icon": "state-machine",
-    "Lookup": [],
+    "Lookup": [
+      "Initialization mode ",
+      "Selftest Mode",
+      "Work Mode",
+      "Stop Mode"
+    ],
     "Publish": true
   },
   {
@@ -1115,7 +1206,11 @@
     "IsSigned": true,
     "DataType": "System.Int16",
     "Icon": "electric-switch",
-    "Lookup": [],
+    "Lookup": [
+      "Stop",
+      "MPPT",
+      "Current limiting"
+    ],
     "Publish": true
   },
   {
@@ -1125,7 +1220,11 @@
     "IsSigned": true,
     "DataType": "System.Int16",
     "Icon": "electric-switch",
-    "Lookup": [],
+    "Lookup": [
+      "Stop",
+      "Absorb charge",
+      "Float charge"
+    ],
     "Publish": true
   },
   {
@@ -1221,7 +1320,24 @@
     "IsSigned": true,
     "DataType": "System.Int16",
     "Icon": "alert-circle-outline",
-    "Lookup": [],
+    "Lookup": [
+      "Hardware protection",
+      "Over current",
+      "Current sensor error",
+      "Over temperature",
+      "PV voltage is too high",
+      "",
+      "Battery voltage is too high",
+      "Battery voltage is too Low",
+      "Current is uncontrollable",
+      "Parameter error",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
     "Publish": true
   },
   {
@@ -1231,7 +1347,24 @@
     "IsSigned": true,
     "DataType": "System.Int16",
     "Icon": "alert-outline",
-    "Lookup": [],
+    "Lookup": [
+      "Fan Error",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
     "Publish": true
   },
   {

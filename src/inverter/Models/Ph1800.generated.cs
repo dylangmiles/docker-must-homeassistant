@@ -153,6 +153,14 @@ charge the battery at the same time.
         public System.Int16? EnergyUseMode { get; set; }
 
         [ModbusSensor(20111, 1.00d, true)]
+        [SensorLookup(new string[]
+            {
+                "VDE4105",
+                "UPS",
+                "Home",
+                "GEN",
+            }
+        )]
         public System.Int16? GridProtectStandard { get; set; }
 
         [ModbusSensor(20112, 1.00d, true)]
@@ -200,9 +208,37 @@ charge battery as first priority
         public System.Double? MaxCombineChargerCurrent { get; set; }
 
         [ModbusSensor(20142, 1.00d, true)]
+        [SensorLookup(new string[]
+            {
+                "OverLoadRestartForbid",
+                "OverTempRestartForbid",
+                "OverLoadBypassForbid",
+                "AutoTurnPageFlagForbid",
+                "GridBuzzEnable(only use by PV1800)",
+                "BuzzForbide(only use by PV1800)",
+                "LcdLightEnable",
+                "RecordFaultForbid",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+            }
+        )]
         public System.UInt16? SystemSetting { get; set; }
 
         [ModbusSensor(20143, 1.00d, true)]
+        [SensorLookup(new string[]
+            {
+                "Solar first",
+                "",
+                "Solar and Utility (default)",
+                "Only Solar",
+            }
+        )]
         public System.Int16? ChargerSourcePriority { get; set; }
 
         [ModbusSensor(25201, 1.00d, true)]
@@ -453,10 +489,50 @@ PV energy and grid can charge batteries.
 
         [ModbusSensor(25261, 1.00d, true)]
         [SensorInterpretation("alert-circle-outline")]
+        [SensorLookup(new string[]
+            {
+                "Fan is locked when inverter is off",
+                "Inverter transformer over temperature",
+                "battery voltage is too high",
+                "battery voltage is too low",
+                "Output short circuited",
+                "Inverter output voltage is high",
+                "Overload time out",
+                "Inverter bus voltage is too high",
+                "Bus soft start failed",
+                "Main relay failed",
+                "Inverter output voltage sensor error",
+                "Inverter grid voltage sensor error",
+                "Inverter output current sensor error",
+                "Inverter grid current sensor error",
+                "Inverter load current sensor error",
+                "Inverter grid over current error",
+            }
+        )]
         public System.Int16? Error1 { get; set; }
 
         [ModbusSensor(25262, 1.00d, true)]
         [SensorInterpretation("alert-circle-outline")]
+        [SensorLookup(new string[]
+            {
+                "Inverter radiator over temperature",
+                "Solar charger battery voltage class error",
+                "Solar charger current sensor error",
+                "Solar charger current is uncontrollable",
+                "Inverter grid voltage is low",
+                "Inverter grid voltage is high",
+                "Inverter grid under frequency",
+                "Inverter grid over frequency",
+                "Inverter over current protection error",
+                "Inverter bus voltage is too low",
+                "Inverter soft start failed",
+                "Over DC voltage in AC output",
+                "Battery connection is open",
+                "Inverter control current sensor error",
+                "Inverter output voltage is too low",
+                "",
+            }
+        )]
         public System.Int16? Error2 { get; set; }
 
         [ModbusSensor(25263, 1.00d, true)]
@@ -465,6 +541,26 @@ PV energy and grid can charge batteries.
 
         [ModbusSensor(25265, 1.00d, true)]
         [SensorInterpretation("alert-outline")]
+        [SensorLookup(new string[]
+            {
+                "Fan is locked when inverter is on.",
+                "Fan2 is locked when inverter is on.",
+                "Battery is over-charged.",
+                "Low battery",
+                "Overload",
+                "Output power derating",
+                "Solar charger stops due to low battery.",
+                "Solar charger stops due to high PV voltage.",
+                "Solar charger stops due to over load.",
+                "Solar charger over temperature",
+                "PV charger communication error ",
+                "",
+                "",
+                "",
+                "",
+                "",
+            }
+        )]
         public System.Int16? Warning1 { get; set; }
 
         [ModbusSensor(25266, 1.00d, true)]
@@ -532,6 +628,17 @@ PV energy and grid can charge batteries.
         public System.Double? MaxChargerCurrent { get; set; }
 
         [ModbusSensor(10110, 1.00d, true)]
+        [SensorLookup(new string[]
+            {
+                "",
+                "Use defined battery",
+                "Lithium battery ",
+                "SEALED_LEAD  battery",
+                "AGM  battery",
+                "GEL  battery",
+                "FLOODED  battery",
+            }
+        )]
         public System.Int16? BatteryType { get; set; }
 
         [ModbusSensor(10111, 1.00d, true)]
@@ -539,14 +646,36 @@ PV energy and grid can charge batteries.
 
         [ModbusSensor(15201, 1.00d, true)]
         [SensorInterpretation("state-machine")]
+        [SensorLookup(new string[]
+            {
+                "Initialization mode ",
+                "Selftest Mode",
+                "Work Mode",
+                "Stop Mode",
+            }
+        )]
         public System.Int16? ChrWorkstateNo { get; set; }
 
         [ModbusSensor(15202, 1.00d, true)]
         [SensorInterpretation("electric-switch")]
+        [SensorLookup(new string[]
+            {
+                "Stop",
+                "MPPT",
+                "Current limiting",
+            }
+        )]
         public System.Int16? MpptStateNo { get; set; }
 
         [ModbusSensor(15203, 1.00d, true)]
         [SensorInterpretation("electric-switch")]
+        [SensorLookup(new string[]
+            {
+                "Stop",
+                "Absorb charge",
+                "Float charge",
+            }
+        )]
         public System.Int16? ChargingStateNo { get; set; }
 
         [ModbusSensor(15205, 0.10d, true)]
@@ -583,10 +712,50 @@ PV energy and grid can charge batteries.
 
         [ModbusSensor(15213, 1.00d, true)]
         [SensorInterpretation("alert-circle-outline")]
+        [SensorLookup(new string[]
+            {
+                "Hardware protection",
+                "Over current",
+                "Current sensor error",
+                "Over temperature",
+                "PV voltage is too high",
+                "",
+                "Battery voltage is too high",
+                "Battery voltage is too Low",
+                "Current is uncontrollable",
+                "Parameter error",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+            }
+        )]
         public System.Int16? ChrError1 { get; set; }
 
         [ModbusSensor(15214, 1.00d, true)]
         [SensorInterpretation("alert-outline")]
+        [SensorLookup(new string[]
+            {
+                "Fan Error",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+            }
+        )]
         public System.Int16? ChrWarning1 { get; set; }
 
         [ModbusSensor(15215, 1.00d, true)]
