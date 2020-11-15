@@ -14,6 +14,7 @@ namespace inverter
     [Subcommand(typeof(TestCmd))]
     [Subcommand(typeof(PollCmd))]
     [Subcommand(typeof(DefinitionCmd))]
+    [Subcommand(typeof(SetCmd))]
     class InverterCmd
     {
         protected ILogger _logger;  
