@@ -150,6 +150,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
+    "Remarks":  "Set the output voltage. (220VAC-240VAC).",
     "Publish": false
   },
   {
@@ -159,6 +160,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
+    "Remarks": "Set the output frequency. (50Hz or 60Hz).",
     "Publish": false
   },
   {
@@ -192,7 +194,7 @@
       "UTI",
       "SOL"
     ],
-    "Remarks": "\r\nSBU\r\nSolar energy provides power to the\r\nloads as first priority, If solar energy is\r\nnot sufficient to power all connected\r\nloads, battery energy will supply power\r\nto the loads at the same time. Utility\r\nprovides power to the loads only when\r\nbattery voltage drops to either low-level\r\nwarning voltage or the setting point in\r\nprogram 20 or solar and battery is not\r\nsufficient. The battery energy will supply\r\npower to the load in the condition of the\r\nutility is unavailable or the battery\r\nvoltage is higher than the setting point\r\nin program 21 (when BLU is selected) or\r\nprogram 20 (when LBU is selected). If\r\nthe solar is available, but the voltage is\r\nlower than the setting point in program\r\n20, the utility will charge the battery\r\nuntil the battery voltage reaches the\r\nsetting point in program 20 to protect\r\nthe battery from damage.\r\n\r\nSUB\r\nSolar energy provides power to the\r\nloads as first priority, If solar energy is\r\nnot sufficient to power all connected\r\nloads, Utility energy will supply power\r\nto the loads at the same time. The\r\nbattery energy will supply power to the\r\nload only in the condition of the utility is\r\nunavailable. If the solar is unavailable,\r\nthe utility will charge the battery until\r\nthe battery voltage reaches the setting\r\npoint in program 21.If the solar is\r\navailable, but the voltage is lower than\r\nthe setting point in program 20, the\r\nutility will charge the battery until the\r\nbattery voltage reaches the setting\r\npoint in program 20 to protect the\r\nbattery from damage.\r\n\r\nUTI\r\nUtility will provide power to the loads\r\nas first priority. Solar and battery energy\r\nwill provide power to the loads only\r\nwhen utility power is not available.\r\n\r\nSOL\r\nSolar energy provides power to the\r\nloads as first priority.\r\nIf battery voltage has been higher than\r\nthe setting point in program 21 for 5\r\nminutes, and the solar energy has been\r\navailable for 5 minutes too, the inverter\r\nwill turn to battery mode, solar and\r\nbattery will provide power to the loads\r\nat the same time.\r\nWhen the battery voltage drops to the\r\nsetting point in program 20, the inverter\r\nwill turn to bypass mode, utility provides\r\npower to the load only, and the solar will\r\ncharge the battery at the same time.\r\n",
+    "Remarks": "Output source priority selection\r\n\r\nSBU\r\nSolar energy provides power to the loads as first priority, If solar energy is not sufficient to power all connected loads, battery energy will supply power to the loads at the same time. Utility provides power to the loads only when battery voltage drops to either low-level warning voltage or the setting point in program 20118 (20) or solar and battery is not sufficient. The battery energy will supply power to the load in the condition of the utility is unavailable or the battery voltage is higher than the setting point in program 20119 (21) (when BLU is selected) or program 20118 (20) (when LBU is selected). If the solar is available, but the voltage is lower than the setting point in program 20118 (20), the utility will charge the battery until the battery voltage reaches the setting point in program 20118 (20) to protect the battery from damage.\r\n\r\nSUB\r\nSolar energy provides power to the loads as first priority, If solar energy is not sufficient to power all connected loads, Utility energy will supply power to the loads at the same time. The battery energy will supply power to the load only in the condition of the utility is unavailable. If the solar is unavailable, the utility will charge the battery until the battery voltage reaches the setting point in program 20119 (21). If the solar is available, but the voltage is lower than the setting point in program 20118 (20), the utility will charge the battery until the battery voltage reaches the setting point in program 20118 (20) to protect the battery from damage.\r\n\r\nUTI\r\nUtility will provide power to the loads as first priority. Solar and battery energy will provide power to the loads only when utility power is not available.\r\n\r\nSOL\r\nSolar energy provides power to the loads as first priority. If battery voltage has been higher than the setting point in program 20119 (21) for 5 minutes, and the solar energy has been available for 5 minutes too, the inverter will turn to battery mode, solar and battery will provide power to the loads at the same time. When the battery voltage drops to the setting point in program 20118 (20), the inverter will turn to bypass mode, utility provides power to the load only, and the solar will charge the battery at the same time.\r\n",
     "Publish": false
   },
   {
@@ -204,9 +206,10 @@
     "Lookup": [
       "VDE4105",
       "UPS",
-      "Home",
+      "APL",
       "GEN"
     ],
+    "Remarks": "AC input voltage range\r\n\r\nVDE4105\r\nIf selected, acceptable AC input voltage range will conform to VDE4105(184VAC-253VAC)\r\n\r\nUPS\r\nIf selected, acceptable AC input voltage range will be within 170-280VAC.\r\n\r\nAPL (default)\r\nIf selected, acceptable AC input voltage range will be within 90-280VAC.\r\n\r\nGEN\r\nWhen the user uses the device to connect the generator, select the generator mode.",
     "Publish": false
   },
   {
@@ -219,7 +222,7 @@
       "LBU",
       "BLU"
     ],
-    "Remarks": "\r\nLBU\r\nSolar energy provides power to\r\nthe loads as first priority\r\n\r\nBLU\r\nSolar energy provides power to\r\ncharge battery as first priority\r\n",
+    "Remarks": "Solar supply priority.\r\n\r\nLBU\r\nSolar energy provides power to\r\nthe loads as first priority\r\n\r\nBLU\r\nSolar energy provides power to\r\ncharge battery as first priority\r\n",
     "Publish": false
   },
   {
@@ -238,6 +241,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
+    "Remarks": "Battery stop discharging voltage when grid is available\r\n\r\nThis setting affects the behaviour of 20109 (01) when SBU, SUB or SOL are selected.\r\n\r\n12V model:\r\nDefault setting is 11.5V. Setting range is from 11V to 14.5V.\r\n\r\n12V model:\r\nDefault setting is 23V. Setting range is from 22.0V to 29.0V.\r\n\r\nIncrement of each click is 0.1V.",
     "Publish": false
   },
   {
@@ -247,6 +251,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
+    "Remarks": "Battery stop charging voltage when grid is available\r\n\r\nThis setting affects the behaviour of 20109 (01) when SBU, SUB or SOL are selected.\r\n\r\n12V model:\r\nDefault setting is 13.5V. Setting range is from 11V to 14.5V.\r\n\r\n12V model:\r\nDefault setting is 27V. Setting range is from 22.0V to 29.0V.\r\n\r\nIncrement of each click is 0.1V.",
     "Publish": false
   },
   {
@@ -256,6 +261,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
+    "Remarks": "Maximum utility charging current\r\n\r\n1kW\r\n10A (default) with 20A maximum.\r\n\r\n2-3kW\r\n20A (default) with 30A maximum.\r\n\r\n\r\n",
     "Publish": false
   },
   {
@@ -265,6 +271,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
+    "Remarks": "Low DC cut off battery voltage\r\n\r\n12V model:\r\nDefault setting is 10.2V. Setting range is from 10.0V to 12V.\r\n\r\n24V model:\r\nDefault setting is 20.4V. Setting range is from 20.0V to 24.0V.\r\n\r\nIf \"User-Defined\" LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.\r\n\r\nLow DC cut-off voltage will be fixed to setting value no matter what percentage of load is connected.",
     "Publish": false
   },
   {
@@ -283,6 +290,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
+    "Remarks": "Maximum charging current\r\n\r\nMax.charging current=utility charging current + solar charging current.\r\n\r\n1kW\r\n60A (default). Can be from 1A to 70A.\r\n\r\n2-3kW MPPT-50A\r\n60A (default). Can be from 1A to 80A.\r\n\r\n2-3kW MPPT-60A\r\n60A (default). Can be from 1A to 80A.\r\n\r\n2-3kW MPPT-80A\r\n80A (default). Can be from 1A to 80A.\r\n",
     "Publish": false
   },
   {
@@ -309,6 +317,7 @@
       "",
       ""
     ],
+    "Remarks":  "System settings flags. TODO .. missing",
     "Publish": false
   },
   {
@@ -323,6 +332,7 @@
       "Solar and Utility (default)",
       "Only Solar"
     ],
+    "Remarks": "Charger source priority\r\n\r\nIf this inverter/charger is working in Line, Standby or Fault mode, charger source can be programmed as below:\r\n\r\nSolar first\r\nSolar energy will charge battery as first priority. Utility will charge battery only when solar energy is not available.\r\n\r\nSolar and utility (default)\r\nSolar energy and utility will charge battery at the same time.\r\n\r\nOnly solar\r\nSolar energy will be the only charger source no matter utility is available or not.\r\n\r\nIf this inverter/charger is working in Battery mode or Power saving mode, only solar energy can charge battery. Solar energy will charge battery if it's available and suffcient.\r\n\r\n",
     "Publish": false
   },
   {
@@ -1129,6 +1139,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
+    "Remarks": "Floating charging voltage\r\n\r\n12V model:\r\nDefault setting is 13.5V. Setting range is from 12.0V to 14.6V.\r\n\r\n24V model:\r\nDefault setting is 27.0V. Setting range is from 24.0V to 29.2V.\r\n\r\nIf \"User-Defined\" LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.",
     "Publish": false
   },
   {
@@ -1138,6 +1149,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
+    "Remarks": "Bulk charging voltage (C.V voltage)\r\n\r\n12V model:\r\nDefault setting is 14.1V. Setting range is from 12.0V to 14.6V.\r\n\r\n24V model:\r\nDefault setting is 28.2V. Setting range is from 24.0V to 29.2V.\r\n\r\nIf \"User-Defined\" LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.",
     "Publish": false
   },
   {
@@ -1166,13 +1178,14 @@
     "DataType": "System.Int16",
     "Lookup": [
       "",
-      "Use defined battery",
+      "User defined battery",
       "Lithium battery ",
       "SEALED_LEAD  battery",
-      "AGM  battery",
+      "AGM  battery (default)",
       "GEL  battery",
       "FLOODED  battery"
     ],
+    "Remarks": "Battery type\r\n\r\n\r\nf \"User-Defined\" LI is selected, battery charge voltage and low DC cut-off voltage can be set up in program 10104 (17), 10103 (18) and 10105 (19).",
     "Publish": false
   },
   {
