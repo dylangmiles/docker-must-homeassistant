@@ -11,7 +11,7 @@ namespace inverter
         public static IEnumerable<SensorDefinition> Get<T>()
         {
             //Generate a lookup from sensor id to class property.
-            var dictionary = GetSensorPropertyInfos<T>();
+            var dictionary = ModbusSensorHelper.GetModbusSensorPropertyInfos<T>();
             var results = new List<SensorDefinition>();
 
 
@@ -43,23 +43,6 @@ namespace inverter
 
             return results;
         }
-
-        private static Dictionary<short, PropertyInfo> GetSensorPropertyInfos<T>()
-        {
-            var dictionary = new Dictionary<short, PropertyInfo>();
-
-            PropertyInfo[] properties = typeof(T).GetProperties();
-
-            var propertyInfos = properties
-                .Where(x => x.CustomAttributes.Any(y => y.AttributeType == typeof(ModbusSensorAttribute)));
-
-            foreach (PropertyInfo property in propertyInfos)
-            {
-                var attribute = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(ModbusSensorAttribute)).First() as ModbusSensorAttribute;
-                dictionary.Add(attribute.Address, property);
-            }
-
-            return dictionary;
-        }
+        
     }
 }

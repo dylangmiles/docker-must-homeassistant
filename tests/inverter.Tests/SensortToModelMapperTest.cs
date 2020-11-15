@@ -12,7 +12,7 @@ namespace inverter.Tests
         public void Map_OneShort_Success()
         {
             //Given 
-            var startAddress = (short)20000;
+            var startAddress = (ushort)20000;
             var values = new ushort[] {1};
             var model = new MockModel();
 
@@ -27,7 +27,7 @@ namespace inverter.Tests
         public void Map_ThreeShorts_Success()
         {
             //Given 
-            var startAddress = (short)20000;
+            var startAddress = (ushort)20000;
             var values = new ushort[] {1, 2, 3};
             var model = new MockModel();
 
@@ -43,7 +43,7 @@ namespace inverter.Tests
         public void Map_Double_Success()
         {
             //Given 
-            var startAddress = (short)15001;
+            var startAddress = (ushort)15001;
             var values = new ushort[] {14};
             var model = new MockModel();
 
@@ -57,7 +57,7 @@ namespace inverter.Tests
         public void Map_SensorNotInModel()
         {
             //Given 
-            var startAddress = (short)10106;
+            var startAddress = (ushort)10106;
             var values = new ushort[] {1};
             var model = new MockModel();
 

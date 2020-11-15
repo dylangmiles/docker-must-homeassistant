@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using inverter.Modbus;
 
 namespace inverter.Models
 {
@@ -285,7 +286,7 @@ Max.charging current=utility charging current + solar charging current.
         )]
         [SensorRemarks(
 @"
-System settings flags. TODO .. missing
+TODO: This is not coming through in poll and not sure of default values.
 "
         )]
         public System.UInt16? SystemSetting { get; set; }

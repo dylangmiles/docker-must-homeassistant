@@ -317,7 +317,7 @@
       "",
       ""
     ],
-    "Remarks":  "System settings flags. TODO .. missing",
+    "Remarks":  "TODO: This is not coming through in poll and not sure of default values.",
     "Publish": false
   },
   {

@@ -4,7 +4,7 @@ namespace inverter.Models
 {
     public class SensorDefinition
     {
-        public short Address { get; internal set; }
+        public ushort Address { get; internal set; }
         public string Name { get; set; }
         public double Coefficient { get; internal set; }
         public bool IsSigned { get; internal set; }
