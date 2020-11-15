@@ -271,7 +271,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
-    "Remarks": "Low DC cut off battery voltage\r\n\r\n12V model:\r\nDefault setting is 10.2V. Setting range is from 10.0V to 12V.\r\n\r\n24V model:\r\nDefault setting is 20.4V. Setting range is from 20.0V to 24.0V.\r\n\r\nIf \"User-Defined\" LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.\r\n\r\nLow DC cut-off voltage will be fixed to setting value no matter what percentage of load is connected.",
+    "Remarks": "Low DC cut off battery voltage\r\n\r\n12V model:\r\nDefault setting is 10.2V. Setting range is from 10.0V to 12V.\r\n\r\n24V model:\r\nDefault setting is 20.4V. Setting range is from 20.0V to 24.0V.\r\n\r\nIf 'User-Defined' LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.\r\n\r\nLow DC cut-off voltage will be fixed to setting value no matter what percentage of load is connected.",
     "Publish": false
   },
   {
@@ -281,7 +281,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
-    "Publish": true
+    "Publish": false
   },
   {
     "Address": 20132,
@@ -1139,7 +1139,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
-    "Remarks": "Floating charging voltage\r\n\r\n12V model:\r\nDefault setting is 13.5V. Setting range is from 12.0V to 14.6V.\r\n\r\n24V model:\r\nDefault setting is 27.0V. Setting range is from 24.0V to 29.2V.\r\n\r\nIf \"User-Defined\" LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.",
+    "Remarks": "Floating charging voltage\r\n\r\n12V model:\r\nDefault setting is 13.5V. Setting range is from 12.0V to 14.6V.\r\n\r\n24V model:\r\nDefault setting is 27.0V. Setting range is from 24.0V to 29.2V.\r\n\r\nIf 'User-Defined' LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.",
     "Publish": false
   },
   {
@@ -1149,7 +1149,7 @@
     "IsSigned": true,
     "DataType": "System.Double",
     "Lookup": [],
-    "Remarks": "Bulk charging voltage (C.V voltage)\r\n\r\n12V model:\r\nDefault setting is 14.1V. Setting range is from 12.0V to 14.6V.\r\n\r\n24V model:\r\nDefault setting is 28.2V. Setting range is from 24.0V to 29.2V.\r\n\r\nIf \"User-Defined\" LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.",
+    "Remarks": "Bulk charging voltage (C.V voltage)\r\n\r\n12V model:\r\nDefault setting is 14.1V. Setting range is from 12.0V to 14.6V.\r\n\r\n24V model:\r\nDefault setting is 28.2V. Setting range is from 24.0V to 29.2V.\r\n\r\nIf 'User-Defined' LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.",
     "Publish": false
   },
   {
@@ -1185,7 +1185,7 @@
       "GEL  battery",
       "FLOODED  battery"
     ],
-    "Remarks": "Battery type\r\n\r\n\r\nf \"User-Defined\" LI is selected, battery charge voltage and low DC cut-off voltage can be set up in program 10104 (17), 10103 (18) and 10105 (19).",
+    "Remarks": "Battery type\r\n\r\n\r\nf 'User-Defined' LI is selected, battery charge voltage and low DC cut-off voltage can be set up in program 10104 (17), 10103 (18) and 10105 (19).",
     "Publish": false
   },
   {

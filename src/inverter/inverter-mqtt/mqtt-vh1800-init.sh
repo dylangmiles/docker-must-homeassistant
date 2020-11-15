@@ -37,7 +37,6 @@ registerInverterRawCMD () {
         }"
 }
 
-registerTopic   "BatteryHighVoltage"                       ""                 ""
 registerTopic   "WorkStateNo"                              ""                 "state-machine"
 registerTopic   "AcVoltageGrade"                           "Vac"              "current-ac"
 registerTopic   "RatedPower"                               "VA"               "lightbulb-outline"

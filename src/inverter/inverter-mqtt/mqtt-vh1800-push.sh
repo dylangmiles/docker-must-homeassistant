@@ -22,9 +22,6 @@ INVERTER_DATA=`timeout 10 dotnet inverter.dll poll -a=false`
 
 #####################################################################################
 
-BatteryHighVoltage=`echo $INVERTER_DATA | jq '.BatteryHighVoltage' -r`
-[ ! -z "$BatteryHighVoltage" ] && pushMQTTData "BatteryHighVoltage" "$BatteryHighVoltage"
-
 WorkStateNo=`echo $INVERTER_DATA | jq '.WorkStateNo' -r`
 [ ! -z "$WorkStateNo" ] && pushMQTTData "WorkStateNo" "$WorkStateNo"
 

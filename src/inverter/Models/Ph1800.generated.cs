@@ -60,9 +60,19 @@ namespace inverter.Models
         public System.Int16? InverterOffgridWorkEnable { get; set; }
 
         [ModbusSensor(20102, 0.10d, true)]
+        [SensorRemarks(
+@"
+Set the output voltage. (220VAC-240VAC).
+"
+        )]
         public System.Double? InverterOutputVoltageSet { get; set; }
 
         [ModbusSensor(20103, 0.01d, true)]
+        [SensorRemarks(
+@"
+Set the output frequency. (50Hz or 60Hz).
+"
+        )]
         public System.Double? InverterOutputFrequencySet { get; set; }
 
         [ModbusSensor(20104, 1.00d, true)]
@@ -83,70 +93,19 @@ namespace inverter.Models
         )]
         [SensorRemarks(
 @"
+Output source priority selection
 
 SBU
-Solar energy provides power to the
-loads as first priority, If solar energy is
-not sufficient to power all connected
-loads, battery energy will supply power
-to the loads at the same time. Utility
-provides power to the loads only when
-battery voltage drops to either low-level
-warning voltage or the setting point in
-program 20 or solar and battery is not
-sufficient. The battery energy will supply
-power to the load in the condition of the
-utility is unavailable or the battery
-voltage is higher than the setting point
-in program 21 (when BLU is selected) or
-program 20 (when LBU is selected). If
-the solar is available, but the voltage is
-lower than the setting point in program
-20, the utility will charge the battery
-until the battery voltage reaches the
-setting point in program 20 to protect
-the battery from damage.
+Solar energy provides power to the loads as first priority, If solar energy is not sufficient to power all connected loads, battery energy will supply power to the loads at the same time. Utility provides power to the loads only when battery voltage drops to either low-level warning voltage or the setting point in program 20118 (20) or solar and battery is not sufficient. The battery energy will supply power to the load in the condition of the utility is unavailable or the battery voltage is higher than the setting point in program 20119 (21) (when BLU is selected) or program 20118 (20) (when LBU is selected). If the solar is available, but the voltage is lower than the setting point in program 20118 (20), the utility will charge the battery until the battery voltage reaches the setting point in program 20118 (20) to protect the battery from damage.
 
 SUB
-Solar energy provides power to the
-loads as first priority, If solar energy is
-not sufficient to power all connected
-loads, Utility energy will supply power
-to the loads at the same time. The
-battery energy will supply power to the
-load only in the condition of the utility is
-unavailable. If the solar is unavailable,
-the utility will charge the battery until
-the battery voltage reaches the setting
-point in program 21.If the solar is
-available, but the voltage is lower than
-the setting point in program 20, the
-utility will charge the battery until the
-battery voltage reaches the setting
-point in program 20 to protect the
-battery from damage.
+Solar energy provides power to the loads as first priority, If solar energy is not sufficient to power all connected loads, Utility energy will supply power to the loads at the same time. The battery energy will supply power to the load only in the condition of the utility is unavailable. If the solar is unavailable, the utility will charge the battery until the battery voltage reaches the setting point in program 20119 (21). If the solar is available, but the voltage is lower than the setting point in program 20118 (20), the utility will charge the battery until the battery voltage reaches the setting point in program 20118 (20) to protect the battery from damage.
 
 UTI
-Utility will provide power to the loads
-as first priority. Solar and battery energy
-will provide power to the loads only
-when utility power is not available.
+Utility will provide power to the loads as first priority. Solar and battery energy will provide power to the loads only when utility power is not available.
 
 SOL
-Solar energy provides power to the
-loads as first priority.
-If battery voltage has been higher than
-the setting point in program 21 for 5
-minutes, and the solar energy has been
-available for 5 minutes too, the inverter
-will turn to battery mode, solar and
-battery will provide power to the loads
-at the same time.
-When the battery voltage drops to the
-setting point in program 20, the inverter
-will turn to bypass mode, utility provides
-power to the load only, and the solar will
-charge the battery at the same time.
+Solar energy provides power to the loads as first priority. If battery voltage has been higher than the setting point in program 20119 (21) for 5 minutes, and the solar energy has been available for 5 minutes too, the inverter will turn to battery mode, solar and battery will provide power to the loads at the same time. When the battery voltage drops to the setting point in program 20118 (20), the inverter will turn to bypass mode, utility provides power to the load only, and the solar will charge the battery at the same time.
 
 "
         )]
@@ -157,9 +116,26 @@ charge the battery at the same time.
             {
                 "VDE4105",
                 "UPS",
-                "Home",
+                "APL",
                 "GEN",
             }
+        )]
+        [SensorRemarks(
+@"
+AC input voltage range
+
+VDE4105
+If selected, acceptable AC input voltage range will conform to VDE4105(184VAC-253VAC)
+
+UPS
+If selected, acceptable AC input voltage range will be within 170-280VAC.
+
+APL (default)
+If selected, acceptable AC input voltage range will be within 90-280VAC.
+
+GEN
+When the user uses the device to connect the generator, select the generator mode.
+"
         )]
         public System.Int16? GridProtectStandard { get; set; }
 
@@ -172,6 +148,7 @@ charge the battery at the same time.
         )]
         [SensorRemarks(
 @"
+Solar supply priority.
 
 LBU
 Solar energy provides power to
@@ -189,22 +166,100 @@ charge battery as first priority
         public System.Double? InverterMaxDischargerCurrent { get; set; }
 
         [ModbusSensor(20118, 0.10d, true)]
+        [SensorRemarks(
+@"
+Battery stop discharging voltage when grid is available
+
+This setting affects the behaviour of 20109 (01) when SBU, SUB or SOL are selected.
+
+12V model:
+Default setting is 11.5V. Setting range is from 11V to 14.5V.
+
+12V model:
+Default setting is 23V. Setting range is from 22.0V to 29.0V.
+
+Increment of each click is 0.1V.
+"
+        )]
         public System.Double? BatteryStopDischargingVoltage { get; set; }
 
         [ModbusSensor(20119, 0.10d, true)]
+        [SensorRemarks(
+@"
+Battery stop charging voltage when grid is available
+
+This setting affects the behaviour of 20109 (01) when SBU, SUB or SOL are selected.
+
+12V model:
+Default setting is 13.5V. Setting range is from 11V to 14.5V.
+
+12V model:
+Default setting is 27V. Setting range is from 22.0V to 29.0V.
+
+Increment of each click is 0.1V.
+"
+        )]
         public System.Double? BatteryStopChargingVoltage { get; set; }
 
         [ModbusSensor(20125, 0.10d, true)]
+        [SensorRemarks(
+@"
+Maximum utility charging current
+
+1kW
+10A (default) with 20A maximum.
+
+2-3kW
+20A (default) with 30A maximum.
+
+
+
+"
+        )]
         public System.Double? GridMaxChargerCurrentSet { get; set; }
 
         [ModbusSensor(20127, 0.10d, true)]
+        [SensorRemarks(
+@"
+Low DC cut off battery voltage
+
+12V model:
+Default setting is 10.2V. Setting range is from 10.0V to 12V.
+
+24V model:
+Default setting is 20.4V. Setting range is from 20.0V to 24.0V.
+
+If 'User-Defined' LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.
+
+Low DC cut-off voltage will be fixed to setting value no matter what percentage of load is connected.
+"
+        )]
         public System.Double? BatteryLowVoltage { get; set; }
 
         [ModbusSensor(20128, 0.10d, true)]
-        [SensorInterpretation("")]
         public System.Double? BatteryHighVoltage { get; set; }
 
         [ModbusSensor(20132, 0.10d, true)]
+        [SensorRemarks(
+@"
+Maximum charging current
+
+Max.charging current=utility charging current + solar charging current.
+
+1kW
+60A (default). Can be from 1A to 70A.
+
+2-3kW MPPT-50A
+60A (default). Can be from 1A to 80A.
+
+2-3kW MPPT-60A
+60A (default). Can be from 1A to 80A.
+
+2-3kW MPPT-80A
+80A (default). Can be from 1A to 80A.
+
+"
+        )]
         public System.Double? MaxCombineChargerCurrent { get; set; }
 
         [ModbusSensor(20142, 1.00d, true)]
@@ -228,6 +283,11 @@ charge battery as first priority
                 "",
             }
         )]
+        [SensorRemarks(
+@"
+System settings flags. TODO .. missing
+"
+        )]
         public System.UInt16? SystemSetting { get; set; }
 
         [ModbusSensor(20143, 1.00d, true)]
@@ -238,6 +298,26 @@ charge battery as first priority
                 "Solar and Utility (default)",
                 "Only Solar",
             }
+        )]
+        [SensorRemarks(
+@"
+Charger source priority
+
+If this inverter/charger is working in Line, Standby or Fault mode, charger source can be programmed as below:
+
+Solar first
+Solar energy will charge battery as first priority. Utility will charge battery only when solar energy is not available.
+
+Solar and utility (default)
+Solar energy and utility will charge battery at the same time.
+
+Only solar
+Solar energy will be the only charger source no matter utility is available or not.
+
+If this inverter/charger is working in Battery mode or Power saving mode, only solar energy can charge battery. Solar energy will charge battery if it's available and suffcient.
+
+
+"
         )]
         public System.Int16? ChargerSourcePriority { get; set; }
 
@@ -616,9 +696,35 @@ PV energy and grid can charge batteries.
         public System.Int16? ChargerCurrentC { get; set; }
 
         [ModbusSensor(10103, 0.10d, true)]
+        [SensorRemarks(
+@"
+Floating charging voltage
+
+12V model:
+Default setting is 13.5V. Setting range is from 12.0V to 14.6V.
+
+24V model:
+Default setting is 27.0V. Setting range is from 24.0V to 29.2V.
+
+If 'User-Defined' LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.
+"
+        )]
         public System.Double? FloatVoltage { get; set; }
 
         [ModbusSensor(10104, 0.10d, true)]
+        [SensorRemarks(
+@"
+Bulk charging voltage (C.V voltage)
+
+12V model:
+Default setting is 14.1V. Setting range is from 12.0V to 14.6V.
+
+24V model:
+Default setting is 28.2V. Setting range is from 24.0V to 29.2V.
+
+If 'User-Defined' LI is selected in program (10110) 14, this program can be set up. Increment of each click is 0.1V.
+"
+        )]
         public System.Double? AbsorptionVoltage { get; set; }
 
         [ModbusSensor(10105, 0.10d, true)]
@@ -631,13 +737,21 @@ PV energy and grid can charge batteries.
         [SensorLookup(new string[]
             {
                 "",
-                "Use defined battery",
+                "User defined battery",
                 "Lithium battery ",
                 "SEALED_LEAD  battery",
-                "AGM  battery",
+                "AGM  battery (default)",
                 "GEL  battery",
                 "FLOODED  battery",
             }
+        )]
+        [SensorRemarks(
+@"
+Battery type
+
+
+f 'User-Defined' LI is selected, battery charge voltage and low DC cut-off voltage can be set up in program 10104 (17), 10103 (18) and 10105 (19).
+"
         )]
         public System.Int16? BatteryType { get; set; }
 
