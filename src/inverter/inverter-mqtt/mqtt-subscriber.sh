@@ -11,6 +11,6 @@ while read rawcmd;
 do
 
     echo "Incoming request send: [$rawcmd] to inverter."
-    #TODO: dotnet inverter.dll set $rawcmd;
+    dotnet /app/inverter.dll set $rawcmd;
 
 done < <(mosquitto_sub -h $MQTT_SERVER -p $MQTT_PORT -u "$MQTT_USERNAME" -P "$MQTT_PASSWORD" -t "$MQTT_TOPIC/sensor/$MQTT_DEVICENAME" -q 1)

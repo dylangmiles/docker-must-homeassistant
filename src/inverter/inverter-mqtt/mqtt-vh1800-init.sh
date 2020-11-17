@@ -102,7 +102,7 @@ registerTopic   "AccumulatedDay"                           "day"              "c
 registerTopic   "AccumulatedHour"                          "hour"             "clock-outline"
 registerTopic   "AccumulatedMinute"                        "min"              "timer-outline"
 
-# Composite
+# Register composite topics manually for now
 
 registerTopic "AccumulatedChargerPower"                    "KWH"     "chart-bell-curve-cumulative"
 registerTopic "AccumulatedDischargerPower"                 "KWH"     "chart-bell-curve-cumulative"
@@ -114,4 +114,5 @@ registerTopic "AccumulatedPvsellPower"                     "KWH"     "chart-bell
 registerTopic "AccumulatedGridChargerPower"                "KWH"     "chart-bell-curve-cumulative"
 registerTopic "AccumulatedPvPower"                         "KWH"     "chart-bell-curve-cumulative"
 
-
+# Register topic for push commands
+registerInverterRawCMD
