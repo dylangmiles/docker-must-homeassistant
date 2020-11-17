@@ -72,7 +72,7 @@ namespace inverter
                         var attribute = property.GetCustomAttributes(true).Where(y => y.GetType() == typeof(ModbusSensorAttribute)).First() as ModbusSensorAttribute;
 
                         var coefficient = attribute.Coefficient;
-                        var v = (ushort)(this.Values[index] / coefficient);
+                        var v = (ushort)Math.Round(this.Values[index] / coefficient, 0);
 
                         writer.write(4, address,  new ushort[] {v});
 

@@ -63,3 +63,19 @@ https://powerforum.co.za/topic/5120-must-power-ph1800-inverter-odditiesquestions
 
 ## cli
 https://medium.com/swlh/build-a-command-line-interface-cli-program-with-net-core-428c4c85221
+
+
+# Solar
+dotnet inverter.dll set -a 20109 -v 4
+
+# Utility 
+dotnet inverter.dll set -a 20109 -v 3
+
+
+# Publish on mqtt topic from HA
+homeassistant/sensor/must-inverter
+-a 20109 -v 3
+
+# Set BatteryStopDischargingVoltage to 24
+homeassistant/sensor/must-inverter
+-a 20118 -v 24.2
