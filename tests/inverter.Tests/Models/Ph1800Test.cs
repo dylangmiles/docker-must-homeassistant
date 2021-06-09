@@ -133,5 +133,81 @@ namespace inverter.Tests.Models
 
             Assert.AreEqual( (short)87, result.BatteryPercent );
         }
+
+
+        [TestMethod]
+        public void BatteryPercent_Charging_Voltage_27_100()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 27d,
+                BatteryRelayNo = 1,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)100, result.BatteryPercent );
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Charging_Voltage_28_100()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 28d,
+                BatteryRelayNo = 1,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)100, result.BatteryPercent );
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Charging_Voltage_26_004_75()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 26.004d,
+                BatteryRelayNo = 1,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)75, result.BatteryPercent );
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Charging_Voltage_24_25()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 24d,
+                BatteryRelayNo = 1,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)25, result.BatteryPercent );
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Charging_Voltage_23_10()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 23.60d,
+                BatteryRelayNo = 1,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)15, result.BatteryPercent );
+        }
     }
 }
