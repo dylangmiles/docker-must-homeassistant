@@ -208,10 +208,10 @@ Increment of each click is 0.1V.
 Maximum utility charging current
 
 1kW
-10A (default) with 20A maximum.
+10A (default) or 20A.
 
 2-3kW
-20A (default) with 30A maximum.
+20A (default) or 30A.
 
 
 

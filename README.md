@@ -79,3 +79,7 @@ homeassistant/sensor/must-inverter
 # Set BatteryStopDischargingVoltage to 24
 homeassistant/sensor/must-inverter
 -a 20118 -v 24.2
+
+# Set GridMaxChargerCurrentSet to 24
+homeassistant/sensor/must-inverter
+-a 20125 -v 15
