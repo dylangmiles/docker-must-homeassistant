@@ -22,19 +22,116 @@ namespace inverter.Tests.Models
         }
 
         [TestMethod]
-        public void BatteryPercent_DrainingVoltage_24_396_100()
+        public void BatteryPercent_Draining_Load_20_Voltage_24_396_100()
         {
             //Given
             var result = new Ph1800()
             {
                 BatteryVoltage = 24.396d,
                 BatteryRelayNo = 0,
-                LoadPercent = 15
+                LoadPercent = 15,
+                BattVoltageGrade = 24
             };
 
 
             Assert.AreEqual( (short)100, result.BatteryPercent );
 
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Draining_Load_20_Voltage_23_4_75()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 23.4d,
+                BatteryRelayNo = 0,
+                LoadPercent = 15,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)75, result.BatteryPercent );
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Draining_Load_20_Voltage_23_898_87()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 23.898d,
+                BatteryRelayNo = 0,
+                LoadPercent = 15,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)88, result.BatteryPercent );
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Draining_Load_20_Voltage_21_418_25()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 21.418d,
+                BatteryRelayNo = 0,
+                LoadPercent = 15,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)25, result.BatteryPercent );
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Draining_Load_20_Voltage_20_411_0()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 20.411d,
+                BatteryRelayNo = 0,
+                LoadPercent = 15,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)0, result.BatteryPercent );
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Draining_Load_50_Voltage_23_298_87()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 23.298d,
+                BatteryRelayNo = 0,
+                LoadPercent = 45,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)87, result.BatteryPercent );
+        }
+
+        [TestMethod]
+        public void BatteryPercent_Draining_Load_80_Voltage_22_098_87()
+        {
+            //Given
+            var result = new Ph1800()
+            {
+                BatteryVoltage = 22.098d,
+                BatteryRelayNo = 0,
+                LoadPercent = 80,
+                BattVoltageGrade = 24
+            };
+
+
+            Assert.AreEqual( (short)87, result.BatteryPercent );
         }
     }
 }

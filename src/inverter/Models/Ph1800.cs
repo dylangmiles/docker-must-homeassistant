@@ -12,16 +12,18 @@ namespace inverter.Models
         {
             get
             {
-                if (this.BatteryVoltage.HasValue == false || this.LoadPercent.HasValue == false || this.BatteryRelayNo.HasValue == false)
+                if (this.BatteryVoltage.HasValue == false || this.LoadPercent.HasValue == false || this.BatteryRelayNo.HasValue == false || this.BattVoltageGrade.HasValue == false)
                 {
                     return null;
                 }
 
                 var batteryPercent = 0;
 
-                var batteryVoltage = this.BatteryVoltage;
-                var batteryVoltagePerCell = batteryVoltage / 12; // Assume 24 volt battery for now. So then we have 12 cells or 6 cells per 12 volt battery.
-                var batteryRelayNo = this.BatteryRelayNo;
+                var batteryVoltage = this.BatteryVoltage.Value;
+                var batteryVoltageGrade = this.BattVoltageGrade.Value;
+                var batteryCellCount = batteryVoltageGrade / 2; // Assume 2 volt cells. So a 12 volt battery will have 6 cells.
+                var cellVoltage = batteryVoltage / batteryCellCount;
+                var batteryRelayNo = this.BatteryRelayNo.Value;
 
                 var loadPercentage = this.LoadPercent;
 
@@ -30,12 +32,15 @@ namespace inverter.Models
                 {
                     if (loadPercentage < 20)
                     {
-                        var l4t = 2.033d; // This is a guess based on next two intervals
-                        if (batteryVoltagePerCell >= l4t)
-                        {
-                            return 100;
-                        }
+                        return CalculateBatteryPercent(1.701d, 2.033d, 0.083, 4, cellVoltage);
                     }
+
+                    if (loadPercentage < 50)
+                    {
+                        return CalculateBatteryPercent(1.651d, 1.983d, 0.083, 4, cellVoltage);
+                    }
+
+                    return CalculateBatteryPercent(1.551d, 1.883d, 0.083, 4, cellVoltage);
 
                     return 0;
                 }
@@ -201,6 +206,29 @@ namespace inverter.Models
                 //return null;
 
             }
+        }
+
+        private short CalculateBatteryPercent(double lower, double upper, double interval, int intervals, double cellVoltage)
+        {
+            
+            if (cellVoltage >= upper) return 100;
+
+            var threshold = upper;
+            var percentageBase = 100d;
+            var percentageInterval = 100d / (double)intervals;
+            for (var level = 0; level < intervals; level++)
+            {
+                threshold = threshold - (level * interval);
+                percentageBase = percentageBase - (level * percentageInterval);
+
+                if (cellVoltage >= threshold)
+                {
+                    return (short) (percentageBase + Math.Round(percentageInterval * (cellVoltage - threshold) / interval, 0,
+                        MidpointRounding.AwayFromZero));
+                }
+            }
+
+            return 0;
         }
 
         [SensorInterpretation("chart-bell-curve-cumulative","KWH")]

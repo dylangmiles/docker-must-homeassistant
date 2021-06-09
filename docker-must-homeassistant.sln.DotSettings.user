@@ -8,6 +8,8 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;MSTest::FDFFACE2-6260-42D0-B6D8-199881AFF625::.NETCoreApp,Version=v3.1::inverter.Tests.Models.Ph1800Test.BatteryPercent_NullBatteryVoltage_Null&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;MSTest::FDFFACE2-6260-42D0-B6D8-199881AFF625::.NETCoreApp,Version=v3.1::inverter.Tests.Models.Ph1800Test.BatteryPercent_DrainingVoltage_24_396_100&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::FDFFACE2-6260-42D0-B6D8-199881AFF625::.NETCoreApp,Version=v3.1::inverter.Tests.Models.Ph1800Test.BatteryPercent_Draining_Voltage_23_4_75&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::FDFFACE2-6260-42D0-B6D8-199881AFF625::.NETCoreApp,Version=v3.1::inverter.Tests.Models.Ph1800Test.BatteryPercent_Draining_Voltage_23_898_87&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c00ee1cc_002Da5bb_002D4455_002Dacda_002D9d07c439c256/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BatteryPercent_NullBatteryVoltage_Null" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
@@ -15,8 +17,8 @@
     &lt;TestId&gt;MSTest::FDFFACE2-6260-42D0-B6D8-199881AFF625::.NETCoreApp,Version=v3.1::inverter.Tests.Models.Ph1800Test.BatteryPercent_NullBatteryVoltage_Null&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ef2ee152_002D699e_002D44f5_002D8bd3_002D4c491268a9df/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BatteryPercent_NullBatteryVoltage_Null #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ef2ee152_002D699e_002D44f5_002D8bd3_002D4c491268a9df/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="BatteryPercent_NullBatteryVoltage_Null #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;MSTest::FDFFACE2-6260-42D0-B6D8-199881AFF625::.NETCoreApp,Version=v3.1::inverter.Tests.Models.Ph1800Test.BatteryPercent_NullBatteryVoltage_Null&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::FDFFACE2-6260-42D0-B6D8-199881AFF625::.NETCoreApp,Version=v3.1::inverter.Tests.Models.Ph1800Test&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
