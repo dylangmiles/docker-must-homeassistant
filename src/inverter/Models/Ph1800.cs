@@ -12,21 +12,19 @@ namespace inverter.Models
         {
             get
             {
-                if (this.BatteryVoltage.HasValue == false || this.BatteryRelayNo.HasValue == false || this.BattVoltageGrade.HasValue == false)
+                if (this.BatteryVoltage.HasValue == false || this.WorkStateNo.HasValue == false || this.BattVoltageGrade.HasValue == false)
                 {
                     return null;
                 }
-
-                var batteryPercent = 0;
 
                 var batteryVoltage = this.BatteryVoltage.Value;
                 var batteryVoltageGrade = this.BattVoltageGrade.Value;
                 var batteryCellCount = batteryVoltageGrade / 2; // Assume 2 volt cells. So a 12 volt battery will have 6 cells.
                 var cellVoltage = batteryVoltage / batteryCellCount;
-                var batteryRelayNo = this.BatteryRelayNo.Value;
+                var batteryLoaded = this.WorkStateNo == 2; //Off grid so load supported from battery
 
                 // Battery is not charging
-                if (batteryRelayNo == 0)
+                if (batteryLoaded == true)
                 {
                     if (this.LoadPercent.HasValue == false)
                     {
@@ -49,7 +47,7 @@ namespace inverter.Models
                 }
 
                 // We are charging
-                if (batteryRelayNo == 1)
+                if (batteryLoaded == false)
                 {
                     return CalculateBatteryPercent(1.917d, 2.25d, 0.083, 4, cellVoltage);
                 }

@@ -24,6 +24,9 @@ I am setting up on a Raspberry Pi running Raspberry OS
 2. Clone respository and run communication tests.
     ```
 
+    # If terminal is freezing over vpn, mtu might be too high
+    docker-compose run --rm inverter test
+
     # Clone the source code
     
     sudo git clone https://github.com/dylangmiles/docker-must-homeassistant.git /opt/must-inverter-mqtt-agent
