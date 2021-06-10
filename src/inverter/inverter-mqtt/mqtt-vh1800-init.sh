@@ -104,6 +104,8 @@ registerTopic   "AccumulatedMinute"                        "min"              "t
 
 # Register composite topics manually for now
 
+registerTopic "BatteryPercent"                             "%"       "battery"
+
 registerTopic "AccumulatedChargerPower"                    "KWH"     "chart-bell-curve-cumulative"
 registerTopic "AccumulatedDischargerPower"                 "KWH"     "chart-bell-curve-cumulative"
 registerTopic "AccumulatedBuyPower"                        "KWH"     "chart-bell-curve-cumulative"

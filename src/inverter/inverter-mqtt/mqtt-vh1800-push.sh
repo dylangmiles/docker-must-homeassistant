@@ -218,6 +218,9 @@ AccumulatedMinute=`echo $INVERTER_DATA | jq '.AccumulatedMinute' -r`
 
 # Composite
 
+BatteryPercent=`echo $INVERTER_DATA | jq '.BatteryPercent' -r`
+[ ! -z "$BatteryPercent" ] && pushMQTTData "BatteryPercent" "$BatteryPercent"
+
 AccumulatedChargerPower=`echo $INVERTER_DATA | jq '.AccumulatedChargerPower' -r`
 [ ! -z "$AccumulatedChargerPower" ] && pushMQTTData "AccumulatedChargerPower" "$AccumulatedChargerPower"
 
