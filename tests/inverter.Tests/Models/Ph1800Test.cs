@@ -28,7 +28,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 24.396d,
-                WorkStateNo = 2,
+                BatteryRelayNo = 0,
                 LoadPercent = 15,
                 BattVoltageGrade = 24
             };
@@ -45,7 +45,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 23.4d,
-                WorkStateNo = 2,
+                BatteryRelayNo = 0,
                 LoadPercent = 15,
                 BattVoltageGrade = 24
             };
@@ -61,7 +61,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 23.898d,
-                WorkStateNo = 2,
+                BatteryRelayNo = 0,
                 LoadPercent = 15,
                 BattVoltageGrade = 24
             };
@@ -77,7 +77,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 21.418d,
-                WorkStateNo = 2,
+                BatteryRelayNo = 0,
                 LoadPercent = 15,
                 BattVoltageGrade = 24
             };
@@ -93,7 +93,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 20.411d,
-                WorkStateNo = 2,
+                BatteryRelayNo = 0,
                 LoadPercent = 15,
                 BattVoltageGrade = 24
             };
@@ -109,7 +109,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 23.298d,
-                WorkStateNo = 2,
+                BatteryRelayNo = 0,
                 LoadPercent = 45,
                 BattVoltageGrade = 24
             };
@@ -125,7 +125,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 22.098d,
-                WorkStateNo = 2,
+                BatteryRelayNo = 0,
                 LoadPercent = 80,
                 BattVoltageGrade = 24
             };
@@ -142,7 +142,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 27d,
-                WorkStateNo = 6,
+                BatteryRelayNo = 1,
                 BattVoltageGrade = 24
             };
 
@@ -157,7 +157,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 28d,
-                WorkStateNo = 6,
+                BatteryRelayNo = 1,
                 BattVoltageGrade = 24
             };
 
@@ -172,7 +172,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 26.004d,
-                WorkStateNo = 6,
+                BatteryRelayNo = 1,
                 BattVoltageGrade = 24
             };
 
@@ -187,7 +187,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 24d,
-                WorkStateNo = 6,
+                BatteryRelayNo = 1,
                 BattVoltageGrade = 24
             };
 
@@ -202,7 +202,7 @@ namespace inverter.Tests.Models
             var result = new Ph1800()
             {
                 BatteryVoltage = 23.60d,
-                WorkStateNo = 6,
+                BatteryRelayNo = 1,
                 BattVoltageGrade = 24
             };
 

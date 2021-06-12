@@ -12,7 +12,7 @@ namespace inverter.Models
         {
             get
             {
-                if (this.BatteryVoltage.HasValue == false || this.WorkStateNo.HasValue == false || this.BattVoltageGrade.HasValue == false)
+                if (this.BatteryVoltage.HasValue == false || this.BatteryRelayNo.HasValue == false || this.BattVoltageGrade.HasValue == false)
                 {
                     return null;
                 }
@@ -21,7 +21,7 @@ namespace inverter.Models
                 var batteryVoltageGrade = this.BattVoltageGrade.Value;
                 var batteryCellCount = batteryVoltageGrade / 2; // Assume 2 volt cells. So a 12 volt battery will have 6 cells.
                 var cellVoltage = batteryVoltage / batteryCellCount;
-                var batteryLoaded = this.WorkStateNo == 2; //Off grid so load supported from battery
+                var batteryLoaded = this.BatteryRelayNo == 0; //Battery is not being charged
 
                 // Battery is not charging
                 if (batteryLoaded == true)
