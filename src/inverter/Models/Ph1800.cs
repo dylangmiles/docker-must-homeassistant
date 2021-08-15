@@ -12,7 +12,7 @@ namespace inverter.Models
         {
             get
             {
-                if (this.BatteryVoltage.HasValue == false || this.BatteryRelayNo.HasValue == false || this.BattVoltageGrade.HasValue == false)
+                if (this.BatteryVoltage.HasValue == false || this.WorkStateNo.HasValue == false || this.ChrWorkstateNo.HasValue == false || this.BattVoltageGrade.HasValue == false)
                 {
                     return null;
                 }
@@ -21,7 +21,16 @@ namespace inverter.Models
                 var batteryVoltageGrade = this.BattVoltageGrade.Value;
                 var batteryCellCount = batteryVoltageGrade / 2; // Assume 2 volt cells. So a 12 volt battery will have 6 cells.
                 var cellVoltage = batteryVoltage / batteryCellCount;
-                var batteryLoaded = this.BatteryRelayNo == 0; //Battery is not being charged
+                var batteryMode = this.WorkStateNo == 2; // In battery mode. Battery is being used
+                var charging = this.ChrWorkstateNo == 2; // Battery is being charged
+                var batteryLoaded = batteryMode == true && charging == false; // Load is supported by battery with no charging
+
+
+                
+                // if in line mode or battery is charing then don't use load
+                // if battery is not charging and in battery mode then use load
+
+
 
                 // Battery is not charging
                 if (batteryLoaded == true)
