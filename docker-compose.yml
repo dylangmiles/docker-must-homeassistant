@@ -11,7 +11,7 @@ services:
         #entrypoint: ["/bin/bash"]
 
         # Entrypoint for continuous polling and push to mqtt
-        #entrypoint: ["/app/inverter-mqtt/entrypoint.sh"]
+        entrypoint: ["/app/inverter-mqtt/entrypoint.sh"]
 
         privileged: true
 
